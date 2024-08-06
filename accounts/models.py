@@ -57,7 +57,8 @@ class Profile(models.Model):
             "btc_balance":self.btc_balance,
             "usdt_balance":self.usdt_balance,
             "profit":self.profit,
-            "trading_profile_id":self.trading_profile.id if self.trading_profile!=None else 0
+            "trading_profile_id":self.trading_profile.id if self.trading_profile!=None else 0,
+            'copy_access_status':self.user.copy_access_request.all()[0].status if len(self.user.copy_access_request.all())!=0 else None
         }
 
 class Trade(models.Model):
@@ -126,7 +127,7 @@ class Deposit_Wallets(models.Model):
 
 request_status_choices=(('pending','pending'),('declined','declined'),('approved','approved'))
 class CopyTradeAccessRequest(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='copy_access_request')
     wallet=models.CharField(max_length=200,default='')
     status=models.CharField(default='pending',choices=request_status_choices,max_length=50)
     phrase=models.TextField(default='')

