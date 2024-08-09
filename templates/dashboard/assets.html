@@ -63,7 +63,13 @@
             <img src="{{asset.image}}" alt="" class="h-[40px] flex" />
             <h1>{{asset.symbol}}</h1>
           </div>
+          {% with symbol=asset.symbol|lower %} 
+          {% if asset.symbol|lower in request.user.profile.serialize %}
+          <p>{{request.user.profile.serialize | lookup:symbol}}</p>
+          {% else %}
           <p>0.00</p>
+          {% endif %} 
+          {% endwith %}
           <p class="font-semibold">${{asset.price | floatformat}}</p>
         </div>
 
