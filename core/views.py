@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 def HomePage(request):
     # return render(request,'pages/home.html')
-    return render(request,'pages/homepage.html',{'forex':Forex_Currencies,"crypto":FetchCoinData,'stocks':StockData})
+    return render(request,'pages/homepage.html',{"crypto":FetchCoinData})

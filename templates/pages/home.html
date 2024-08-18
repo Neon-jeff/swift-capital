@@ -1,242 +1,282 @@
-{% extends "base.html" %} {%load static%} {% block content %}
+{%extends 'base.html'%} {%block content%}
 
-<main
-  class="bg-white flex flex-col items-center relative justify-center pt-28 text-gray-300 text-sm max-md:text-xs"
->
-  {% include "components/nav.html" %}
+<section class="bg-cyan-50 text-neutral-900" x-data="home">
+  {{crypto|json_script:'crypto'}} {{forex|json_script:'forex'}}
+  {{stocks|json_script:'stocks'}} {%include 'components/nav.html'%}
+  <!-- header section -->
   <section
-    class="w-4/5 h-screen flex max-md:flex-col self-start pb-10 max-md:bg-white gap-10 justify-center items-center rounded-3xl max-md:h-1/2 max-md:w-full px-5 max-md:items-center max-md:gap-10"
+    class="min-h-screen max-md:pt-36 pt-16 text-neutral-900 gap-20 mx-auto p-10 max-md:p-5 w-4/5 max-md:w-11/12 max-md:gap-10 flex max-md:flex-col items-center"
   >
-    {%include 'components/svg.html'%}
-    <div class="flex flex-col gap-3 w-2/3 max-md:w-full">
-      {% include "components/homepage/object1.html" %}
-      <!-- stuff -->
-      {% include "components/homepage/object2.html" %}
-      <p class="text-main inline z-[1]">Trusted by 10,000+ users</p>
-      <h1
-        class="text-5xl max-md:text-4xl z-[1] max-md:w-full font-semibold animate-herotext"
-      >
-        A Secure platform for seamless <span class="text-main">Trading</span>
+    <div class="w-1/2 max-md:w-full">
+      <h1 class="text-5xl max-md:text-4xl pb-5 font-semibold">
+        Trade with pro experts, earn faster
       </h1>
-      <!-- <p class='pt-2 text-sm w-4/5  max-md:w-full animate-heroparagraph '>
-Revolutionize your trading experience with our secure and user-friendly crypto broker platform. Trade seamlessly and explore endless possibilities!</p> -->
-      {% comment %} button holder {% endcomment %}
-      <div class="pt-4 flex">
-        <a
-          href="{%url 'sign-up'%}"
-          class="bg-main z-[1] text-black flex items-center gap-1 p-4 px-10 rounded-full hover:-translate-y-2 transition duration-150 ease-in"
-          >Get Started
-          <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon
-        ></a>
+      <p class="text-lg">
+        Grow your finance capital in a secured and trust worthy platform
+      </p>
 
-        <a
-          href="{%url 'dashboard'%}"
-          class="border-2 border-main p-3 px-10 rounded-full mx-2 flex items-center gap-3"
-          ><i class="fa-regular fa-circle-play text-main text-2xl"></i
-          >Dashboard</a
-        >
+      <a
+        href="{%url 'sign-up'%}"
+        class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block"
+        >Join us now <i class="ri-arrow-right-up-line"></i
+      ></a>
+    </div>
+    <!-- image section card -->
+    <div class="w-1/2 max-md:w-full">
+      <div class="flex justify-end items-end rounded-md">
+        <img
+          src="/static/images/hero.png"
+          alt=""
+          class="mix-blend-multiply scale-125"
+        />
       </div>
     </div>
-    <!-- market ticker element here -->
   </section>
+  <!-- header section ends -->
 
-  {% comment %} hero image section {% endcomment %} {% comment %} intro section
-  {% endcomment %}
-  <section
-    class="w-full text-gray-300 max-md:mt-36 px-5 flex justify-around text-sm max-md:justify-center max-md:gap-8 items-center py-10 max-md:flex-col"
+  <!-- rating and intro section -->
+  <section class="bg-white p-10 max-md:px-5 pt-20">
+    <h1 class="text-3xl font-semibold text-center">
+      Our growing numbers tells our story
+    </h1>
+    <!-- rating container -->
+    <div
+      class="w-4/5 max-md:w-full mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:p-0"
+    >
+      <div
+        class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >227K</span
+        >
+        <span>Registered Active Users</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >197+</span
+        >
+        <span>Countries supported worldwide</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main">10+</span>
+        <span>Trading Currencies</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >$1,000,000,000+</span
+        >
+        <span>Trading Profit Payout</span>
+      </div>
+    </div>
+    <!-- rating ends -->
+    <!-- intro container -->
+    <div
+      class="flex mt-20 items-center justify-center gap-20 max-md:flex-col max-md:gap-20"
+    >
+      <img
+        src="https://img.freepik.com/free-photo/still-life-assortment-with-cryptocurrency_23-2149102071.jpg?uid=R52160346&ga=GA1.1.1738403747.1713691524&semt=ais_user-customized"
+        class="mix-blend-multiply w-1/2 max-md:w-11/12 h-[300px] object-cover rounded-xl scale-90 max-md:scale-90"
+        alt=""
+      />
+      <div class="flex flex-col gap-5">
+        <h1 class="text-3xl max-md:text-center font-semibold">
+          Begin in simple steps
+        </h1>
+        <div class="p-5 rounded-xl border border-neutral-200">
+          <span
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+            >1</span
+          >
+          <span>Create your account</span>
+        </div>
+        <div class="p-5 rounded-xl border border-neutral-200">
+          <span
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+            >2</span
+          >
+          <span>Verify your email as your primary contact address</span>
+        </div>
+        <div class="p-5 rounded-xl border border-neutral-200">
+          <span
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+            >3</span
+          >
+          <span>Begin your seamless journey of trading experience</span>
+        </div>
+        <a
+          href="{%url 'sign-up'%}"
+          class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
+          >Join us now <i class="ri-arrow-right-up-line"></i
+        ></a>
+      </div>
+    </div>
+    <!-- intro container ends -->
+  </section>
+  <!-- intro and rating ends -->
+
+  <!-- buy crypto container -->
+  <div class="bg-white px-10 max-md:px-5">
+    <h1 class="text-center text-3xl font-semibold">
+      Build your trading portfolio
+    </h1>
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
+      <template x-for="coin in crypto">
+        <div
+          class="flex items-center gap-4 border p-3 border-neutral-200 bg-white rounded-full"
+        >
+          <img
+            :src="coin.image"
+            class="h-10 w-10 rounded-full object-cover"
+            alt=""
+          />
+          <span x-text="coin.name"></span>
+        </div>
+      </template>
+    </div>
+    <a
+      href="{%url 'sign-up'%}"
+      class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
+      >Start Trading Crypto<i class="ri-arrow-right-up-line"></i
+    ></a>
+  </div>
+
+  <!-- forex currency -->
+
+  <div class="bg-white px-10 py-14 max-md:px-5">
+    <h1 class="text-center text-3xl font-semibold">
+      Currency and stock trading options
+    </h1>
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
+      <template x-for="currency in forex">
+        <div
+          class="flex flex-col items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl"
+        >
+          <img
+            :src="location.origin + '/static/images/forex/'+currency.image"
+            class="h-10 w-10 rounded-full object-cover"
+            alt=""
+          />
+          <span x-text="currency.currency"></span>
+          <span x-text="currency.rate" class="font-bold text-main"></span>
+        </div>
+      </template>
+    </div>
+    <a
+      href="{%url 'sign-up'%}"
+      class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit mx-auto block"
+      >Market Trends<i class="ri-arrow-right-up-line"></i
+    ></a>
+  </div>
+  <!-- markets end -->
+
+  <!-- copy trader explained -->
+  <div
+    class="py-10 px-10 max-md:px-5 flex max-sm:flex-col relative items-center max-md:gap-10 gap-20 justify-center bg-main"
   >
-    <div class="w-1/3 max-md:w-full">
-      <h1 class="text-gray-400 font-medium text-base pb-2">
-        Explore the finance market for profits
+    <!-- blob stick div -->
+
+    <img src="/static/images/side.png" alt="Coin Masks phone dashboard" />
+    <div class="max-md:text-center flex flex-col gap-1">
+      <span
+        class="border p-2 rounded-full border-cyan-200 text-xs text-cyan-200"
+        >increase trade success</span
+      >
+      <h1 class="text-3xl font-semibold mt-3 mb-5">Copy Trading</h1>
+      <span>
+        Expert trading refers to the practice of making informed decisions in
+        financial markets based on deep understanding, analysis, and experience.
+        Experts utilize their knowledge of market trends, economic indicators,
+        and company fundamentals to identify opportunities for buying or selling
+        assets such as stocks, currencies, or commodities. They employ advanced
+        techniques including technical analysis, fundamental analysis, and risk
+        management strategies to maximize profits and minimize losses. Expert
+        traders often possess years of experience and continually refine their
+        skills through ongoing research and adaptation to market dynamics. Their
+        expertise enables them to navigate volatile markets with confidence and
+        achieve consistent returns over time..
+      </span>
+      <a
+        href="{%url 'sign-up'%}"
+        class="border bg-white text-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block"
+        >Start Expert Trading<i class="ri-arrow-right-up-line"></i
+      ></a>
+    </div>
+  </div>
+
+  <!-- copy trader explain ends -->
+
+  <!-- reasons start -->
+
+  <div
+    class="bg-white p-20 max-md:p-5 flex justify-around text-base gap-10 max-md:flex-col"
+  >
+    <div class="flex flex-col items-center gap-5">
+      <i class="ri-vip-diamond-line text-5xl text-main"></i>
+      <p>Watch your profits grow automatically</p>
+    </div>
+    <div class="flex flex-col items-center gap-5">
+      <i class="ri-time-line text-main text-5xl"></i>
+      <p>Available 24/7 support</p>
+    </div>
+    <div class="flex flex-col items-center gap-5">
+      <i class="ri-lock-star-line text-5xl text-main"></i>
+      <p>Secured asset trust</p>
+    </div>
+  </div>
+  <!-- reasons end -->
+
+  <!-- accessibility starts -->
+  <div
+    class="bg-white p-20 max-md:p-5 relative flex min-h-screen justify-center flex-col max-md:gap-5"
+  >
+    <div
+      class="absolute top-0 right-0 bottom-0 left-0 bg-[rgba(255,255,255,.8)] text-gray-900 z-50 flex flex-col justify-center font-light items-center text-sm"
+    >
+      <span
+        class="text-xs text-gray-700 border p-3 rounded-full border-gray-700"
+        >Trade from anywhere</span
+      >
+      <h1
+        class="text-5xl font-semibold max-md:text-3xl text-center pb-4 pt-2 text-main"
+      >
+        Available in over 197 countries
       </h1>
-      <h1 class="text-3xl max-md:text-2xl font-semibold pb-5">
-        Experience Unrivaled Trading Performance
-      </h1>
-      <p>
-        Escape common broker challenges like high fees, slow transactions, and
-        limited assets. Our platform offers a seamless, secure experience,
-        ensuring you navigate the crypto market effortlessly. Upgrade today
+      <p class="text-center">
+        Access your secured trading account from anywhere in the world
       </p>
       <a
         href="{%url 'sign-up'%}"
-        class="bg-main text-black flex items-center gap-3 mt-4 p-4 px-10 rounded-full hover:-translate-y-2 w-1/2 max-md:w-3/5 justify-center transition duration-150 ease-in"
-        >Get Started
-        <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon
+        class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block mx-auto"
+        >Join us now <i class="ri-arrow-right-up-line"></i
       ></a>
     </div>
     <img
-      src="{%static 'images/side.png'%}"
-      alt="hero-image"
-      class="object-cover"
+      src="/static/images/globe.png"
+      alt="Access coin mask from around the world"
+      class="absolute top-0 h-screen object-cover max-md:object-contain left-1/2 -translate-x-1/2 max-md:w-4/5 opacity-60"
     />
-  </section>
-  {% comment %} wallet references {% endcomment %}
-  <!-- TradingView Widget BEGIN -->
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright">
-      <a
-        href="https://www.tradingview.com/"
-        rel="noopener nofollow"
-        target="_blank"
-        ><span class="blue-text">Track all markets on TradingView</span></a
-      >
-    </div>
-    <script
-      type="text/javascript"
-      src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-      async
-    >
-        {
-        "symbols": [
-          {
-            "proName": "FOREXCOM:SPXUSD",
-            "title": "S&P 500"
-          },
-          {
-            "proName": "FOREXCOM:NSXUSD",
-            "title": "US 100"
-          },
-          {
-            "proName": "FX_IDC:EURUSD",
-            "title": "EUR to USD"
-          },
-          {
-            "proName": "BITSTAMP:BTCUSD",
-            "title": "Bitcoin"
-          },
-          {
-            "proName": "BITSTAMP:ETHUSD",
-            "title": "Ethereum"
-          }
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": false,
-        "largeChartUrl": "https://www.coin-mask.com/",
-        "displayMode": "adaptive",
-        "colorTheme": "dark",
-        "locale": "en"
-      }
-    </script>
   </div>
-  <!-- TradingView Widget END -->
+  <!-- accessibility ends -->
 
-  {% comment %} standout session {% endcomment %}
-  <section
-    class="flex flex-col justify-between px-10 text-sm max-md:px-5 mt-10 py-10 items-center max-md:flex-col gap-5"
-    data-aos="fade-up"
-    data-aos-duration="2000"
-  >
-    <div class="w-full max-md:w-full">
-      <div class="flex justify-between max-md:flex-col gap-10">
-        <div class="w-1/2 max-md:w-full">
-          <h1
-            class="text-3xl max-md:text-3xl font-semibold text-gray-300 max-md:w-full"
-          >
-            An Imperative Dashboard for smooth trading
-          </h1>
-          <p class="py-5 max-md:w-full w-1/2">
-            Our dashboard is suggestive and user friendly to make your trading
-            experience easy to navigate
-          </p>
-          <a
-            href="{%url 'sign-up'%}"
-            class="border-main border-[1px] text-main w-1/2 justify-center mt-3 max-md:w-3/5 max-md:px-5 flex items-center gap-1 py-4 rounded-full hover:-translate-y-2 transition duration-150 ease-in"
-            >Register Now
-            <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon
-          ></a>
-        </div>
-        <img
-          src="https://www.originfx.com/wp-content/uploads/2024/06/5-2x-min-1024x729.png"
-          class="w-1/2 max-md:w-full object-cover"
-          alt=""
-        />
-      </div>
-      {%include 'components/homepage/choose.html'%}
-      <!-- steps -->
-      {%include 'components/homepage/steps.html'%}
-    </div>
-  </section>
-  <!-- Reviews -->
-  <section
-    class="px-10 mx-auto w-full max-md:w-full my-56 text-sm max-md:px-5"
-    data-aos="fade-up"
-    data-aos-duration="2000"
-  >
-    <h1
-      class="text-4xl max-md:text-4xl text-center mx-auto w-1/2 max-md:w-full font-normal text-gray-300 py-3 pb-5"
-    >
-      Reviews from Satisfied Customers
-    </h1>
-    <p class="text-gray-300 text-center mx-auto w-1/3 max-md:w-full">
-      Users praise our platform for seamless transactions, a vast array of
-      assets, and top-notch security.
-    </p>
-    <div
-      class="mx-auto rounded-box mt-10 max-md:mt-5 grid grid-cols-3 max-md:grid-cols-1 px-5 gap-10 text-center max-md:gap-8 max-md:px-0 max-md:w-full"
-    >
-      <div
-        class="flex flex-col items-center w-full p-10 bg-neutral-950 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
-      >
-        <!-- <img
-          src="{%static 'images/r4.jpg'%}"
-          alt="reviewImage"
-          class="h-32 w-32 rounded-full object-cover"
-        /> -->
-        <h1 class="text-base font-medium text-main pb-5 pt-2">
-          Very Secured Plaform
-        </h1>
-        <p class="">
-          The system security is top notch, I was in need of a safe place to
-          invest and this plaform helped alo
-        </p>
-        <span class="flex flex-col gap-1 text-sm text-gray-400">
-          <span>Olive Saint</span>
-        </span>
-      </div>
-
-      <div
-        class="flex flex-col items-center w-full p-10 bg-neutral-950 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
-      >
-        <!-- <img
-          src="{%static 'images/r2.jpg'%}"
-          alt="reviewImage"
-          class="h-32 w-32 rounded-full object-cover"
-        /> -->
-        <h1 class="text-base font-medium text-main pb-5 pt-2">
-          Very Smooth Sign Up
-        </h1>
-        <p class="">
-          Pretty solid so far!. Opening an account was relatively quick which
-          was nice. And the spreads are amazing. Highly recommend this broker
-        </p>
-        <span class="flex flex-col gap-1 text-sm text-gray-400">
-          <span>Olive Saint</span>
-        </span>
-      </div>
-
-      <div
-        class="flex flex-col items-center w-full p-10 bg-neutral-950 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
-      >
-        <!-- <img
-          src="{%static 'images/r1.jpg'%}"
-          alt="reviewImage"
-          class="h-32 w-32 rounded-full object-cover"
-        /> -->
-        <h1 class="text-base font-medium text-main pb-5 pt-2">
-          Reliable Expert Options
-        </h1>
-        <p class="">
-          I dont know much about forex or crypto trading, but I simply make
-          profits by copying expert traders on the platform
-        </p>
-        <span class="flex flex-col gap-1 text-sm text-gray-400">
-          <span>Olive Saint</span>
-        </span>
-      </div>
-    </div>
-  </section>
   {%include 'components/footer.html'%}
-</main>
 
-{% endblock content %}
+  <script>
+    document.addEventListener("alpine:init", () => {
+      const crypto = JSON.parse(document.getElementById("crypto").textContent);
+      const forex = JSON.parse(document.getElementById("forex").textContent);
+      console.log(forex);
+      Alpine.data("home", () => ({
+        crypto: crypto.slice(0, 15),
+        forex: forex.slice(0, 10),
+      }));
+    });
+  </script>
+</section>
+
+{%endblock%}

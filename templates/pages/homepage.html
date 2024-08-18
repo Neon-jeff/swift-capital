@@ -1,6 +1,6 @@
 {%extends 'base.html'%} {%block content%}
 
-<section class="bg-cyan-50 text-neutral-900" x-data="home">
+<section class="bg-white text-neutral-900" x-data="home">
   {{crypto|json_script:'crypto'}} {{forex|json_script:'forex'}}
   {{stocks|json_script:'stocks'}} {%include 'components/nav.html'%}
   <!-- header section -->
@@ -9,23 +9,26 @@
   >
     <div class="w-1/2 max-md:w-full">
       <h1 class="text-5xl max-md:text-4xl pb-5 font-semibold">
-        Trade with pro experts, earn faster
+        Crypto Copy Trading
       </h1>
       <p class="text-lg">
-        Grow your finance capital in a secured and trust worthy platform
+        Start investing in cryptocurrencies together with professional traders
+        and benefit from their experience. Start growing your crypto investment
+        on autopilot with full transparency and control on Krakends's copy
+        trading platform.
       </p>
 
       <a
         href="{%url 'sign-up'%}"
         class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block"
-        >Join us now <i class="ri-arrow-right-up-line"></i
+        >Get started now <i class="ri-arrow-right-up-line"></i
       ></a>
     </div>
     <!-- image section card -->
     <div class="w-1/2 max-md:w-full">
       <div class="flex justify-end items-end rounded-md">
         <img
-          src="/static/images/hero.png"
+          src="/static/images/new-hero.webp"
           alt=""
           class="mix-blend-multiply scale-125"
         />
@@ -33,97 +36,61 @@
     </div>
   </section>
   <!-- header section ends -->
-
-  <!-- rating and intro section -->
-  <section class="bg-white p-10 max-md:px-5 pt-20">
-    <h1 class="text-3xl font-semibold text-center">
-      Our growing numbers tells our story
+  <!-- supported plaforms start -->
+  <div class="p-5 rounded-xl bg-gray-50 w-4/5 max-md:w-11/12 mx-auto mb-10">
+    <h1 class="text-2xl pb-5 max-md:text-xl text-start font-semibold">
+      Supported Wallets
     </h1>
-    <!-- rating container -->
-    <div
-      class="w-4/5 max-md:w-full mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:p-0"
-    >
-      <div
-        class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >227K</span
+    <div class="grid grid-cols-5 max-md:grid-cols-3 gap-5">
+      <template x-for="wallet in wallets">
+        <div
+          class="p-2 rounded-xl cursor-pointer flex flex-col-reverse gap-2 justify-center border border-neutral-100"
         >
-        <span>Registered Active Users</span>
-      </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >197+</span
-        >
-        <span>Countries supported worldwide</span>
-      </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main">10+</span>
-        <span>Trading Currencies</span>
-      </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >$1,000,000,000+</span
-        >
-        <span>Trading Profit Payout</span>
-      </div>
+          <span x-text="wallet.name" class="text-xs"></span>
+          <img
+            :src="wallet.logo"
+            alt=""
+            class="h-8 w-8 object-contain rounded-full max-md:w-6 max-md:h-6"
+          />
+        </div>
+      </template>
     </div>
-    <!-- rating ends -->
-    <!-- intro container -->
-    <div
-      class="flex mt-20 items-center justify-center gap-20 max-md:flex-col max-md:gap-20"
-    >
-      <img
-        src="https://img.freepik.com/free-photo/still-life-assortment-with-cryptocurrency_23-2149102071.jpg?uid=R52160346&ga=GA1.1.1738403747.1713691524&semt=ais_user-customized"
-        class="mix-blend-multiply w-1/2 max-md:w-11/12 h-[300px] object-cover rounded-xl scale-90 max-md:scale-90"
-        alt=""
-      />
-      <div class="flex flex-col gap-5">
-        <h1 class="text-3xl max-md:text-center font-semibold">
-          Begin in simple steps
-        </h1>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >1</span
-          >
-          <span>Create your account</span>
-        </div>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >2</span
-          >
-          <span>Verify your email as your primary contact address</span>
-        </div>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >3</span
-          >
-          <span>Begin your seamless journey of trading experience</span>
-        </div>
-        <a
-          href="{%url 'sign-up'%}"
-          class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
-          >Join us now <i class="ri-arrow-right-up-line"></i
-        ></a>
-      </div>
-    </div>
-    <!-- intro container ends -->
-  </section>
-  <!-- intro and rating ends -->
+  </div>
+  <!-- supported plaforms end -->
 
+  <!-- copy trader explained -->
+  <div
+    class="py-10 px-10 max-md:px-5 flex max-sm:flex-col my-20 max-md:my-10 relative items-center max-md:gap-10 gap-20 justify-center"
+  >
+    <!-- blob stick div -->
+
+    <img
+      src="/static/images/marketplace.webp"
+      alt="Coin Masks phone dashboard"
+      class="w-1/3 max-sm:w-full object-cover"
+    />
+    <div class="max-md:text-start w-1/2 max-md:w-full flex flex-col gap-1">
+      <h1 class="text-3xl font-semibold mt-3 mb-5">What is Copy Trading</h1>
+      <span>
+        Copy-trading (aka mirror trading and shadow trading) is a great tool for
+        cryptocurrency investors who would like to grow their cryptocurrency
+        portfolio on autopilot. Copy trading crypto is very dynamic. Our
+        advanced copy trading system will copy and execute the trades of the
+        professional traders that you follow automatically.
+      </span>
+      <a
+        href="{%url 'sign-up'%}"
+        class="border bg-white text-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block"
+        >Start Expert Trading<i class="ri-arrow-right-up-line"></i
+      ></a>
+    </div>
+  </div>
+
+  <!-- copy trader explain ends -->
   <!-- buy crypto container -->
   <div class="bg-white px-10 max-md:px-5">
-    <h1 class="text-center text-3xl font-semibold">
-      Build your trading portfolio
+    <h1 class="text-start text-3xl font-semibold">
+      Build your crypto portfolio
     </h1>
     <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
       <template x-for="coin in crypto">
@@ -146,137 +113,256 @@
     ></a>
   </div>
 
-  <!-- forex currency -->
-
-  <div class="bg-white px-10 py-14 max-md:px-5">
-    <h1 class="text-center text-3xl font-semibold">
-      Currency and stock trading options
-    </h1>
-    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
-      <template x-for="currency in forex">
-        <div
-          class="flex flex-col items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl"
-        >
-          <img
-            :src="location.origin + '/static/images/forex/'+currency.image"
-            class="h-10 w-10 rounded-full object-cover"
-            alt=""
-          />
-          <span x-text="currency.currency"></span>
-          <span x-text="currency.rate" class="font-bold text-main"></span>
-        </div>
-      </template>
-    </div>
-    <a
-      href="{%url 'sign-up'%}"
-      class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit mx-auto block"
-      >Market Trends<i class="ri-arrow-right-up-line"></i
-    ></a>
-  </div>
   <!-- markets end -->
 
-  <!-- copy trader explained -->
-  <div
-    class="py-10 px-10 max-md:px-5 flex max-sm:flex-col relative items-center max-md:gap-10 gap-20 justify-center bg-main"
-  >
-    <!-- blob stick div -->
-
-    <img src="/static/images/side.png" alt="Coin Masks phone dashboard" />
-    <div class="max-md:text-center flex flex-col gap-1">
-      <span
-        class="border p-2 rounded-full border-cyan-200 text-xs text-cyan-200"
-        >increase trade success</span
-      >
-      <h1 class="text-3xl font-semibold mt-3 mb-5">Copy Trading</h1>
-      <span>
-        Expert trading refers to the practice of making informed decisions in
-        financial markets based on deep understanding, analysis, and experience.
-        Experts utilize their knowledge of market trends, economic indicators,
-        and company fundamentals to identify opportunities for buying or selling
-        assets such as stocks, currencies, or commodities. They employ advanced
-        techniques including technical analysis, fundamental analysis, and risk
-        management strategies to maximize profits and minimize losses. Expert
-        traders often possess years of experience and continually refine their
-        skills through ongoing research and adaptation to market dynamics. Their
-        expertise enables them to navigate volatile markets with confidence and
-        achieve consistent returns over time..
-      </span>
-      <a
-        href="{%url 'sign-up'%}"
-        class="border bg-white text-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block"
-        >Start Expert Trading<i class="ri-arrow-right-up-line"></i
-      ></a>
-    </div>
-  </div>
-
-  <!-- copy trader explain ends -->
-
-  <!-- reasons start -->
-
-  <div
-    class="bg-white p-20 max-md:p-5 flex justify-around text-base gap-10 max-md:flex-col"
-  >
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-vip-diamond-line text-5xl text-main"></i>
-      <p>Watch your profits grow automatically</p>
-    </div>
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-time-line text-main text-5xl"></i>
-      <p>Available 24/7 support</p>
-    </div>
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-lock-star-line text-5xl text-main"></i>
-      <p>Secured asset trust</p>
-    </div>
-  </div>
-  <!-- reasons end -->
-
-  <!-- accessibility starts -->
-  <div
-    class="bg-white p-20 max-md:p-5 relative flex min-h-screen justify-center flex-col max-md:gap-5"
-  >
+  <!-- rating and intro section -->
+  <section class="bg-white p-10 max-md:px-5 pt-20">
+    <h1 class="text-3xl font-semibold text-start">Our growing numbers</h1>
+    <!-- rating container -->
     <div
-      class="absolute top-0 right-0 bottom-0 left-0 bg-[rgba(255,255,255,.8)] text-gray-900 z-50 flex flex-col justify-center font-light items-center text-sm"
+      class="w-4/5 max-md:w-full mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:p-0"
     >
-      <span
-        class="text-xs text-gray-700 border p-3 rounded-full border-gray-700"
-        >Trade from anywhere</span
+      <div
+        class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-start"
       >
-      <h1
-        class="text-5xl font-semibold max-md:text-3xl text-center pb-4 pt-2 text-main"
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >227K</span
+        >
+        <span>Registered Active Users</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-start"
       >
-        Available in over 197 countries
-      </h1>
-      <p class="text-center">
-        Access your secured trading account from anywhere in the world
-      </p>
-      <a
-        href="{%url 'sign-up'%}"
-        class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block mx-auto"
-        >Join us now <i class="ri-arrow-right-up-line"></i
-      ></a>
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >197+</span
+        >
+        <span>Countries supported worldwide</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-start"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main">10+</span>
+        <span>Trading Currencies</span>
+      </div>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-start"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
+          >$1Billon+</span
+        >
+        <span>Trading Profit Payout</span>
+      </div>
     </div>
-    <img
-      src="/static/images/globe.png"
-      alt="Access coin mask from around the world"
-      class="absolute top-0 h-screen object-cover max-md:object-contain left-1/2 -translate-x-1/2 max-md:w-4/5 opacity-60"
-    />
-  </div>
-  <!-- accessibility ends -->
+    <!-- rating ends -->
 
-  {%include 'components/footer.html'%}
+    <h1 class="text-3xl font-semibold text-start pt-32">
+      Why Start Copy Trading
+    </h1>
+    <div
+      class="bg-white max-md:w-full pt-5 pb-28 max-md:p-5 flex justify-around text-base gap-10 max-md:flex-col"
+    >
+      <div
+        class="flex flex-col gap-5 items-center border border-neutral-200 p-5 rounded-xl"
+      >
+        <i class="ri-vip-diamond-line text-5xl text-neutral-800"></i>
+        <p class="font-semibold">Easy to use</p>
+        <span class="text-sm"
+          >This is the easiest way to profit from crypto markets if you do not
+          have time to monitor the markets yourself. Follow professional traders
+          and enjoy the benefits of being in the driver's seat of every
+          trade.</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center gap-5 border border-neutral-200 p-5 rounded-xl"
+      >
+        <i class="ri-time-line text-neutral-800 text-5xl"></i>
+        <p class="font-semibold">Transparent operations</p>
+        <span class="text-sm"
+          >All traders have fully transparent trade records. You can analyse all
+          the trades, statistics and metrics of every trader that is available
+          in the marketplace and select the one that is right for your
+          risk/reward appetite.</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center gap-5 border border-neutral-200 p-5 rounded-xl"
+      >
+        <i class="ri-lock-star-line text-5xl text-neutral-800"></i>
+        <p class="font-semibold">Secured asset trust</p>
+        <span class="text-sm"
+          >All the trading activity happens through API, which allows the trader
+          to execute the trades without the option of withdrawing any
+          funds.</span
+        >
+      </div>
+    </div>
+    <!-- reasons end -->
+    <!-- copy steps explained-->
+    <div
+      class="py-10 px-10 max-md:px-5 flex max-sm:flex-col my-20 max-md:my-10 relative items-center max-md:gap-10 gap-20 justify-center"
+    >
+      <!-- blob stick div -->
 
-  <script>
-    document.addEventListener("alpine:init", () => {
-      const crypto = JSON.parse(document.getElementById("crypto").textContent);
-      const forex = JSON.parse(document.getElementById("forex").textContent);
-      console.log(forex);
-      Alpine.data("home", () => ({
-        crypto: crypto.slice(0, 15),
-        forex: forex.slice(0, 10),
-      }));
-    });
-  </script>
+      <div class="max-md:text-start w-1/3 max-md:w-full flex flex-col gap-1">
+        <div class="flex flex-col gap-5">
+          <h1 class="text-3xl max-md:text-start font-semibold">
+            How to copy Traders on Krakends?
+          </h1>
+          <div class="p-5 rounded-xl border border-neutral-200">
+            <span
+              class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+              >1</span
+            >
+            <p class="font-semibold">Connect Exchange Wallet</p>
+            <span
+              >In your exchange account, create an API and add it in the copy
+              trading app - Krakends.</span
+            >
+          </div>
+          <div class="p-5 rounded-xl border border-neutral-200">
+            <span
+              class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+              >2</span
+            >
+            <p class="font-semibold">Select Trader</p>
+            <span
+              >Open the Marketplace tab, analyse the available Traders and
+              choose the one you would like to follow.</span
+            >
+          </div>
+          <div class="p-5 rounded-xl border border-neutral-200">
+            <span
+              class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
+              >3</span
+            >
+            <p class="font-semibold">Press Copy</p>
+            <span
+              >Copy button is available next to the trader's stats on the right
+              side of the table. Click Follow to start copy-trading.
+            </span>
+          </div>
+          <a
+            href="{%url 'sign-up'%}"
+            class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
+            >Join us now <i class="ri-arrow-right-up-line"></i
+          ></a>
+        </div>
+      </div>
+      <img
+        src="/static/images/how3.webp"
+        alt="Coin Masks phone dashboard"
+        class="w-1/2 max-sm:w-full object-cover"
+      />
+    </div>
+
+    <!-- copy steps -->
+
+    <!-- copy trader explained -->
+    <div
+      class="py-10 px-10 max-md:px-5 bg-gray-50 rounded-xl flex max-sm:flex-col my-20 max-md:my-10 relative items-center max-md:gap-10 gap-20 justify-center"
+    >
+      <!-- blob stick div -->
+
+      <iframe
+        width="560"
+        height="315"
+        itemprop="video"
+        src="https://www.youtube.com/embed/eXaVlVmyfg4"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen=""
+      ></iframe>
+      <div class="max-md:text-start w-1/2 max-md:w-full flex flex-col gap-1">
+        <h1 class="text-3xl font-semibold mt-3 mb-5">
+          How does copy trading works
+        </h1>
+        <span>
+          Once a Trader creates an order in his account at Krakends, our copy
+          trading platform will copy that trade and it will be replicated on
+          your account automatically. In other words, Traders create signals
+          that are then sent to copy-trading. <br />
+          <br />
+          You will see all strategies in the Positions tab of the console and
+          you will also have full control over it. As a copy-trader you can
+          close or edit the strategy, or wait for the exit signal from the
+          Trader. Our crypto bot trading service runs 24/7. <br />
+          <br />
+          Apart from the main copy-trading function, Copy-Traders have a number
+          of options that adds flexibility and more control over the process of
+          copy-trading. For example, when a Copy-Trader decides to start copying
+          a specific Trader, he can specify the custom size of funds used for
+          copy-trading. It is possible to choose a share of the portfolio that
+          will be used for copy-trading or a fixed amount. For example a
+          Copy-Trader specifies $100 to be used as a fixed amount custom
+          setting, then every trade opened by the Trader will use $100 of the
+          Copy-Traders available funds
+        </span>
+        <a
+          href="{%url 'sign-up'%}"
+          class="border bg-white text-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block"
+          >Start Expert Trading<i class="ri-arrow-right-up-line"></i
+        ></a>
+      </div>
+    </div>
+
+    <!-- copy trader explain ends -->
+
+    {%include 'components/footer.html'%}
+
+    <script>
+      document.addEventListener("alpine:init", () => {
+        const crypto = JSON.parse(
+          document.getElementById("crypto").textContent
+        );
+        const forex = JSON.parse(document.getElementById("forex").textContent);
+
+        const wallets = [
+          {
+            name: "Trust Wallet",
+            logo: "/static/images/trust.webp",
+          },
+          {
+            name: "MetaMask",
+            logo: "/static/images/metamask.webp",
+          },
+          {
+            name: "OKX Wallet",
+            logo: "/static/images/okx.webp",
+          },
+          {
+            name: "Bitget Wallet",
+            logo: "/static/images/okx.webp",
+          },
+          {
+            name: "SafePal",
+            logo: "/static/images/safepal.webp",
+          },
+          {
+            name: "Changelly",
+            logo: "/static/images/changelly.svg",
+          },
+          {
+            name: "Coinbase Wallet",
+            logo: "/static/images/coinbase.webp",
+          },
+          {
+            name: "Rainbow Wallet",
+            logo: "/static/images/rainbow.webp",
+          },
+          {
+            name: "Safe Wallet",
+            logo: "/static/images/safe.webp",
+          },
+        ];
+        Alpine.data("home", () => ({
+          crypto: crypto.slice(0, 15),
+          forex: forex.slice(0, 10),
+          wallets: wallets,
+        }));
+      });
+    </script>
+  </section>
+
+  {%endblock%}
 </section>
-
-{%endblock%}
