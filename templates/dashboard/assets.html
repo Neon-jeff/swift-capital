@@ -54,8 +54,7 @@
       <div
         class="grid grid-cols-4 max-md:grid-cols-2 text-sm gap-10 max-md:gap-5"
       >
-        {% comment %} Headers Items {% endcomment %} {% for asset in assets %}
-        {% comment %} asset items {% endcomment %}
+        {% for asset in assets %}
         <div
           class="flex justify-between flex-col gap-5 text-center py-2 px-3 bg-gray-100 rounded-md items-center [&>*]:w-1/4 [&>*]:text-end"
         >
@@ -63,12 +62,16 @@
             <img src="{{asset.image}}" alt="" class="h-[40px] flex" />
             <h1>{{asset.symbol}}</h1>
           </div>
-          {% with symbol=asset.symbol|lower %} {% if asset.symbol|lower in
-          request.user.profile.serialize %}
+          {% with symbol=asset.symbol|lower %}
+          <!--  -->
+          {% if asset.symbol|lower in request.user.profile.serialize %}
+          <!--  -->
           <p>{{request.user.profile.serialize | lookup:symbol}}</p>
           {% else %}
           <p>0.00</p>
-          {% endif %} {% endwith %}
+          {% endif %}
+          <!--  -->
+          {% endwith %}
           <p class="font-semibold">${{asset.price | floatformat}}</p>
         </div>
 
