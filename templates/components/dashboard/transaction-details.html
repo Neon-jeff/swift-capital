@@ -1,0 +1,43 @@
+<section x-cloak
+    class="fixed z-50 h-screen w-screen bg-[rgb(0,0,0,.8)] p-10 max-md:p-5 top-0 flex justify-center items-center"
+    x-show="showDetails" x-transition x-transition.duration.500ms>
+    <div
+        class="bg-white text-black rounded-md w-1/2  p-10 max-md:px-3 flex flex-col relative gap-2 max-md:w-full justify-center items-center">
+        <ion-icon name="close-sharp"
+            class="absolute top-5 right-5 text-xl p-1 bg-blue-200 cursor-pointer hover:bg-blue-400 transition ease-in duration-150 rounded-md text-black"
+            @click="showDetails=!showDetails"></ion-icon>
+        <div class="w-full flex flex-col gap-4">
+            <h1 class="text-base font-semibold ">Transaction Details</h1>
+            <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
+                <span class="text-neutral-500">Amount</span>
+                <span x-text="'$' + setDetails.amount" class="font-semibold"></span>
+            </div>
+            <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
+                <span class="text-neutral-500">Currency</span>
+                <span x-text="setDetails.currency" class="font-semibold"></span>
+            </div>
+
+            <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
+                <span class="text-neutral-500">Type</span>
+                <span x-text="setDetails.type" class="font-semibold"></span>
+            </div>
+
+            <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
+                <span class="text-neutral-500">Date</span>
+                <span x-text="setDetails.created" class="font-semibold"></span>
+            </div>
+
+            <div class="text-xs max-sm:text-xs flex font-medium items-center justify-between w-1/2 max-md:w-full ">
+                <span class="text-neutral-500">Status</span>
+                <span class="flex p-2 gap-2 items-center rounded-full"
+                    :class="setDetails.comfirmed?'bg-green-50 text-green-500':'bg-orange-50 text-orange-500'">
+                    <ion-icon :name="setDetails.comfirmed?'checkmark-circle':'alert-circle'"
+                        class="text-xl"></ion-icon>
+                    <span x-text="setDetails.comfirmed?'Successful':'Pending'"></span>
+                </span>
+
+
+            </div>
+        </div>
+    </div>
+</section>
