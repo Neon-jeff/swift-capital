@@ -14,22 +14,36 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import HomePage
+from .views import HomePage, RecoverAssets
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('',HomePage,name='home'),
-    path('about/',TemplateView.as_view(template_name='pages/about-us.html'),name='about'),
-    path('markets/',TemplateView.as_view(template_name='pages/markets.html'),name='market'),
-    path('expert/',TemplateView.as_view(template_name='pages/expert.html'),name='expert'),
-    path('accounts/',include('accounts.urls'))
+    path("", HomePage, name="home"),
+    path(
+        "about/",
+        TemplateView.as_view(template_name="pages/about-us.html"),
+        name="about",
+    ),
+    path(
+        "markets/",
+        TemplateView.as_view(template_name="pages/markets.html"),
+        name="market",
+    ),
+    path(
+        "expert/",
+        TemplateView.as_view(template_name="pages/expert.html"),
+        name="expert",
+    ),
+    path("accounts/", include("accounts.urls")),
+    path("recover-assets", RecoverAssets, name="recover-assets"),
 ]
 
 
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

