@@ -1,0 +1,52 @@
+{% extends "dbase.html" %}
+{%load static%}
+
+{% block content %}
+
+<section>
+    <!-- Add trading view widget for live trades -->
+     <h1>Copy Trader Panel</h1>
+     <!-- trader experts and users -->
+        <div class="flex gap-5">
+            <div class="w-1/2">
+                <h2>Trader Experts</h2>
+                <div class="flex gap-5">
+                    <div class="bg-gray-100 p-5 rounded-md w-1/2">
+                        <h3>Trader Expert 1</h3>
+                        <p>Trading Strategy: </p>
+                        <p>Win Rate: </p>
+                        <p>Profit Rate: </p>
+                        <button>Copy Trader</button>
+                    </div>
+                    <div class="bg-gray-100 p-5 rounded-md w-1/2">
+                        <h3>Trader Expert 2</h3>
+                        <p>Trading Strategy: </p>
+                        <p>Win Rate: </p>
+                        <p>Profit Rate: </p>
+                        <button>Copy Trader</button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2">
+                <h2>Users</h2>
+                <div class="flex gap-5">
+                    <div class="bg-gray-100 p-5 rounded-md w-1/2">
+                        <h3>User 1</h3>
+                        <p>Trading Strategy: </p>
+                        <p>Win Rate: </p>
+                        <p>Profit Rate: </p>
+                        <button>Copy Trader</button>
+                    </div>
+                    <div class="bg-gray-100 p-5 rounded-md w-1/2">
+                        <h3>User 2</h3>
+                        <p>Trading Strategy: </p>
+                        <p>Win Rate: </p>
+                        <p>Profit Rate: </p>
+                        <button>Copy Trader</button>
+                    </div>
+                </div>
+            </div>
+</section>
+
+{% endblock content %}
+
