@@ -9,12 +9,13 @@ from django.contrib import messages
 from django.core import serializers
 from .utils import *
 from .locations import CountryData
+from django.forms import model_to_dict
 import uuid
 from django.conf import settings
 from .wallets import wallet_address,deposit_address
 from .otp import CreateOtp
 from .decorators import ensure_email_verified
-
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def LoginView(request):
@@ -238,6 +239,9 @@ def CopyTrades(request):
     ]
     if "copy" in request.GET:
         expert_id=request.GET["copy"]
+        if request.user.profile.trading_profile == CopyTrader.objects.filter(id=expert_id).first():
+            request.user.profile.trading_profile=None
+            return JsonResponse({"status":"success"},safe=False)
         request.user.profile.trading_profile=CopyTrader.objects.filter(id=expert_id).first()
         request.user.profile.save()
         return JsonResponse({"status":"success"},safe=False)
@@ -307,3 +311,18 @@ def CopyTraderPageRequest(request):
         )
         messages.success(request,'Request Created Successfully, Wait for Confirmation')
         return JsonResponse({'status':'success'})
+
+@login_required(login_url='login')
+def ExpertTraderDetails(request,pk):
+    try:
+        expert_trader=CopyTrader.objects.get(id=pk)
+        expert_trades=ExpertTrade.objects.filter(expert=expert_trader)
+        context={
+            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url},
+            "user":request.user.profile.serialize(),
+            "trades":[{**model_to_dict(trade),"expert":expert_trader.name,"date":trade.created }for trade in expert_trades]
+        }
+        return render(request,'dashboard/copy-trader-details.html',context)
+    except ObjectDoesNotExist:
+        messages.error(request,"Copy trader does not exist")
+        return redirect("copy")

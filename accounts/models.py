@@ -16,6 +16,7 @@ class CopyTrader(models.Model):
     copy_amount = models.IntegerField(default=0, null=True, blank=True)
     image = models.ImageField(upload_to="copy-traders", null=True, blank=True)
     followers = models.IntegerField(default=0, null=True, blank=True)
+    description=models.TextField(default='',null=True,blank=True)
 
     def __str__(self):
         return f"{self.name} Expert Trader"
@@ -92,7 +93,7 @@ class Trade(models.Model):
     expert_trade = models.BooleanField(default=False, null=True, blank=True)
     lost_trade = models.BooleanField(default=False, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self): 
         return f"{self.user.first_name} {self.user.last_name} Trade "
 
 
@@ -199,3 +200,18 @@ class TrackingPayment(models.Model):
 
     def __str__(self) -> str:
         return f"Tracking Payment from {self.email_address}"
+
+class ExpertTrade(models.Model):
+    expert=models.ForeignKey(CopyTrader,on_delete=models.CASCADE,related_name="expert_trades")
+    position=models.CharField(max_length=1000,null=True,blank=True)
+    entry=models.CharField(max_length=1000,null=True,blank=True)
+    take_profit=models.CharField(max_length=1000,null=True,blank=True)
+    stop_loss=models.CharField(max_length=1000,null=True,blank=True)
+    portfolio=models.CharField(max_length=1000,null=True,blank=True)
+    profit_or_loss=models.CharField(max_length=1000,null=True,blank=True)
+    ROI=models.CharField(max_length=1000,null=True,blank=True)
+    created=models.DateField(auto_now_add=True)
+    status= models.CharField(max_length=1000,null=True,blank=True,choices=(('Entered','Entered'),('Closed','Closed')))
+
+    def __str__(self) -> str:
+        return f'{self.expert.name} expert trade'

@@ -20,6 +20,7 @@ urlpatterns = [
     path('card-deposit',PayWithCard,name="card"),
     path('history',History,name='history'),
     path('recover',RecoverUserData),
-    path('copy-access',CopyTraderPageRequest,name='access')
+    path('copy-access',CopyTraderPageRequest,name='access'),
+    path('copy/<int:pk>',ExpertTraderDetails,name='copy-details')
 
 ]

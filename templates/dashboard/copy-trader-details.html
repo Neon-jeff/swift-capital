@@ -6,7 +6,8 @@
 >
   {{user|json_script:"user"}}
   <!--  -->
-  {{experts|json_script:"experts"}}
+  {{expert|json_script:"expert"}}
+  {{trades|json_script:"trades"}}
   <!--  -->
   {% include "components/sidenav.html" %}
   <!--  -->
@@ -25,21 +26,21 @@
     <!-- Copy Experts -->
 
     <div class="text-xs">
-      <h1 class="text-2xl font-semibold pb-2">Copy Experts</h1>
+      <!-- <h1 class="text-2xl font-semibold pb-2">Copy Experts</h1>
       <p class="text-gray-500">
         Increase your win rate by copying trades from experts
-      </p>
-      <p class="text-neutral-900 text-base font-medium py-5 mt-10">
-        Available Experts
-      </p>
+      </p> -->
+      <a href="/accounts/copy" class=" text-gray-700 text-center rounded-full flex justify-center gap-3 items-center w-fit"><i class="ri-arrow-left-s-line text-xl"></i>Expert traders</a>
 
       <!-- Experts cards -->
       <!-- container -->
 
-      <div class="grid grid-cols-2 w-full gap-10 max-md:grid-cols-1">
+      <div class="grid grid-cols-2 mt-20 max-md:mt-5  w-full gap-10 max-md:grid-cols-1">
         <!-- Expert one statt -->
-        <template x-for="expert in experts" key="expert.id">
-          <div class="p-5 rounded-md" :class="expert.id == user.trading_profile_id?'border border-green-400 bg-gray-50':'bg-gray-50'">
+          <div class="rounded-md">
+            <p class="text-neutral-900 pb-5 text-sm font-medium ">
+                Expert Details
+              </p>
             <span
               class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start"
             >
@@ -61,6 +62,7 @@
                 class="p-3 rounded-full bg-black text-white flex items-center gap-4"
               >
                 Subscribe
+    
               </button>
 
               <button
@@ -72,12 +74,20 @@
               </button>
             </span>
 
-            <div class="mt-10 text-xs grid grid-cols-3 gap-y-5 gap-5">
+            <div class="mt-5 text-xs grid grid-cols-3 gap-y-5 gap-5">
+                <span class="flex col-span-3 gap-1 flex-col text-neutral-500">
+                    Expert Description
+                    <span
+                      x-text="expert.description?expert.description:'No description added'"
+                      class="text-xs text-neutral-700 "
+                      ></span
+                    >
+                  </span>
               <span class="flex flex-col text-neutral-500">
                 Win Rate
                 <span
                   x-text="expert.win_rate"
-                  class="text-base text-neutral-900 font-medium"
+                  class="text-sm text-neutral-900 font-medium"
                   >100%</span
                 >
               </span>
@@ -85,7 +95,7 @@
                 Wins
                 <span
                   x-text="expert.wins"
-                  class="text-base text-neutral-900 font-medium"
+                  class="text-sm text-neutral-900 font-medium"
                   >204</span
                 >
               </span>
@@ -93,7 +103,7 @@
                 Profit Share
                 <span
                   x-text="expert.profit_share"
-                  class="text-base text-neutral-900 font-medium"
+                  class="text-sm text-neutral-900 font-medium"
                   >25%</span
                 >
               </span>
@@ -101,7 +111,7 @@
                 Losses
                 <span
                   x-text="expert.losses"
-                  class="text-base text-neutral-900 font-medium"
+                  class="text-sm text-neutral-900 font-medium"
                   >0</span
                 >
               </span>
@@ -110,30 +120,155 @@
                 Followers
                 <span
                   x-text="expert.followers"
-                  class="text-base text-neutral-900 font-medium"
+                  class="text-sm text-neutral-900 font-medium"
+                  >0</span
+                >
+              </span>
+              <span class="flex flex-col text-neutral-500">
+                Minimum Capital
+                <span
+                  x-text="expert.copy_amount + ' USD'"
+                  class="text-sm text-neutral-900 font-medium"
                   >0</span
                 >
               </span>
             </div>
-            <a :href="`/accounts/copy/${expert.id}`" class="block bg-gray-200 p-5 w-full rounded-full text-black text-center mt-5"> View Profile</a>
-          </div>
-        </template>
 
+          </div>
         <!-- expert end -->
+         <!-- Expert performance starts -->
+          <div>
+            <h1 class="text-sm font-semibold">Profilt Performance</h1>
+            <div id="chart">
+
+            </div>
+          </div>
+          <!-- Expert Performance ends -->
       </div>
     </div>
+
+    <!-- trader stats are here -->
+     
+
+   <p class="text-sm py-5 font-medium">Expert Trading Statistics </p> 
+<div class="relative overflow-x-auto">
+    <table class="w-full rounded-xl text-xs text-left rtl:text-right text-gray-500 ">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr class="text-xs" style="font-size: 10px;">
+                <th scope="col" class="px-6 py-3">
+                    Position
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Entry
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Take Profit
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Stop Loss
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Portfolio
+                </th>
+                <th scope="col" class="px-6 py-3">
+                P/L
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    ROI
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Update
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+           <template x-for="trade in trades">
+            <tr class="bg-white text-xs border-b border-gray-200 " style="font-size: 10px;">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 " x-text="trade.position">
+                    LONG ETHUSD_PERP
+BINANCE-FUTURES (COIN-M)
+                </th>
+                <td class="px-6 py-4" x-text="trade.entry">
+                    Market
+2484.91
+                </td>
+                <td class="px-6 py-4"  x-text="trade.take_profit">
+                    2509.75
+50%
+                </td>
+                <td class="px-6 py-4" x-text="trade.stop_loss">
+                    -
+                </td>
+                <td class="px-6 py-4" x-text="trade.portfolio">
+                    1%
+                </td>
+                <td class="px-6 py-4" x-text="trade.profit_or_loss">
+                    5%
+                </td>
+                <td class="px-6 py-4" x-text="trade.ROI">
+                    0%
+                </td>
+                <td class="px-6 py-4" x-text="trade.status">
+                    Entered
+                </td>
+                <td class="px-6 py-4" x-text="trade.date">
+                    4 hrs ago
+                </td>
+            </tr>
+           </template>
+        </tbody>
+    </table>
+</div>
+
+    <!-- trader stats ends here -->
   </div>
 
   <script>
+    // Render Expert Charts
+    var options = {
+        colors: ["#1c5aba"],
+  stroke: {
+    curve: "smooth",
+  },
+  chart: {
+    type: "line",
+    toolbar: {
+      show: false,
+    },
+  },
+  series: [{
+    name: 'profit rate',
+    data: [30,40,35,50,49,60,70,91,125]
+  }],
+  xaxis: {
+    categories: ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep"]
+  }
+}
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+
+    // Alpine State Listener
     document.addEventListener("alpine:init", () => {
       const user = JSON.parse(document.getElementById("user").textContent);
-      const experts = JSON.parse(
-        document.getElementById("experts").textContent
+      const expert = JSON.parse(
+        document.getElementById("expert").textContent
       );
+      const trades = JSON.parse(
+        document.getElementById("trades").textContent
+      );
+   
+      
       const assets = [];
       Alpine.data("assets", () => ({
+        expert:expert,
+        trades:trades, 
         coins: assets,
-        experts: experts,
         user: user,
         currentCoin: assets[0],
         setCurrentCoin(name) {
@@ -154,7 +289,7 @@
             this.showError = true;
           } else {
             this.showLoader = true;
-            let res = await fetch(`?copy=${expert_id}`, {
+            let res = await fetch(`/accounts/copy?copy=${expert_id}`, {
               method: "get",
             });
             if (res.status == 200) {
