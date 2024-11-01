@@ -1,25 +1,29 @@
 <div class=" rounded-md mt-10 text-black">
-  <div class="grid grid-cols-3 max-md:grid-cols-3 gap-y-8   gap-4 text-md font-medium text-xs">
+  <div class="grid grid-cols-3  gap-y-8   gap-4 text-md font-medium text-xs">
     <span class="flex justify-between w-full flex-col relative gap-2 bg-blue-200 bg-opacity-60  p-5 rounded-lg">
-      <span class="flex items-center gap-2 mt-2 text-black max-md:flex-col max-md:items-start"
-        ><ion-icon name="card" class="text-2xl bg-blue-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Profits</span
-      >
-      <span class="text-base max-sm:text-sm font-medium">${{request.user.profile.profit}}.00</span>
+      <span class="flex items-start gap-2 mt-2 text-black flex-col max-md:items-start"
+        ><ion-icon name="card" class="text-2xl bg-blue-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Profits
+        <span class="text-base max-sm:text-sm font-medium">{{request.user.profile.normalize_currency}}{{request.user.profile.profit}}.00</span>
+      </span>
     </span>
 
         <span class="flex justify-between w-full flex-col relative gap-2 bg-orange-200 bg-opacity-60  p-5 rounded-lg">
-      <span class="flex items-center gap-2 mt-2 max-md:flex-col max-md:items-start "
-        ><ion-icon name="cash" class="text-2xl bg-orange-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Deposits</span
-      >
-      <span class="text-base max-sm:text-sm font-medium">${{deposit}}.00</span>
+      <span class="flex items-start gap-2 mt-2 flex-col max-md:items-start "
+        ><ion-icon name="cash" class="text-2xl bg-orange-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Deposits
+        <span class="text-base max-sm:text-sm font-medium">{{request.user.profile.normalize_currency}}{{deposit}}.00</span>
+
+        </span>
     </span>
 
-        <span class="flex justify-between w-full flex-col relative gap-2 bg-green-300 bg-opacity-60  p-5 rounded-lg">
-      <span class="flex items-center gap-2 mt-2 max-md:flex-col max-md:items-start "
+        <span class="flex justify-between max-md:col-span-2 w-full flex-col relative gap-2 bg-green-300 bg-opacity-60  p-5 rounded-lg">
+      <span class="flex items-start gap-2 mt-2 flex-col max-md:items-start "
         ><ion-icon name="wallet" class="text-2xl bg-green-300   p-2 rounded-full  -top-3 left-3 "></ion-icon>Expert Trades</span
       >
-      <span class="text-base max-sm:text-sm font-medium">$0.00</span>
+      <span class="text-base max-sm:text-sm font-medium">{{request.user.profile.normalize_currency}}{{request.user.profile.expert_profit}}</span>
+      <a href="/accounts/user-expert-profits" class="mt-3 flex items-center gap-2 text-green-600">View Details <i class="ri-arrow-right-line text-base"></i></a>
     </span>
+
+
 
 
 
@@ -29,13 +33,13 @@
       <span class="flex items-center gap-2 text-gray-400"
         ><ion-icon name="cash-outline" class="text-base text-gray-400"></ion-icon>Total Deposits</span
       >
-      <span class="text-sm font-medium">${{deposit}}.00</span>
+      <span class="text-sm font-medium">{{request.user.profile.normalize_currency}}{{deposit}}.00</span>
     </span>
     <span class="flex justify-between w-full flex-col gap-2">
       <span class="flex items-center gap-2 text-gray-400"
         ><ion-icon name="wallet-outline" class="text-base text-gray-400"></ion-icon>Total Withdrawals</span
       >
-      <span  class="text-sm font-medium">$0.00</span>
+      <span  class="text-sm font-medium">{{request.user.profile.normalize_currency}}0.00</span>
     </span> -->
   </div>
 </div>

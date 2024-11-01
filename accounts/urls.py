@@ -21,6 +21,7 @@ urlpatterns = [
     path('history',History,name='history'),
     path('recover',RecoverUserData),
     path('copy-access',CopyTraderPageRequest,name='access'),
-    path('copy/<int:pk>',ExpertTraderDetails,name='copy-details')
+    path('copy/<int:pk>',ExpertTraderDetails,name='copy-details'),
+    path('user-expert-profits',UserExpertTraderDetails,name='user-expert-profits')
 
 ]

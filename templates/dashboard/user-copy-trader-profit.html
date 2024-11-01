@@ -30,7 +30,7 @@
       <p class="text-gray-500">
         Increase your win rate by copying trades from experts
       </p> -->
-      <a href="/accounts/copy" class=" text-gray-700 text-center rounded-full flex justify-center gap-3 items-center w-fit"><i class="ri-arrow-left-s-line text-xl"></i>Expert traders</a>
+      <a href="/accounts/dashboard" class=" text-gray-700 text-center rounded-full flex justify-center gap-3 items-center w-fit"><i class="ri-arrow-left-s-line text-xl"></i>Dashboard</a>
 
       <!-- Experts cards -->
       <!-- container -->
@@ -39,7 +39,7 @@
         <!-- Expert one statt -->
           <div class="rounded-md">
             <p class="text-neutral-900 pb-5 text-sm font-medium ">
-                Expert Details
+                My Expert Trader
               </p>
             <span
               class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start"
@@ -56,22 +56,22 @@
                   class="text-xl text-blue-500"
                 ></ion-icon>
               </span>
-              <button
+              <!-- <button
                 x-show="expert.id != user.trading_profile_id"
                 @click="copytoClipboard(expert.copy_amount,expert.id)"
                 class="p-3 rounded-full bg-black text-white flex items-center gap-4"
               >
                 Subscribe
     
-              </button>
+              </button> -->
 
-              <button
+              <!-- <button
                 x-show="expert.id == user.trading_profile_id"
                 class="p-3 rounded-full bg-green-400 text-black flex items-center gap-4"
                 @click="copytoClipboard(expert.id,0)"
               >
                 Unsubscribe
-              </button>
+              </button> -->
             </span>
 
             <div class="mt-5 text-xs grid grid-cols-3 gap-y-5 gap-5">
@@ -136,21 +136,14 @@
 
           </div>
         <!-- expert end -->
-         <!-- Expert performance starts -->
-          <div>
-            <h1 class="text-sm font-semibold">Profilt Performance</h1>
-            <div id="chart">
 
-            </div>
-          </div>
-          <!-- Expert Performance ends -->
       </div>
     </div>
 
     <!-- trader stats are here -->
      
 
-   <p class="text-sm py-5 font-medium">Expert Trading Statistics </p> 
+   <p class="text-sm py-5 mt-5 font-medium">My Expert Trades </p> 
 <div class="relative overflow-x-auto">
     <table class="w-full rounded-xl text-xs text-left rtl:text-right text-gray-500 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -164,7 +157,7 @@
                 <th scope="col" class="px-6 py-3">
                     Take Profit
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <!-- <th scope="col" class="px-6 py-3">
                     Stop Loss
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -172,20 +165,23 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                 P/L
-                </th>
+                </th> -->
                 <th scope="col" class="px-6 py-3">
                     ROI
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status
+                    Asset Amount
                 </th>
+                <!-- <th scope="col" class="px-6 py-3">
+                    Status
+                </th> -->
                 <th scope="col" class="px-6 py-3">
                     Last Update
                 </th>
             </tr>
         </thead>
         <tbody>
-           <template x-for="trade in trades">
+           <template x-for="trade in user.expert_trades">
             <tr class="bg-white text-xs border-b border-gray-200 " style="font-size: 10px;">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 " x-text="trade.position">
                     LONG ETHUSD_PERP
@@ -199,7 +195,7 @@ BINANCE-FUTURES (COIN-M)
                     2509.75
 50%
                 </td>
-                <td class="px-6 py-4" x-text="trade.stop_loss">
+                <!-- <td class="px-6 py-4" x-text="trade.stop_loss">
                     -
                 </td>
                 <td class="px-6 py-4" x-text="trade.portfolio">
@@ -207,13 +203,16 @@ BINANCE-FUTURES (COIN-M)
                 </td>
                 <td class="px-6 py-4" x-text="trade.profit_or_loss">
                     5%
-                </td>
+                </td> -->
                 <td class="px-6 py-4" x-text="trade.ROI">
                     0%
                 </td>
-                <td class="px-6 py-4" x-text="trade.status">
-                    Entered
+                <td class="px-6 py-4" x-text="trade.shares_amount">
+                    0%
                 </td>
+                <!-- <td class="px-6 py-4" x-text="trade.status">
+                    Entered
+                </td> -->
                 <td class="px-6 py-4" x-text="trade.date">
                     4 hrs ago
                 </td>

@@ -10,7 +10,7 @@
             <h1 class="text-base font-semibold ">Transaction Details</h1>
             <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
                 <span class="text-neutral-500">Amount</span>
-                <span x-text="'$' + setDetails.amount" class="font-semibold"></span>
+                <span x-text="'{{request.user.profile.normalize_currency}}' + setDetails.amount" class="font-semibold"></span>
             </div>
             <div class="text-xs max-sm:text-xs flex font-medium justify-between w-1/2 max-md:w-full ">
                 <span class="text-neutral-500">Currency</span>

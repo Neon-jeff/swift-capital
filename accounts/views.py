@@ -18,6 +18,22 @@ from .decorators import ensure_email_verified
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
+
+# HELPER FUNCTIONS
+
+def normalize_currency(currency):
+    currency_dict={
+        "CAD":"C$",
+        "USD":"$",
+        "GBP":"£",
+        "AUD":"A$",
+        "BRL":"R$",
+        "ZAR":"R",
+        "PHP":"₱"
+    }
+    if not currency in currency_dict:
+        return "$"
+    return currency_dict[currency]
 def LoginView(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
@@ -326,3 +342,18 @@ def ExpertTraderDetails(request,pk):
     except ObjectDoesNotExist:
         messages.error(request,"Copy trader does not exist")
         return redirect("copy")
+    
+@login_required(login_url='login')
+def UserExpertTraderDetails(request):
+    user=request.user
+    expert_trader_id=user.profile.trading_profile.id
+    try:
+        expert_trader=CopyTrader.objects.get(id=expert_trader_id)
+        context={
+            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url},
+            "user":request.user.profile.serialize(),
+        }
+        return render(request,'dashboard/user-copy-trader-profit.html',context)
+    except ObjectDoesNotExist:
+        messages.error(request,"Copy trader does not exist")
+        return redirect("dashboard")

@@ -24,7 +24,7 @@
           name="amount"
           id=""
           class="p-3 bg-white rounded-md"
-          placeholder="$0.00"
+          placeholder="{{request.user.profile.normalize_currency}}0.00"
           inputmode="numeric"
           required
         />
@@ -71,7 +71,7 @@
               <img src="" :src="asset.image" alt="" class="h-[30px] w-[30px]" />
               <span x-text="asset.name"></span>
             </div>
-            $0.00
+            {{request.user.profile.normalize_currency}}0.00
           </div>
         </template>
         <span x-show="empty">No result found</span>
@@ -79,11 +79,11 @@
 
       <div class="text-xs font-semibold flex justify-between mt-5">
         <p class="font-semibold">Available Balance</p>
-        <p class="">${{request.user.profile.dollar_balance}}</p>
+        <p class="">{{request.user.profile.normalize_currency}}{{request.user.profile.dollar_balance}}</p>
       </div>
       <div class="text-xs font-semibold flex justify-between">
         <p class="font-semibold">Current Price</p>
-        <p x-text="'$' + currentCoin.price" class="text-main"></p>
+        <p x-text="'{{request.user.profile.normalize_currency}}' + currentCoin.price" class="text-main"></p>
       </div>
 
       <!-- Stop loss and take profit container -->

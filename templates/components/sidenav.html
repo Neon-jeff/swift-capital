@@ -14,7 +14,7 @@
 
       <span
         class="bg-green-400 text-black p-3 rounded-full font-medium text-base w-full text-center"
-        >${{request.user.profile.dollar_balance}}.00</span
+        >{{request.user.profile.normalize_currency}}{{request.user.profile.dollar_balance}}.00</span
       >
     </div>
     <ul class="flex flex-col gap-4 mt-10 justify-center">
@@ -123,7 +123,7 @@
 
       <span
         class="bg-green-400 text-black p-3 rounded-full font-medium text-base w-full text-center"
-        >${{request.user.profile.dollar_balance}}.00</span
+        >{{request.user.profile.normalize_currency}}{{request.user.profile.dollar_balance}}.00</span
       >
     </div>
 

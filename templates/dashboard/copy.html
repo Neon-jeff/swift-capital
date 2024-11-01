@@ -158,7 +158,12 @@
               method: "get",
             });
             if (res.status == 200) {
-              this.copyMessage = "Trader Copied";
+              if(this.usertrading_profile_id == expert_id){
+                this.copyMessage=="Trader Copied"
+              }
+              else{
+                this.copyMessage="Expert Removed"
+              }
               this.showCopy = true;
             }
             setTimeout(() => {

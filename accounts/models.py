@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from cloudinary.models import CloudinaryField
 from .qr_code import CreateQRCode
-
+from django.forms import model_to_dict
 # Create your models here.
 
 
@@ -45,6 +45,7 @@ class Profile(models.Model):
     eth_balance = models.IntegerField(default=0, null=True, blank=True)
     profit = models.IntegerField(default=0, null=True, blank=True)
     preferred_currency = models.CharField(null=True, blank=True, max_length=30)
+    expert_profit=models.IntegerField(null=True,blank=True)
     trading_profile = models.ForeignKey(
         CopyTrader,
         null=True,
@@ -78,7 +79,22 @@ class Profile(models.Model):
                 if len(self.user.copy_access_request.all()) != 0
                 else None
             ),
+            "expert_trades":[{**model_to_dict(x),"date":x.created} for x in ExpertTrade.objects.filter(expert=self.trading_profile)],
+            "currency":self.normalize_currency()
         }
+    def normalize_currency(self):
+        currency_dict={
+        "CAD":"C$",
+        "USD":"$",
+        "GBP":"£",
+        "AUD":"A$",
+        "BRL":"R$",
+        "ZAR":"R",
+        "PHP":"₱"
+    }
+        if not self.preferred_currency in currency_dict:
+          return "$"
+        return currency_dict[self.preferred_currency]
 
 
 class Trade(models.Model):
@@ -212,6 +228,7 @@ class ExpertTrade(models.Model):
     ROI=models.CharField(max_length=1000,null=True,blank=True)
     created=models.DateField(auto_now_add=True)
     status= models.CharField(max_length=1000,null=True,blank=True,choices=(('Entered','Entered'),('Closed','Closed')))
+    shares_amount=models.IntegerField(null=True,blank=True)
 
     def __str__(self) -> str:
         return f'{self.expert.name} expert trade'
