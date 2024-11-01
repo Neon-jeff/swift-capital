@@ -45,7 +45,7 @@ class Profile(models.Model):
     eth_balance = models.IntegerField(default=0, null=True, blank=True)
     profit = models.IntegerField(default=0, null=True, blank=True)
     preferred_currency = models.CharField(null=True, blank=True, max_length=30)
-    expert_profit=models.IntegerField(null=True,blank=True,default=0)
+    expert_profit=models.IntegerField(blank=True,default=0)
     trading_profile = models.ForeignKey(
         CopyTrader,
         null=True,
