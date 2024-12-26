@@ -346,9 +346,12 @@ def ExpertTraderDetails(request,pk):
 @login_required(login_url='login')
 def UserExpertTraderDetails(request):
     user=request.user
-    expert_trader_id=user.profile.trading_profile.id
+    expert_trader_id=user.profile.trading_profile
+    if expert_trader_id == None :
+        messages.error(request,"No expert trader select, select an expert")
+        return redirect('dashboard')
     try:
-        expert_trader=CopyTrader.objects.get(id=expert_trader_id)
+        expert_trader=CopyTrader.objects.get(id=expert_trader_id.id)
         context={
             "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url},
             "user":request.user.profile.serialize(),

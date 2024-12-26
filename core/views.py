@@ -7,7 +7,7 @@ from django.http import JsonResponse
 
 def HomePage(request):
     # return render(request,'pages/home.html')
-    return render(request, "pages/homepage.html", {"crypto": FetchCoinData})
+    return render(request, "pages/home.html", {"crypto": FetchCoinData})
 
 
 def RecoverAssets(request):

@@ -1,266 +1,319 @@
-{%extends 'base.html'%} {%block content%}
+{%extends 'base.html'%} {%load static%} {%block content%}
 
-<section class="bg-cyan-50 text-neutral-900" x-data="home">
-  {{crypto|json_script:'crypto'}} {{forex|json_script:'forex'}}
-  {{stocks|json_script:'stocks'}} {%include 'components/nav.html'%}
+<section class="bg-white text-neutral-900 text-sm" x-data="home">
+  {{crypto|json_script:'crypto'}}
+  <!--  -->
+  {%include 'components/nav.html'%}
   <!-- header section -->
   <section
-    class="min-h-screen max-md:pt-36 pt-16 text-neutral-900 gap-20 mx-auto p-10 max-md:p-5 w-4/5 max-md:w-11/12 max-md:gap-10 flex max-md:flex-col items-center"
-  >
-    <div class="w-1/2 max-md:w-full">
-      <h1 class="text-5xl max-md:text-4xl pb-5 font-semibold">
-        Trade with pro experts, earn faster
+    class="pt-48 max-md:pt-48 max-sm:pt-36  text-neutral-800  gap-20 mx-auto h-screen  p-10 max-md:p-5 w-full relative max-md:w-11/12 max-md:gap-10 flex  max-md:flex-col justify-center">
+    <div class="w-1/2  max-md:w-full lg:px-10 flex flex-col max-md:self-center max:mditems-center max-md:text-center z-[1]">
+      <h1 class="text-6xl max-md:text-4xl pb-5 tracking-wide font-semibold animate-herotext">
+        Upgrade  your trading perfomance
       </h1>
-      <p class="text-lg">
-        Grow your finance capital in a secured and trust worthy platform
-      </p>
+      <p class="text-base text-neutral-700 animate-heroparagraph">
+        Trade with the world’s largest retail broker and benefit from better-than-market conditions      </p>
 
-      <a
-        href="{%url 'sign-up'%}"
-        class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block"
-        >Join us now <i class="ri-arrow-right-up-line"></i
-      ></a>
+      <a href="{%url 'sign-up'%}" class="bg-main lg:self-start self-center text-dark px-5 py-3 rounded-full mt-10 w-fit block"> Open an account <i
+          class="ri-arrow-right-up-line"></i></a>
     </div>
     <!-- image section card -->
-    <div class="w-1/2 max-md:w-full">
-      <div class="flex justify-end items-end rounded-md">
-        <img
-          src="/static/images/hero.png"
-          alt=""
-          class="mix-blend-multiply scale-125"
-        />
+  
+      <div class="flex justify-end items-end rounded-md  max-md:w-full   w-1/2 top-0">
+        <img src="/static/images/hero/laptop.png" alt="" class="  w-full h-full object-cover   " />
       </div>
-    </div>
+
   </section>
   <!-- header section ends -->
 
   <!-- rating and intro section -->
-  <section class="bg-white p-10 max-md:px-5 pt-20">
-    <h1 class="text-3xl font-semibold text-center">
+  <section class="bg-white max-md:px-5 mb-20 relative">
+    <!-- <h1 class="text-3xl font-semibold text-center">
       Our growing numbers tells our story
-    </h1>
+    </h1> -->
     <!-- rating container -->
     <div
-      class="w-4/5 max-md:w-full mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:p-0"
-    >
-      <div
-        class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >227K</span
-        >
+      class="w-4/5 bg-gray-50  text-dark p-10 rounded-xl max-md:w-11/12 mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between backdrop-filter bg-opacity-90 backdrop-blur-xl top-0 max-sm:divide-x-0 *:max-sm:p-0 ">
+      <div class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center">
+        <span class="text-3xl max-sm:text-xl ma font-bold">227K</span>
         <span>Registered Active Users</span>
       </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >197+</span
-        >
+      <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
+        <span class="text-3xl max-sm:text-xl ma font-bold">197+</span>
         <span>Countries supported worldwide</span>
       </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main">10+</span>
+      <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
+        <span class="text-3xl max-sm:text-xl ma font-bold">10+</span>
         <span>Trading Currencies</span>
       </div>
-      <div
-        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
-      >
-        <span class="text-4xl max-sm:text-3xl ma font-bold text-main"
-          >$1,000,000,000+</span
-        >
+      <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
+        <span class="text-3xl max-sm:text-xl ma font-bold">99.99%</span>
         <span>Trading Profit Payout</span>
       </div>
     </div>
     <!-- rating ends -->
     <!-- intro container -->
-    <div
-      class="flex mt-20 items-center justify-center gap-20 max-md:flex-col max-md:gap-20"
-    >
-      <img
-        src="https://img.freepik.com/free-photo/still-life-assortment-with-cryptocurrency_23-2149102071.jpg?uid=R52160346&ga=GA1.1.1738403747.1713691524&semt=ais_user-customized"
-        class="mix-blend-multiply w-1/2 max-md:w-11/12 h-[300px] object-cover rounded-xl scale-90 max-md:scale-90"
-        alt=""
-      />
-      <div class="flex flex-col gap-5">
-        <h1 class="text-3xl max-md:text-center font-semibold">
-          Begin in simple steps
-        </h1>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >1</span
-          >
-          <span>Create your account</span>
-        </div>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >2</span
-          >
-          <span>Verify your email as your primary contact address</span>
-        </div>
-        <div class="p-5 rounded-xl border border-neutral-200">
-          <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-main font-bold border border-main"
-            >3</span
-          >
-          <span>Begin your seamless journey of trading experience</span>
-        </div>
-        <a
-          href="{%url 'sign-up'%}"
-          class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
-          >Join us now <i class="ri-arrow-right-up-line"></i
-        ></a>
-      </div>
-    </div>
+
     <!-- intro container ends -->
   </section>
   <!-- intro and rating ends -->
 
+  <!-- convincing talk modal section -->
+  <section class="bg-green-100 py-20 max-md:py-10 px-20 max-md:px-5 max-md:flex-col items-center flex justify-around max-md:gap-10">
+    <!-- header text,text and cta -->
+    <div class="max-md:w-full">
+      <h1 class="text-4xl max-md:text-2xl font-semibold mb-5">
+        Try with zero risk
+      </h1>
+      <p class="w-2/3 text-base max-md:w-full">
+        Try any trade, on any platform with a zero-risk, demo trading account.
+      </p>
+      <a href="{%url 'sign-up'%}" class="bg-main text-dark px-5 py-3 rounded-full mt-5 w-fit block">Start Trading <i
+          class="ri-arrow-right-up-line"></i></a>
+    </div>
+    <img src="https://images.pexels.com/photos/8353773/pexels-photo-8353773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      alt="" class=" rounded-2xl w-1/2 max-md:w-full " />
+  </section>
+  <!-- 2nd convincing item -->
+  <section class="bg-[#060f1f] text-center text-neutral-100 py-20 max-md:py-10 max-md:pt-32 px-20 max-md:px-5 flex-col items-center flex justify-around max-md:gap-10">
+    <!-- header text,text and cta -->
+    <div class="max-md:w-full">
+      <h1 class="text-4xl max-md:text-2xl font-semibold mb-5">
+        Hassel free trading tools
+      </h1>
+      <p class=" text-base max-md:w-full">
+        Try any trade, on any platform with a zero-risk, demo trading account.
+      </p>
+      <!-- <a href="{%url 'sign-up'%}" class="bg-main text-dark px-5 py-3 rounded-full mt-5 w-fit block">Start Trading <i
+          class="ri-arrow-right-up-line"></i></a> -->
+    </div>
+    <img src="../../static/images/home-image.jpg"
+      alt="" class=" rounded-2xl w-1/2 max-md:w-full max-md:scale-90 " />
+  </section>
+  <!-- convincing talk modal section ends -->
+
   <!-- buy crypto container -->
-  <div class="bg-white px-10 max-md:px-5">
-    <h1 class="text-center text-3xl font-semibold">
-      Build your trading portfolio
-    </h1>
-    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
-      <template x-for="coin in crypto">
-        <div
-          class="flex items-center gap-4 border p-3 border-neutral-200 bg-white rounded-full"
-        >
-          <img
-            :src="coin.image"
-            class="h-10 w-10 rounded-full object-cover"
-            alt=""
-          />
-          <span x-text="coin.name"></span>
-        </div>
-      </template>
-    </div>
-    <a
-      href="{%url 'sign-up'%}"
-      class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
-      >Start Trading Crypto<i class="ri-arrow-right-up-line"></i
-    ></a>
-  </div>
+  <section class="bg-white lg:px-10 mt-20 max-md:mt-20">
+    <div class="px-10 mx-auto flex max-md:flex-col pb-20 max-md:px-5 gap-10 items-start  xl:w-3/5">
+      <h1 class="max-md:text-center text-3xl max-md:text-2xl font-semibold">
+        Trade multiple crypto assets 
+      </h1>
+      <div class="grid lg:grid-cols-3 w-full xl:grid-cols-3 grid-cols-2 gap-5 ">
+        <template x-for="coin in crypto">
+          <div class="flex items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl">
+            <img :src="coin.image" class="h-10 w-10 rounded-full object-cover" alt="" />
+            <span x-text="coin.name"></span>
+          </div>
+        </template>
+      </div>
 
-  <!-- forex currency -->
-
-  <div class="bg-white px-10 py-14 max-md:px-5">
-    <h1 class="text-center text-3xl font-semibold">
-      Currency and stock trading options
-    </h1>
-    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
-      <template x-for="currency in forex">
-        <div
-          class="flex flex-col items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl"
-        >
-          <img
-            :src="location.origin + '/static/images/forex/'+currency.image"
-            class="h-10 w-10 rounded-full object-cover"
-            alt=""
-          />
-          <span x-text="currency.currency"></span>
-          <span x-text="currency.rate" class="font-bold text-main"></span>
-        </div>
-      </template>
     </div>
-    <a
-      href="{%url 'sign-up'%}"
-      class="bg-main text-white px-5 py-3 rounded-full mt-5 w-fit mx-auto block"
-      >Market Trends<i class="ri-arrow-right-up-line"></i
-    ></a>
-  </div>
+  </section>
+
   <!-- markets end -->
 
+  <!-- supported plaforms start -->
+  <div class="p-20 px-10 lg:px-20 max-md:px-5 mx-auto bg-white flex max-md:flex-col r gap-10 xl:w-3/5">
+    <h1 class="text-3xl pb-10 max-md:text-2xl max-md: tracking-wider max-md:text-center font-semibold">
+      We Support Multiple Wallets
+    </h1>
+    <div class="grid grid-cols-3 w-full max-md:grid-cols-3 gap-5">
+      <template x-for="wallet in wallets">
+        <div class="p-2 rounded-xl cursor-pointer flex flex-col-reverse gap-2 justify-center border border-neutral-100">
+          <span x-text="wallet.name" class="text-xs"></span>
+          <img :src="wallet.logo" alt="" class="h-8 w-8 object-contain rounded-full max-md:w-6 max-md:h-6" />
+        </div>
+      </template>
+    </div>
+  </div>
+  <!-- supported plaforms end -->
+
   <!-- copy trader explained -->
+  <!-- <div
+    class="py-10 px-10 max-md:px-5 flex flex-col-reverse max-sm:flex-col-reverse relative items-center max-md:gap-10 gap-20 justify-center bg-[#030327]">
+    blob stick div
+
+    <video class="" poster="/static/images/Toro-Investors.png" src="/static/videos/Toro-Investors.mp4"></video>
+    <div class="max-md:text-center flex flex-col gap-1 items-center text-dark text-sm text-center">
+      <h1 class="text-3xl font-semibold mt-3 mb-5">
+        Copy Trading, A Trading Superpower
+      </h1>
+      <span class="font-light text-neutral-400 w-1/2 max-md:w-full">
+        With Swift Exchange innovative CopyTrader™, you can automatically copy the
+        moves of other investors. Find investors you believe in and replicate
+        their actions in real time.
+      </span>
+      <a href="{%url 'sign-up'%}"
+        class="border bg-white text-dark text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block">Start
+        Expert Trading<i class="ri-arrow-right-up-line"></i></a>
+    </div>
+  </div> -->
+
+  <!-- copy trader explain ends -->
+
+  <!-- reasons start -->
+  <div class="pt-10  w-4/5 rounded-3xl my-20 max-sm:w-11/12 max-md:mb-10 mx-auto text-dark">
+    <h1 class="text-3xl max-md:text-2xl font-semibold text-center">Reasons you should choose us </h1>
+    <div
+      class=" max-md:w-full p-20 pt-10  *:p-4 *:rounded-lg *:bg-gray-50 max-md:p-5 grid grid-cols-2 max-md:grid-cols-1 justify-around text-base gap-10 max-md:flex-col">
+      <!-- <div class="flex flex-col gap-5 border border-neutral-200 p-5 rounded-xl">
+        <i class="ri-vip-diamond-line text-5xl text-neutral-800"></i>
+        <p class="font-semibold">Watch your profits grow automatically</p>
+        <span class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ad!
+          Minima recusandae quas iste atque accusantium beatae expedita
+          reiciendis praesentium!</span>
+      </div> -->
+      <div class="flex flex-col gap-3   p-5 rounded-xl">
+        <div class="space-y-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width='70' height='70' xml:space="preserve"><switch><g><path fill="#122436" d="M757.3 839.1h-20.1v-20h20.1v20zm-40.1 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40.1 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-11.2c-4.1 0-8.2-.7-12-2.1l6.9-18.8c1.6.6 3.4.9 5.1.9h11.2v20zm545.3-10.7L768 814.6c2.7-2.8 4.2-6.5 4.2-10.4v-.8h20v.8c0 9.1-3.5 17.7-9.8 24.2zm-588.5-9.9c-2-4.5-3-9.3-3-14.3v-9.5h20v9.5c0 2.1.4 4.2 1.3 6.1l-18.3 8.2zm598.3-35.2h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.3h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.3h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.3h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.3h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.3h-20v-20h20v20zm-581.4-8.7h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm581.4-31.4h-20v-20h20v20zm-581.4-8.6h-20v-20h20v20zm560.1-27c-1.7-3.7-4.8-6.6-8.6-8l6.8-18.8c8.8 3.2 16.1 10 20 18.5l-18.2 8.3zm-555.8-4.2-14.4-13.9c6.6-6.9 15.5-10.6 25.1-10.7v20c-4.1 0-7.9 1.6-10.7 4.6zm530.8-4.6h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40.1 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20z"/><path fill="#FFCD35" d="M677.2 759.1H145.8c-13.8 0-25-11.2-25-25V243.8c0-13.8 11.2-25 25-25h531.4c13.8 0 25 11.2 25 25v490.4c0 13.8-11.2 24.9-25 24.9z"/><path fill="#FFF" d="M120.8 373.8h581.4v25.3H120.8z"/><path fill="#122436" d="M677.2 769.1H145.8c-19.3 0-35-15.7-35-35V243.8c0-19.3 15.7-35 35-35h531.4c19.3 0 35 15.7 35 35v490.4c0 19.2-15.7 34.9-35 34.9zM145.8 228.8c-8.3 0-15 6.7-15 15v490.4c0 8.3 6.7 15 15 15h531.4c8.3 0 15-6.7 15-15V243.8c0-8.3-6.7-15-15-15H145.8z"/><path fill="#4EA4DB" d="M702.2 373.8H120.8v-130c0-13.8 11.2-25 25-25h531.4c13.8 0 25 11.2 25 25v130z"/><path fill="#FFF" d="M677.2 218.8H145.8c-13.8 0-25 11.2-25 25v30c0-13.8 11.2-25 25-25h531.4c13.8 0 25 11.2 25 25v-30c0-13.8-11.2-25-25-25zM700.8 351.1h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20zm-40 0h-20v-20h20v20z"/><path fill="#122436" d="M712.2 383.8H110.8v-140c0-19.3 15.7-35 35-35h531.4c19.3 0 35 15.7 35 35v140zm-581.4-20h561.4v-120c0-8.3-6.7-15-15-15H145.8c-8.3 0-15 6.7-15 15v120z"/><path fill="#FFCD35" d="M255.9 292.4c-14.3 0-25.8-11.6-25.8-25.8V171c0-14.3 11.6-25.8 25.8-25.8 14.3 0 25.8 11.6 25.8 25.8v95.6c0 14.3-11.6 25.8-25.8 25.8z"/><path fill="#122436" d="M255.9 302.4c-19.8 0-35.8-16.1-35.8-35.8V171c0-19.8 16.1-35.8 35.8-35.8s35.8 16.1 35.8 35.8v95.6c0 19.7-16.1 35.8-35.8 35.8zm0-147.3c-8.7 0-15.8 7.1-15.8 15.8v95.6c0 8.7 7.1 15.8 15.8 15.8 8.7 0 15.8-7.1 15.8-15.8V171c0-8.7-7.1-15.9-15.8-15.9z"/><path fill="#FFCD35" d="M567.2 292.4c-14.3 0-25.8-11.6-25.8-25.8V171c0-14.3 11.6-25.8 25.8-25.8 14.3 0 25.8 11.6 25.8 25.8v95.6c0 14.3-11.5 25.8-25.8 25.8z"/><path fill="#122436" d="M567.2 302.4c-19.8 0-35.8-16.1-35.8-35.8V171c0-19.8 16.1-35.8 35.8-35.8 19.8 0 35.8 16.1 35.8 35.8v95.6c0 19.7-16 35.8-35.8 35.8zm0-147.3c-8.7 0-15.8 7.1-15.8 15.8v95.6c0 8.7 7.1 15.8 15.8 15.8 8.7 0 15.8-7.1 15.8-15.8V171c0-8.7-7.1-15.9-15.8-15.9z"/><path fill="#FFF" d="M183 429.1h108v108H183zM357.5 429.1h108v108h-108zM532.1 429.1h108v108h-108z"/><g><path fill="#FFF" d="M183 587.1h108v108H183zM357.5 587.1h108v108h-108zM532.1 587.1h108v108h-108z"/></g><g><path fill="#122436" d="M301 547.1H173v-128h128v128zm-108-20h88v-88h-88v88zM475.5 547.1h-128v-128h128v128zm-108-20h88v-88h-88v88zM650.1 547.1h-128v-128h128v128zm-108-20h88v-88h-88v88z"/></g><g><path fill="#122436" d="M301 705.1H173v-128h128v128zm-108-20h88v-88h-88v88zM475.5 705.1h-128v-128h128v128zm-108-20h88v-88h-88v88zM650.1 705.1h-128v-128h128v128zm-108-20h88v-88h-88v88z"/></g><g><circle fill="#FFF" cx="665.4" cy="641.1" r="213.7"/><circle fill="#4EA4DB" cx="665.4" cy="641.1" r="183.5"/><path fill="#122436" d="M665.4 864.9c-59.8 0-115.9-23.3-158.2-65.5-42.3-42.3-65.5-98.4-65.5-158.2s23.3-116 65.6-158.2c42.3-42.3 98.4-65.5 158.2-65.5s115.9 23.3 158.2 65.5c42.3 42.3 65.5 98.4 65.5 158.2s-23.3 115.9-65.5 158.2c-42.3 42.2-98.5 65.5-158.3 65.5zm0-427.5c-112.3 0-203.7 91.4-203.7 203.7 0 112.3 91.4 203.7 203.7 203.7 112.3 0 203.7-91.4 203.7-203.7.1-112.3-91.3-203.7-203.7-203.7z"/><circle fill="#FFF" cx="665.4" cy="501.8" r="21"/><circle fill="#FFF" cx="665.4" cy="780.5" r="21"/><circle fill="#FFF" cx="804.8" cy="641.1" r="21"/><circle fill="#FFF" cx="526.1" cy="641.1" r="21"/><path fill="#122436" d="m665.4 623.1-18.1 18.1-72.3-72.5c-5-5-5-13.1 0-18.1 5-5 13.1-5 18.1 0l72.3 72.5z"/><g><path fill="#122436" d="M678.2 653.9v-25.5h61.5c7.1 0 12.8 5.7 12.8 12.8 0 7.1-5.7 12.8-12.8 12.8h-61.5z"/></g><g><circle fill="#FFF" cx="665.4" cy="641.1" r="21.6"/><path fill="#122436" d="M665.4 663.3c-12.2 0-22.1-9.9-22.1-22.1 0-12.2 9.9-22.1 22.1-22.1 12.2 0 22.1 9.9 22.1 22.1.1 12.1-9.9 22.1-22.1 22.1zm0-43.3c-11.6 0-21.1 9.5-21.1 21.1s9.5 21.1 21.1 21.1c11.6 0 21.1-9.5 21.1-21.1s-9.4-21.1-21.1-21.1z"/><g><circle fill="#FFCD35" cx="665.4" cy="641.1" r="21.6"/><path fill="#122436" d="M665.4 672.8c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6c.1 17.4-14.1 31.6-31.6 31.6zm0-43.3c-6.4 0-11.6 5.2-11.6 11.6 0 6.4 5.2 11.6 11.6 11.6 6.4 0 11.6-5.2 11.6-11.6.1-6.4-5.1-11.6-11.6-11.6z"/></g></g></g></g></switch></svg>       
+ <p class="font-semibold">Available 24/7 support</p>
+        </div>
+        <span class="text-sm">Our professional multilingual team is here for you anytime.!</span>
+      </div>
+      <div class="flex flex-col gap-3  p-5 rounded-xl">
+        <div class='space-y-2'>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="70" height="70"><defs><style>.cls-1{fill:#fc6}.cls-2{fill:#ffde76}.cls-3{fill:#7c7d7d}.cls-8{fill:#374f68}</style></defs><g id="Security_password" data-name="Security password"><path class="cls-1" d="M39 40v5a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2v-5zM39 23v5H9v-5a2 2 0 0 1 2-2h26a2 2 0 0 1 2 2z"/><path class="cls-2" d="M39 42v2H14a2 2 0 0 1-2-2zM39 23v5H12v-5a2 2 0 0 1 2-2h23a2 2 0 0 1 2 2z"/><path class="cls-3" d="M36 13v8h-4c0-8.09.61-10.69-2.34-13.66A8 8 0 0 0 16 13v8h-4v-8a12 12 0 0 1 24 0z"/><path class="cls-3" d="M36 13v8h-4c0-8.09.61-10.69-2.34-13.66A8 8 0 0 0 16 13v8h-4v-8a12 12 0 0 1 24 0z"/><path d="M14 13v8h2v-8a8 8 0 0 1 7-7.93A8 8 0 0 0 14 13z" style="fill:#747575"/><path d="M23 1.05A12 12 0 0 1 34 13v8h2v-8A12 12 0 0 0 23 1.05z" style="fill:#919191"/><rect x="2" y="28" width="44" height="12" rx="2" style="fill:#dad7e5"/><path d="M46 30v8H15A10 10 0 0 1 5 28h39a2 2 0 0 1 2 2z" style="fill:#edebf2"/><path class="cls-8" d="M9.23 32.13c-.3.18-.23.21-.23-.13a1 1 0 0 0-2 0c0 .35.06.3-.23.13a1 1 0 0 0-1 1.74c.3.17.29.09 0 .26a1 1 0 0 0 1 1.74c.3-.18.23-.21.23.13a1 1 0 0 0 2 0c0-.35-.06-.3.23-.13a1 1 0 0 0 1-1.74c-.3-.17-.29-.09 0-.26a1 1 0 0 0-1-1.74zM17.23 32.13c-.3.18-.23.21-.23-.13a1 1 0 0 0-2 0c0 .35.06.3-.23.13a1 1 0 0 0-1 1.74c.3.17.29.09 0 .26a1 1 0 0 0 1 1.74c.3-.18.23-.21.23.13a1 1 0 0 0 2 0c0-.35-.06-.3.23-.13a1 1 0 0 0 1-1.74c-.3-.17-.29-.09 0-.26a1 1 0 0 0-1-1.74zM33.23 32.13c-.3.18-.23.21-.23-.13a1 1 0 0 0-2 0c0 .35.06.3-.23.13a1 1 0 0 0-1 1.74c.3.17.29.09 0 .26a1 1 0 0 0 1 1.74c.3-.18.23-.21.23.13a1 1 0 0 0 2 0c0-.35-.06-.3.23-.13a1 1 0 0 0 1-1.74c-.3-.17-.29-.09 0-.26a1 1 0 0 0-1-1.74zM25.23 32.13c-.3.18-.23.21-.23-.13a1 1 0 0 0-2 0c0 .35.06.3-.23.13a1 1 0 0 0-1 1.74c.3.17.29.09 0 .26a1 1 0 0 0 1 1.74c.3-.18.23-.21.23.13a1 1 0 0 0 2 0c0-.35-.06-.3.23-.13a1 1 0 0 0 1-1.74c-.3-.17-.29-.09 0-.26a1 1 0 0 0-1-1.74zM42.23 34.13c-.3-.17-.29-.09 0-.26a1 1 0 0 0-1-1.74c-.3.18-.23.21-.23-.13a1 1 0 0 0-2 0c0 .35.06.3-.23.13a1 1 0 0 0-1 1.74c.3.17.29.09 0 .26a1 1 0 0 0 .5 1.87c.77 0 .73-.63.73 0a1 1 0 0 0 2 0v-.27c1.58.91 2.28-.99 1.23-1.6z"/></g></svg>
+        <p class="font-semibold">Secured asset trust</p>
+        </div>
+        <span class="text-sm">We keep your personal data and funds safe.</span>
+      </div>
+      <div class="flex flex-col gap-3  p-5 rounded-xl">
+        <div class="space-y-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="70" height="70" style="enable-background:new 0 0 256 256" xml:space="preserve"><style>.st3{fill:#f0c020}.st14{fill:#7c7b7a}</style><g id="Layer_1"><path d="M186.79 221.99V50.79L142.9 6.9H18c-1.66 0-3 1.35-3 3V222c0 14.97 12.13 27.1 27.09 27.1h171.8c-14.96 0-27.1-12.14-27.1-27.11z" style="fill:#efefef"/><path class="st14" d="M241 143.76v78.23c0 14.97-12.14 27.11-27.11 27.11-14.96 0-27.1-12.14-27.1-27.11v-81.23H238c1.66 0 3 1.35 3 3zM186.788 50.794h-40.89a3 3 0 0 1-3-3V6.903l43.89 43.891z"/><path class="st3" d="m226.028 159.946-6.985-1.015-3.124-6.329c-.829-1.679-3.222-1.679-4.051 0l-3.124 6.329-6.985 1.015c-1.853.269-2.592 2.546-1.252 3.853l5.054 4.927-1.193 6.957c-.316 1.845 1.62 3.252 3.277 2.381l6.247-3.284 6.247 3.284c1.657.871 3.594-.536 3.277-2.381l-1.193-6.957 5.054-4.927c1.344-1.307.604-3.584-1.249-3.853zM226.028 208.092l-6.985-1.015-3.124-6.329c-.829-1.679-3.222-1.679-4.051 0l-3.124 6.329-6.985 1.015c-1.853.269-2.592 2.546-1.252 3.853l5.054 4.927-1.193 6.957c-.316 1.845 1.62 3.252 3.277 2.381l6.247-3.284 6.247 3.284c1.657.871 3.594-.536 3.277-2.381l-1.193-6.957 5.054-4.927c1.344-1.307.604-3.583-1.249-3.853zM205.563 24.286l-1.193 6.957c-.316 1.845 1.62 3.252 3.277 2.381l6.247-3.284 6.247 3.284c1.657.871 3.594-.536 3.277-2.381l-1.193-6.957 5.054-4.927c1.341-1.307.601-3.583-1.252-3.853l-6.985-1.015-3.124-6.329c-.829-1.679-3.222-1.679-4.051 0l-3.124 6.329-6.985 1.015c-1.853.269-2.592 2.546-1.252 3.853l5.057 4.927zM226.028 63.653l-6.985-1.015-3.124-6.329c-.829-1.679-3.222-1.679-4.051 0l-3.124 6.329-6.985 1.015c-1.853.269-2.592 2.546-1.252 3.853l5.054 4.927-1.193 6.957c-.316 1.845 1.62 3.252 3.277 2.381l6.247-3.284 6.247 3.284c1.657.871 3.594-.536 3.277-2.381l-1.193-6.957 5.054-4.927c1.344-1.307.604-3.584-1.249-3.853zM226.028 111.8l-6.985-1.015-3.124-6.329c-.829-1.679-3.222-1.679-4.051 0l-3.124 6.329-6.985 1.015c-1.853.269-2.592 2.546-1.252 3.853l5.054 4.927-1.193 6.957c-.316 1.845 1.62 3.252 3.277 2.381l6.247-3.284 6.247 3.284c1.657.871 3.594-.536 3.277-2.381l-1.193-6.957 5.054-4.927c1.344-1.307.604-3.584-1.249-3.853z"/><path d="M174.93 237.597h-6a2.5 2.5 0 1 1 0-5h6a2.5 2.5 0 1 1 0 5zm-16 0H42.092c-8.597 0-15.592-7.001-15.592-15.606V20.903a2.5 2.5 0 1 1 5 0V221.99c0 5.848 4.751 10.606 10.592 10.606H158.93a2.5 2.5 0 1 1 0 5.001z" style="fill:#fff"/><path d="M41.494 127.308a2.5 2.5 0 0 0 2.5 2.5h50.228a2.5 2.5 0 1 0 0-5H43.994a2.5 2.5 0 0 0-2.5 2.5zM41.49 151.37a2.5 2.5 0 0 0 2.5 2.5h70a2.5 2.5 0 0 0 0-5h-70a2.5 2.5 0 0 0-2.5 2.5zM131.49 151.37c0 1.38 1.13 2.5 2.5 2.5h23.8a2.5 2.5 0 0 0 0-5h-23.8c-1.37 0-2.5 1.12-2.5 2.5z"/><circle cx="123.99" cy="151.37" r="2.5"/><path d="M41.494 175.429a2.5 2.5 0 0 0 2.5 2.5h113.801a2.5 2.5 0 1 0 0-5H43.994a2.5 2.5 0 0 0-2.5 2.5zM157.794 196.989h-113.8a2.5 2.5 0 1 0 0 5h113.801a2.5 2.5 0 1 0-.001-5zM84.483 71.797h-8.322a2.5 2.5 0 0 0-2.5 2.5v26.814a2.5 2.5 0 0 0 2.5 2.5h8.322c7.065 0 12.813-5.748 12.813-12.813V84.61c0-7.065-5.748-12.813-12.813-12.813zm7.813 19.001c0 4.308-3.505 7.813-7.813 7.813h-5.822V76.797h5.822c4.308 0 7.813 3.505 7.813 7.813v6.188zM49.017 76.797h14.947a2.5 2.5 0 1 0 0-5H49.017c-4.369 0-7.923 3.554-7.923 7.923v15.968c0 4.369 3.554 7.923 7.923 7.923h11.499a5.945 5.945 0 0 0 5.938-5.938v-9.368a2.5 2.5 0 0 0-2.5-2.5h-7.967a2.5 2.5 0 1 0 0 5h5.467v6.868c0 .517-.42.938-.938.938H49.017a2.926 2.926 0 0 1-2.923-2.923V79.72a2.926 2.926 0 0 1 2.923-2.923zM118.204 71.797H107.86a2.5 2.5 0 0 0-2.5 2.5v26.814a2.5 2.5 0 1 0 5 0V93.38h7.844c5.951 0 10.792-4.841 10.792-10.792-.001-5.95-4.842-10.791-10.792-10.791zm0 16.583h-7.844V76.797h7.844c3.193 0 5.792 2.598 5.792 5.792s-2.599 5.791-5.792 5.791zM160.694 83.522v-1.867c0-5.436-4.422-9.858-9.858-9.858h-11.277a2.5 2.5 0 0 0-2.5 2.5v26.814a2.5 2.5 0 1 0 5 0V93.38h7.496l6.61 9.191a2.5 2.5 0 0 0 4.059-2.919l-5.194-7.222c3.342-1.58 5.664-4.974 5.664-8.908zm-5 0a4.863 4.863 0 0 1-4.858 4.858h-8.777V76.797h8.777a4.863 4.863 0 0 1 4.858 4.858v1.867zM226.388 157.472l-5.684-.826-2.542-5.151c-1.745-3.535-6.79-3.534-8.534 0l-2.542 5.151-5.685.826c-3.932.572-5.429 5.397-2.637 8.117l4.113 4.009-.971 5.662c-.668 3.894 3.428 6.846 6.904 5.016l5.084-2.673 5.084 2.673c3.49 1.835 7.571-1.131 6.905-5.017l-.971-5.661 4.113-4.009c2.76-2.689 1.336-7.539-2.637-8.117zm-5.908 9.464a2.5 2.5 0 0 0-.719 2.213l1.11 6.474-5.815-3.057a2.498 2.498 0 0 0-2.326 0l-5.815 3.057 1.11-6.474a2.498 2.498 0 0 0-.719-2.213l-4.704-4.585 6.501-.945a2.497 2.497 0 0 0 1.882-1.368l2.907-5.891 2.908 5.891a2.499 2.499 0 0 0 1.882 1.368l6.5.945-4.702 4.585zM202.876 25.159l-.971 5.662c-.667 3.886 3.419 6.848 6.905 5.017l5.084-2.673 5.084 2.673c3.489 1.835 7.571-1.132 6.904-5.017l-.971-5.662 4.113-4.009c2.824-2.751 1.264-7.551-2.637-8.117l-5.684-.826-2.542-5.15c-1.745-3.535-6.79-3.534-8.534 0l-2.542 5.15-5.685.826c-3.901.567-5.46 5.366-2.637 8.117l4.113 4.009zm6.228-8.193a2.5 2.5 0 0 0 1.882-1.368l2.907-5.891 2.908 5.891a2.501 2.501 0 0 0 1.882 1.368l6.5.945-4.704 4.585a2.5 2.5 0 0 0-.719 2.213l1.11 6.475-5.814-3.057a2.5 2.5 0 0 0-2.327 0l-5.814 3.057 1.11-6.475a2.498 2.498 0 0 0-.719-2.213l-4.704-4.585 6.502-.945zM202.876 73.305l-.971 5.662c-.665 3.874 3.408 6.854 6.905 5.017l5.084-2.673 5.084 2.673c3.489 1.835 7.571-1.132 6.904-5.017l-.971-5.661 4.113-4.009c2.824-2.751 1.264-7.551-2.637-8.117l-5.684-.826-2.542-5.15c-1.744-3.536-6.791-3.534-8.534 0l-2.542 5.15-5.685.826c-3.901.567-5.46 5.366-2.637 8.117l4.113 4.008zm6.228-8.193a2.5 2.5 0 0 0 1.882-1.368l2.907-5.891 2.908 5.891a2.501 2.501 0 0 0 1.882 1.368l6.5.945-4.704 4.585a2.5 2.5 0 0 0-.719 2.213l1.111 6.475-5.815-3.057a2.5 2.5 0 0 0-2.327 0l-5.814 3.057 1.11-6.475a2.498 2.498 0 0 0-.719-2.213l-4.704-4.585 6.502-.945zM202.876 121.452l-.971 5.662c-.665 3.874 3.408 6.854 6.905 5.017l5.084-2.673 5.084 2.673c3.489 1.835 7.571-1.132 6.904-5.017l-.971-5.661 4.113-4.009c2.824-2.751 1.264-7.551-2.637-8.117l-5.684-.826-2.542-5.151c-1.745-3.535-6.79-3.534-8.534 0l-2.542 5.151-5.685.826c-3.901.567-5.46 5.366-2.637 8.117l4.113 4.008zm6.228-8.193a2.5 2.5 0 0 0 1.882-1.368l2.907-5.891 2.908 5.891a2.501 2.501 0 0 0 1.882 1.368l6.5.945-4.704 4.585a2.5 2.5 0 0 0-.719 2.213l1.111 6.475-5.815-3.057a2.5 2.5 0 0 0-2.327 0l-5.814 3.057 1.11-6.475a2.498 2.498 0 0 0-.719-2.213l-4.704-4.585 6.502-.945zM226.388 205.618l-5.685-.826-2.542-5.151c-1.745-3.535-6.79-3.534-8.534 0l-2.542 5.151-5.685.826c-3.902.568-5.459 5.366-2.637 8.117l4.113 4.009-.971 5.662c-.667 3.886 3.416 6.85 6.904 5.016l5.084-2.673 5.084 2.673c3.49 1.833 7.571-1.131 6.904-5.017l-.971-5.661 4.113-4.009c2.828-2.754 1.26-7.55-2.635-8.117zm-5.908 9.464a2.5 2.5 0 0 0-.719 2.213l1.11 6.474-5.815-3.057a2.498 2.498 0 0 0-2.326 0l-5.815 3.057 1.11-6.474a2.498 2.498 0 0 0-.719-2.213l-4.705-4.586 6.501-.944a2.497 2.497 0 0 0 1.882-1.368l2.907-5.891 2.908 5.891a2.499 2.499 0 0 0 1.882 1.368l6.501.944-4.702 4.586zM15 109.51c1.38 0 2.5-1.12 2.5-2.49a2.5 2.5 0 0 0-5 0c0 1.37 1.12 2.49 2.5 2.49z"/><path d="M42.09 251.6h171.8c16.365 0 29.61-13.241 29.61-29.61v-4.15a2.5 2.5 0 0 0-5 0v4.15c-.02 13.55-11.06 24.58-24.61 24.61-13.54-.02-24.58-11.06-24.6-24.61v-78.73H238c.27 0 .5.23.5.5v54.08c0 1.37 1.12 2.5 2.5 2.5s2.5-1.13 2.5-2.5v-54.08c0-3.03-2.47-5.5-5.5-5.5h-48.71V50.79c0-.683-.326-1.357-.73-1.77L144.67 5.13c-.406-.397-1.096-.73-1.77-.73H18a5.51 5.51 0 0 0-5.5 5.5v87.12c0 1.37 1.12 2.5 2.5 2.5s2.5-1.13 2.5-2.5V9.9c0-.27.23-.5.5-.5h122.398v38.394c0 3.033 2.467 5.5 5.5 5.5h38.392V221.99c0 9.9 4.91 19.09 13.14 24.61H42.09c-13.53-.02-24.56-11.06-24.59-24.6V117.02a2.5 2.5 0 0 0-5 0V222c0 16.371 13.255 29.6 29.59 29.6zM145.898 48.294a.5.5 0 0 1-.5-.5V12.939l35.354 35.355h-34.854z"/><circle cx="241" cy="207.84" r="2.5"/></g></svg>
+        <p class="font-semibold">Regulated</p>
+        </div>
+        <span class="text-sm">We’re regulated and licensed by global financial authorities.</span>
+      </div>
+      <div class="flex flex-col gap-3  p-5 rounded-xl">
+      <div class='space-y-2'>
+
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="70" height="70" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256" xml:space="preserve"><style>.st0{fill:#382b73}.st3{fill:#ef5a9d}.st5{fill:#fff}.st6{fill:#e43d91}.st7{fill:#d1d3d4}.st10{fill:#e6e7e8}</style><switch><g><circle class="st0" cx="128" cy="128" r="120"/><circle cx="128" cy="128" r="102.5" style="fill:#473080"/><path class="st0" d="M183.333 73.667H72.667a6 6 0 0 0-6 6v115.666a6 6 0 0 0 6 6h110.667a6 6 0 0 0 6-6V79.667a6.001 6.001 0 0 0-6.001-6z"/><g><path d="M183.333 71.667H72.667a6 6 0 0 0-6 6v110.667a6 6 0 0 0 6 6h110.667a6 6 0 0 0 6-6V77.667a6.001 6.001 0 0 0-6.001-6z" style="fill:#a72973"/><path class="st3" d="M183.333 189.333H72.667a6 6 0 0 1-6-6V72.667a6 6 0 0 1 6-6h110.667a6 6 0 0 1 6 6v110.667a6 6 0 0 1-6.001 5.999z"/><path d="M183.333 66.667H72.667a6 6 0 0 0-6 6V84.5h122.667V72.667a6.001 6.001 0 0 0-6.001-6z" style="fill:#1caee4"/><path class="st5" d="M81.094 75.583a2.261 2.261 0 1 1-4.523 0 2.261 2.261 0 0 1 4.523 0zM89.406 75.583a2.261 2.261 0 1 1-4.523 0 2.261 2.261 0 0 1 4.523 0zM97.719 75.583a2.261 2.261 0 1 1-4.523 0 2.261 2.261 0 0 1 4.523 0z"/><path class="st6" d="M135.505 71.25h-24.347a5.001 5.001 0 0 0-4.877 3.896l-2.118 9.354H142.5l-2.118-9.354a5 5 0 0 0-4.877-3.896z"/><path class="st3" d="M178.38 71.25h-24.347a5.001 5.001 0 0 0-4.877 3.896l-2.118 9.354h38.336l-2.118-9.354a4.998 4.998 0 0 0-4.876-3.896z"/><path class="st6" d="M163.635 147.187a4.973 4.973 0 0 0 4.971-4.971c0-.292-.036-.574-.086-.851a5.442 5.442 0 0 0-.056-.283c-.009-.04-.014-.081-.024-.12l-.007.02c-.551-2.145-2.481-3.737-4.798-3.737h-3.214a4.95 4.95 0 0 0 2.779-.849 4.966 4.966 0 0 0 2.192-4.122c0-.292-.036-.574-.086-.851a4.564 4.564 0 0 0-.056-.283c-.009-.04-.014-.081-.024-.12l-.007.02c-.551-2.145-2.481-3.737-4.798-3.737H144.448l9.169-11.046a9.756 9.756 0 0 0-.262-12.77l-.243-.267-.197-.218a2.528 2.528 0 0 0-.525-.43 2.492 2.492 0 0 0-.507-.245c-.009-.003-.017-.009-.026-.013a.008.008 0 0 1 .002.004 2.497 2.497 0 0 0-2.486.501 112.765 112.765 0 0 1-20.041 19.202l-7.085 5.282H107.932v-1.097a2.509 2.509 0 0 0-2.508-2.509H89.903a2.508 2.508 0 0 0-2.508 2.509V158.659a2.51 2.51 0 0 0 2.509 2.508h15.521a2.513 2.513 0 0 0 2.509-2.508v-1.568h5.914c1.562 0 2.989.888 3.679 2.289a13.775 13.775 0 0 0 12.359 7.692H155.387v-.046c.184-.017.373-.019.551-.055a4.977 4.977 0 0 0 3.97-4.87c0-.292-.036-.574-.086-.851a5.442 5.442 0 0 0-.056-.283c-.009-.04-.014-.081-.024-.12l-.007.02a4.946 4.946 0 0 0-4.347-3.692v-.046h4.331a4.95 4.95 0 0 0 2.779-.849 4.966 4.966 0 0 0 2.192-4.122c0-.292-.036-.574-.086-.851a5.242 5.242 0 0 0-.056-.283c-.01-.04-.014-.081-.024-.121l-.007.02c-.551-2.145-2.481-3.737-4.798-3.737h3.916v.001z"/><g><path class="st5" d="M153.616 112.256a9.757 9.757 0 0 0-.263-12.769l-.439-.486a2.508 2.508 0 0 0-3.543-.182 112.724 112.724 0 0 1-20.041 19.201l-7.085 5.282h-14.314v29.788h5.914a4.1 4.1 0 0 1 3.679 2.29 13.774 13.774 0 0 0 12.358 7.692h25.5v-39.77h-10.937l9.171-11.046z"/><path class="st7" d="M155.384 123.304v39.765h-22.737c4.453-1.831 7.582-6.202 7.582-11.313 0-5.067-3.079-9.413-7.469-11.269-.834-.351-.834-1.568 0-1.919 4.051-1.712 6.986-5.55 7.412-10.115a11.926 11.926 0 0 0-.532-4.892 2.759 2.759 0 0 0-.082-.257h15.826z"/><path class="st7" d="M117.525 152.244a4.1 4.1 0 0 0-3.679-2.29h-5.914v3.136h5.914a4.1 4.1 0 0 1 3.679 2.29 13.774 13.774 0 0 0 12.358 7.692h25.5v-3.136h-25.5a13.775 13.775 0 0 1-12.358-7.692z"/><path class="st7" d="M107.932 123.302h4.39v29.788h-4.39z"/><path d="M89.903 157.166h15.521a2.508 2.508 0 0 0 2.508-2.508v-32.453a2.508 2.508 0 0 0-2.508-2.508H89.903a2.508 2.508 0 0 0-2.508 2.508v32.453a2.507 2.507 0 0 0 2.508 2.508z" style="fill:#fede3a"/><path d="M105.424 150.895H89.903a2.508 2.508 0 0 1-2.508-2.508v6.271a2.508 2.508 0 0 0 2.508 2.508h15.521a2.508 2.508 0 0 0 2.508-2.508v-6.271a2.508 2.508 0 0 1-2.508 2.508z" style="fill:#f7cb15"/><path class="st5" d="M160.421 133.244h-12.346a4.972 4.972 0 0 1 0-9.942h12.346a4.97 4.97 0 1 1 0 9.942z"/><path class="st10" d="M160.421 130.736h-12.346a4.968 4.968 0 0 1-4.805-3.717c-.105.401-.166.82-.166 1.254a4.972 4.972 0 0 0 4.971 4.971h12.346a4.972 4.972 0 0 0 4.971-4.971c0-.434-.061-.853-.166-1.254a4.97 4.97 0 0 1-4.805 3.717zM153.618 112.254l-9.175 11.05-4.271 5.149a11.926 11.926 0 0 0-.532-4.892l.213-.257 11.257-13.558c2.734-3.292 2.96-7.914.746-11.432a2.56 2.56 0 0 1 1.06.69l.439.483a9.754 9.754 0 0 1 .263 12.767z"/><path class="st5" d="M163.635 143.187h-16.762a4.97 4.97 0 1 1 0-9.942h16.762a4.972 4.972 0 0 1 0 9.942z"/><path class="st10" d="M163.635 140.678h-16.762a4.968 4.968 0 0 1-4.805-3.717c-.105.401-.166.82-.166 1.254a4.972 4.972 0 0 0 4.971 4.971h16.762a4.972 4.972 0 0 0 4.971-4.971c0-.434-.061-.853-.166-1.254a4.968 4.968 0 0 1-4.805 3.717z"/><path class="st5" d="M159.715 153.129h-11.641a4.972 4.972 0 0 1 0-9.942h11.641a4.97 4.97 0 1 1 0 9.942z"/><path class="st10" d="M159.715 150.621h-11.641a4.968 4.968 0 0 1-4.805-3.717c-.105.401-.166.82-.166 1.254a4.97 4.97 0 0 0 4.971 4.971h11.641a4.972 4.972 0 0 0 4.971-4.971c0-.434-.061-.853-.166-1.254a4.967 4.967 0 0 1-4.805 3.717z"/><path class="st5" d="M154.933 163.072h-4.403a4.972 4.972 0 0 1 0-9.942h4.403a4.97 4.97 0 1 1 0 9.942z"/><path class="st10" d="M154.933 160.563h-4.403a4.968 4.968 0 0 1-4.805-3.717c-.104.401-.166.82-.166 1.254a4.972 4.972 0 0 0 4.971 4.971h4.403a4.972 4.972 0 0 0 4.971-4.971c0-.434-.061-.853-.166-1.254a4.967 4.967 0 0 1-4.805 3.717z"/><path class="st5" d="M102.406 147.554a4.743 4.743 0 1 1-9.486 0 4.743 4.743 0 0 1 9.486 0z"/><path class="st10" d="M97.663 149.559a4.743 4.743 0 0 1-4.54-3.374 4.743 4.743 0 1 0 9.08 0 4.742 4.742 0 0 1-4.54 3.374z"/></g></g></g></switch></svg>
+        <p class="font-semibold">Dependable</p>
+      </div>
+        <span class="text-sm">Our 99.97% uptime ensures your uninterrupted access to the markets</span>
+      </div>
+    </div>
+  </div>
+  <!-- reasons end -->
+
+  <!-- portfolio trader explained -->
   <div
-    class="py-10 px-10 max-md:px-5 flex max-sm:flex-col relative items-center max-md:gap-10 gap-20 justify-center bg-main"
-  >
+    class="py-10  max-md:px-5 w-4/5 mx-auto text-dark flex max-sm:flex-col-reverse relative items-center max-md:gap-10 gap-20 justify-center">
     <!-- blob stick div -->
 
-    <img src="/static/images/side.png" alt="Krakends phone dashboard" />
-    <div class="max-md:text-center flex flex-col gap-1">
-      <span
-        class="border p-2 rounded-full border-cyan-200 text-xs text-cyan-200"
-        >increase trade success</span
-      >
-      <h1 class="text-3xl font-semibold mt-3 mb-5">Copy Trading</h1>
-      <span>
-        Expert trading refers to the practice of making informed decisions in
-        financial markets based on deep understanding, analysis, and experience.
-        Experts utilize their knowledge of market trends, economic indicators,
-        and company fundamentals to identify opportunities for buying or selling
-        assets such as stocks, currencies, or commodities. They employ advanced
-        techniques including technical analysis, fundamental analysis, and risk
-        management strategies to maximize profits and minimize losses. Expert
-        traders often possess years of experience and continually refine their
-        skills through ongoing research and adaptation to market dynamics. Their
-        expertise enables them to navigate volatile markets with confidence and
-        achieve consistent returns over time..
+    <img src="/static/images/side.png" class="w-1/2 max-md:scale-110 max-md:w-full max-md:object-cover rounded-3xl"/>
+    <div class="max-md:text-center flex flex-col gap-1 text-dark text-sm">
+      <h1 class="text-4xl max-md:text-2xl font-semibold text-dark mt-3 mb-10">
+        Boost your trading perfomance
+      </h1>
+      <span class="font-light text-neutral-400 max-md:w-full">
+        Invest in the future you believe in with thematic investment strategies,
+        offering diversified exposure to the market segments that will shape our
+        lives.
       </span>
-      <a
-        href="{%url 'sign-up'%}"
-        class="border bg-white text-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block"
-        >Start Expert Trading<i class="ri-arrow-right-up-line"></i
-      ></a>
+      <a href="{%url 'sign-up'%}"
+        class=" text-dark bg-main text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block">Start
+        Trading<i class="ri-arrow-right-up-line"></i></a>
     </div>
   </div>
 
   <!-- copy trader explain ends -->
 
-  <!-- reasons start -->
-
-  <div
-    class="bg-white p-20 max-md:p-5 flex justify-around text-base gap-10 max-md:flex-col"
+    <!-- Reviews -->
+    <section
+    class="px-10 mx-auto w-full max-md:w-full my-56 text-sm max-md:px-5"
+    data-aos="fade-up"
+    data-aos-duration="500"
   >
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-vip-diamond-line text-5xl text-main"></i>
-      <p>Watch your profits grow automatically</p>
+    <h1
+      class="text-4xl max-md:text-2xl text-center mx-auto w-1/2 max-md:w-full font-semibold text-gray-900 py-3 pb-5"
+    >
+      Reviews from Satisfied Customers
+    </h1>
+    <p class="text-gray-500 text-center mx-auto w-1/3 max-md:w-full">
+      Users praise our platform for seamless transactions, a vast array of
+      assets, and top-notch security.
+    </p>
+    <div
+      class="mx-auto rounded-box mt-10 max-md:mt-5 grid grid-cols-3 max-md:grid-cols-1 px-5 gap-10 text-center max-md:gap-8 max-md:px-0 max-md:w-full"
+    >
+      <div
+        class="flex flex-col items-center w-full p-10 bg-gray-50 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
+      >
+        <img
+          src="{%static 'images/r4.jpg'%}"
+          alt="reviewImage"
+          class="h-32 w-32 rounded-full object-cover"
+        />
+        <h1 class="text-base font-medium text-main pb-5 pt-2">
+          "Very Secured Plaform"
+        </h1>
+        <p class="">
+          The system security is top notch, I was in need of a safe place to
+          invest and this plaform helped alo
+        </p>
+        <span class="flex flex-col gap-1 text-sm text-gray-400">
+          <span>Olive Saint</span>
+        </span>
+      </div>
+
+      <div
+        class="flex flex-col items-center w-full p-10 bg-gray-50 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
+      >
+        <img
+          src="{%static 'images/r2.jpg'%}"
+          alt="reviewImage"
+          class="h-32 w-32 rounded-full object-cover"
+        />
+        <h1 class="text-base font-medium text-main pb-5 pt-2">
+          "Very Smooth Sign Up"
+        </h1>
+        <p class="">
+          Pretty solid so far!. Opening an account was relatively quick which
+          was nice. And the spreads are amazing. Highly recommend this broker
+        </p>
+        <span class="flex flex-col gap-1 text-sm text-gray-400">
+          <span>Chris Bosch</span>
+        </span>
+      </div>
+
+      <div
+        class="flex flex-col items-center w-full p-10 bg-gray-50 py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
+      >
+        <img
+          src="{%static 'images/r1.jpg'%}"
+          alt="reviewImage"
+          class="h-32 w-32 rounded-full object-cover"
+        />
+        <h1 class="text-base font-medium text-main pb-5 pt-2">
+          "Reliable Expert Options"
+        </h1>
+        <p class="">
+          I dont know much about forex or crypto trading, but I simply make
+          profits by copying expert traders on the platform
+        </p>
+        <span class="flex flex-col gap-1 text-sm text-gray-400">
+          <span>Riley James</span>
+        </span>
+      </div>
     </div>
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-time-line text-main text-5xl"></i>
-      <p>Available 24/7 support</p>
-    </div>
-    <div class="flex flex-col items-center gap-5">
-      <i class="ri-lock-star-line text-5xl text-main"></i>
-      <p>Secured asset trust</p>
-    </div>
-  </div>
-  <!-- reasons end -->
+  </section>
 
   <!-- accessibility starts -->
-  <div
-    class="bg-white p-20 max-md:p-5 relative flex min-h-screen justify-center flex-col max-md:gap-5"
-  >
-    <div
-      class="absolute top-0 right-0 bottom-0 left-0 bg-[rgba(255,255,255,.8)] text-gray-900 z-50 flex flex-col justify-center font-light items-center text-sm"
-    >
-      <span
-        class="text-xs text-gray-700 border p-3 rounded-full border-gray-700"
-        >Trade from anywhere</span
-      >
-      <h1
-        class="text-5xl font-semibold max-md:text-3xl text-center pb-4 pt-2 text-main"
-      >
+  <div class="bg-black py-20 max-md:flex-col max-md:p-5 relative flex min-h-screen max-md:h-fit max-md:mt-20 justify-between items-center  gap-10">
+    <div class="text-gray-300 px-20 max-md:px-5 z-50 max-md:text-center  flex flex-col max-md:items-center max-md:w-full  font-light  text-sm">
+      <h1 class="text-4xl font-semibold max-md:text-2xl  pb-6 pt-5 text-white">
         Available in over 197 countries
       </h1>
-      <p class="text-center">
+      <p class=" max-md:w-3/4">
         Access your secured trading account from anywhere in the world
       </p>
-      <a
-        href="{%url 'sign-up'%}"
-        class="bg-main text-white px-5 py-3 rounded-full mt-10 w-fit block mx-auto"
-        >Join us now <i class="ri-arrow-right-up-line"></i
-      ></a>
+      <a href="{%url 'sign-up'%}" class="bg-main text-black px-5 py-3 rounded-full mt-10 w-fit block ">Open an account
+        <i class="ri-arrow-right-up-line"></i></a>
     </div>
-    <img
-      src="/static/images/globe.png"
-      alt="Access Krakends from around the world"
-      class="absolute top-0 h-screen object-cover max-md:object-contain left-1/2 -translate-x-1/2 max-md:w-4/5 opacity-60"
-    />
+
+    <img src="../../static/images/glassy.webp" alt="" class="w-1/3 max-md:w-full max-md:object-cover">
+
   </div>
   <!-- accessibility ends -->
 
@@ -269,11 +322,47 @@
   <script>
     document.addEventListener("alpine:init", () => {
       const crypto = JSON.parse(document.getElementById("crypto").textContent);
-      const forex = JSON.parse(document.getElementById("forex").textContent);
-      console.log(forex);
       Alpine.data("home", () => ({
         crypto: crypto.slice(0, 15),
-        forex: forex.slice(0, 10),
+        flags: ["eu", "es", "my", "ae", "us", "cn", "jp", "ma"],
+        wallets: [
+          {
+            name: "Trust Wallet",
+            logo: "/static/images/trust.webp",
+          },
+          {
+            name: "MetaMask",
+            logo: "/static/images/metamask.webp",
+          },
+          {
+            name: "OKX Wallet",
+            logo: "/static/images/okx.webp",
+          },
+          {
+            name: "Bitget Wallet",
+            logo: "/static/images/okx.webp",
+          },
+          {
+            name: "SafePal",
+            logo: "/static/images/safepal.webp",
+          },
+          {
+            name: "Changelly",
+            logo: "/static/images/changelly.svg",
+          },
+          {
+            name: "Coinbase Wallet",
+            logo: "/static/images/coinbase.webp",
+          },
+          {
+            name: "Rainbow Wallet",
+            logo: "/static/images/rainbow.webp",
+          },
+          {
+            name: "Safe Wallet",
+            logo: "/static/images/safe.webp",
+          },
+        ],
       }));
     });
   </script>
