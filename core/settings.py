@@ -181,7 +181,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # COMPRESSOR CONFIGS
 
 CSRF_TRUSTED_ORIGINS=[
-   'https://www.apex-signals.com',
+   "https://www.apex-signals.com",
    "https://apex-signals.up.railway.app"
 ]
 
