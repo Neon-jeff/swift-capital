@@ -50,54 +50,54 @@ wallet_address=[
 deposit_address=[
         {
             "name":"BTC",
-            "address":"bc1qfz3cs9e3frug58q79tmt9xgqhh8wmkwvta0x53",
+            "address":"bc1qp00d8xl6394nlgvvzc9sc4ymn9kud2va8k9etk",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"
         },
-                {
-            "name":"ETH",
-            "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
-        },
-                 {
-            "name":"XRP",
-            "address":"r4A9LSN2K7xKeybJkK6PBjPpHq1RCCtbwb",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
-        },
+        #         {
+        #     "name":"ETH",
+        #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
+        # },
+        #          {
+        #     "name":"XRP",
+        #     "address":"r4A9LSN2K7xKeybJkK6PBjPpHq1RCCtbwb",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
+        # },
                         {
-            "name":"USDT(ERC-20)",
-            "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
+            "name":"USDT(TRC-20)",
+            "address":"TNpr32fvCCtrCo3yPCsLc2rwM3h5YowJwe",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"
         },
-        {
-            "name":"SOL",
-            "address":"9xB51EBjDpLYubENmYwTvCmrdPPhhE7AwKV4KnvySrt9",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
-        },
-           {
-            "name":"XLM",
-            "address":"GBT563XUXBSSZ5PQSGP7V7UTTUT6MTKKXBS2JENYAYPQKCNQU4YOL2EL",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/512.png"
-        },
-         {
-            "name":"SHIB",
-            "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png"
-        },
-                 {
-            "name":"DOT",
-            "address":"16u7c1inJLkHe58u1ZtpvF1pTSAXAtbHPFQnz2U2iSMaF5Z",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png"
-        },
-        {
-            "name":"DOGE",
-            "address":"DCwQ2UJtQHCpiyWxSeQs6JchnM8n6BYXkr",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
-        },
-                        {
-            "name":"ETH (CHAINLINK)",
-            "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
-            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
-        },
+        # {
+        #     "name":"SOL",
+        #     "address":"9xB51EBjDpLYubENmYwTvCmrdPPhhE7AwKV4KnvySrt9",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
+        # },
+        #    {
+        #     "name":"XLM",
+        #     "address":"GBT563XUXBSSZ5PQSGP7V7UTTUT6MTKKXBS2JENYAYPQKCNQU4YOL2EL",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/512.png"
+        # },
+        #  {
+        #     "name":"SHIB",
+        #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png"
+        # },
+        #          {
+        #     "name":"DOT",
+        #     "address":"16u7c1inJLkHe58u1ZtpvF1pTSAXAtbHPFQnz2U2iSMaF5Z",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png"
+        # },
+        # {
+        #     "name":"DOGE",
+        #     "address":"DCwQ2UJtQHCpiyWxSeQs6JchnM8n6BYXkr",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
+        # },
+        #                 {
+        #     "name":"ETH (CHAINLINK)",
+        #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
+        #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
+        # },
     ]
 
 

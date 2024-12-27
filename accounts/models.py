@@ -80,7 +80,8 @@ class Profile(models.Model):
                 else None
             ),
             "expert_trades":[{**model_to_dict(x),"date":x.created} for x in ExpertTrade.objects.filter(expert=self.trading_profile)],
-            "currency":self.normalize_currency()
+            "currency":self.normalize_currency(),
+            "expert_profit":self.expert_profit
         }
     def normalize_currency(self):
         currency_dict={

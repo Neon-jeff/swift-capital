@@ -43,7 +43,7 @@ input[type=number] {
 
 {%include 'components/dashboard/bottom-nav.html'%}
 {%include 'dashboard/trading-profile.html'%}
-
+{{request.user.profile.serialize|json_script:"user"}}
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq7623b255a96bcbcf4043dd79cab87230d1b2a869a086e6513149fcef53455e2f" defer></script>
 <script>window.gtranslateSettings={default_language:"en",wrapper_selector:".gtranslate_wrapper"}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" ></script>
@@ -55,10 +55,13 @@ input[type=number] {
 // let translate=document.querySelector('#gt_float_wrapper')
 // console.log(translate);
 // translate.style='';
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('general', () => ({
+    document.addEventListener('alpine:init', () => {     
+      const user = JSON.parse(document.getElementById("user").textContent)
+        
+      Alpine.data('general', () => ({
             profile:false,
-            trading_profile:false
+            trading_profile:false,
+            user:user
         }))
     })
 </script>

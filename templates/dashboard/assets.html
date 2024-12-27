@@ -27,7 +27,8 @@
                 >Total Balance <span><i class="fa-regular fa-eye"></i></span
               ></span>
               <span class="text-2xl font-medium"
-                >{{request.user.profile.normalize_currency}}{{request.user.profile.dollar_balance}}.00</span
+              x-text=" user.currency + (user.profit + user.dollar_balance + user.expert_profit) "
+                ></span
               >
             </p>
           </div>

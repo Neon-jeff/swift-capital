@@ -40,6 +40,7 @@
         document.getElementById("assets").textContent
       ).stocks;
       const user = JSON.parse(document.getElementById("user").textContent);
+      console.log(user)
       let balance_el = document.querySelector(".balance");
       Alpine.data("assets", () => ({
         forex: forex,
@@ -49,6 +50,7 @@
         query: "",
         coins: assets,
         currentCoin: assets[0],
+        user:user,
         setCurrentCoin(id) {
           this.currentCoin = this.coins.find((item) => item.symbol == id);
           this.query = "";
