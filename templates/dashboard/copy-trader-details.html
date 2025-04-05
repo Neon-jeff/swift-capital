@@ -19,7 +19,6 @@
   <!--  -->
   {%include "components/alerts.html" %}
   <!--  -->
-  {%include "components/dashboard/copy-trader-request.html" %}
   <div class="ml-72 max-md:ml-0 p-5">
     <div class="max-md:hidden">{% include "components/path.html" %}</div>
 
@@ -138,7 +137,7 @@
         <!-- expert end -->
          <!-- Expert performance starts -->
           <div>
-            <h1 class="text-sm font-semibold">Profilt Performance</h1>
+            <h1 class="text-sm font-semibold">Profit Performance</h1>
             <div id="chart">
 
             </div>
@@ -228,25 +227,66 @@ BINANCE-FUTURES (COIN-M)
 
   <script>
     // Render Expert Charts
-    var options = {
-        colors: ["#1c5aba"],
-  stroke: {
-    curve: "smooth",
-  },
-  chart: {
-    type: "line",
-    toolbar: {
-      show: false,
-    },
-  },
-  series: [{
-    name: 'profit rate',
-    data: [30,40,35,50,49,60,70,91,125]
-  }],
-  xaxis: {
-    categories: ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep"]
-  }
-}
+    const options = {
+      chart: {
+        type: "line",
+        height: 350,
+        toolbar: { show: false }
+      },
+      colors: ["#00b894"],
+      stroke: {
+        curve: "smooth",
+        width: 3
+      },
+      markers: {
+        size: 5,
+        colors: ["#ffffff"],
+        strokeColors: "#00b894",
+        strokeWidth: 2,
+        hover: {
+          size: 7
+        }
+      },
+      tooltip: {
+        enabled: true,
+        x: {
+          format: "MMM"
+        },
+        y: {
+          formatter: (value) => value + "%"
+        }
+      },
+      series: [{
+        name: "Monthly ROI",
+        data: [3.5, 4.2, 4.8, 5.5, 6.1, 6.9, 7.8, 8.6, 9.5]
+      }],
+      xaxis: {
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+        title: {
+          text: "Month",
+          style: {
+            fontWeight: 600
+          }
+        }
+      },
+      yaxis: {
+        title: {
+          text: "Return on Investment (%)",
+          style: {
+            fontWeight: 600
+          }
+        },
+        min: 0,
+        max: 10
+      },
+      grid: {
+        borderColor: "#e0e0e0",
+        row: {
+          colors: ["#f9f9f9", "#fff"],
+          opacity: 0.5
+        }
+      }
+    };
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);
 
