@@ -1,0 +1,223 @@
+{% extends "dbase.html" %} {%load static%} {% block content %}
+
+<section class="bg-white min-h-screen text-sm text-neutral-900 max-md:pt-24" x-data="settings">
+  {{user|json_script:"user"}}
+  <!--  -->
+  {{experts|json_script:"experts"}}
+  <!--  -->
+  {% include "components/sidenav.html" %}
+  <!--  -->
+  {% include "components/loader.html" %}
+  <!--  -->
+  {% include "components/error.html" %}
+  <!--  -->
+  {% include "components/dashboard/uploadAddress.html" %}
+  <!--  -->
+  {% include "components/dashboard/uploadD.html" %}
+  <!--  -->
+  {%include "components/alerts.html" %}
+  <!--  -->
+  <div class="ml-[18%] max-md:ml-0 p-5">
+    <div class="max-md:hidden">{% include "components/path.html" %}</div>
+    <!-- main container -->
+    <div
+      class="bg-white border border-neutral-100 w-4/5 max-md:w-full mx-auto mt-10 relative p-5 max-md:p-3 rounded-xl">
+      <!-- tab group start -->
+      <div
+        class="bg-white w-fit mb-10 flex gap-5 *:cursor-pointer *:py-3 *:px-5 *:rounded-full *:text-xs *:max-sm:text-xs rounded-md">
+        <button class="" @click="setActiveTab($el)"
+          :class="activeTab==$el.textContent.trim()?'bg-main text-dark font-semibold':'bg-green-100'">
+          Account
+        </button>
+        <button @click="setActiveTab($el)"
+          :class="activeTab==$el.textContent.trim()?'bg-main text-dark font-semibold':'bg-green-100'">
+          Verification
+        </button>
+        <button @click="setActiveTab($el)"
+          :class="activeTab==$el.textContent.trim()?'bg-main text-dark font-semibold':'bg-green-100'">
+          Security
+        </button>
+      </div>
+      <!-- tab group end  -->
+      <!-- Account details container -->
+      <div class="Account flex flex-col gap-5" x-show="$el.classList.contains(activeTab)">
+        <h1 class="text-lg font-semibold pb-3 border-b text-neutral-700 max-sm:text-base border-neutral-200">
+          Account Details
+        </h1>
+        <!-- profile details start -->
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center gap-3">
+            <span x-text="user.first_name[0] + ' ' + user.last_name[0]"
+              class="w-10 h-10 flex justify-center items-center rounded-full bg-dark text-main font-bold"></span>
+
+            <span x-text="user.first_name + ' ' + user.last_name" class="font-semibold"></span>
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">Full Name</span>
+              <span x-text="user.first_name + ' ' + user.last_name"
+                class="p-3 border border-neutral-100 rounded-md w-1/2 max-sm:w-full"></span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">Email</span>
+              <span x-text="user.email" class="p-3 border border-neutral-100 rounded-md w-1/2 max-sm:w-full"></span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">Phone Number</span>
+              <span x-text="user.phone_number"
+                class="p-3 border border-neutral-100 rounded-md w-1/2 max-sm:w-full"></span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">Address</span>
+              <span x-text="`${user.address}, ${user.state}, ${user.country} `"
+                class="p-3 border border-neutral-100 rounded-md w-1/2 max-sm:w-full"></span>
+            </div>
+          </div>
+        </div>
+        <!-- profile details end -->
+      </div>
+      <!-- Account container ends -->
+      <!-- verification -->
+      <div class="Verification flex flex-col gap-5" x-show="$el.classList.contains(activeTab)">
+        <h1 class="text-lg font-semibold pb-3 border-b text-neutral-700 max-sm:text-base border-neutral-200">
+          Verification Status
+        </h1>
+        <!-- profile details start -->
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-col gap-2 border-b border-neutral-200 pb-3">
+            <span class="font-medium text-neutral-600">Email Verification</span>
+            <span class="text-main text-xs flex gap-1 font-semibold"><i class="ri-checkbox-circle-fill"></i>Completed
+            </span>
+          </div>
+          <div class="flex flex-col gap-2 border-b border-neutral-200 pb-3">
+            <span class="font-medium text-neutral-600">Identity Verification</span>
+            <span x-show="user.id_status=='unverified'" class="text-red-500 text-xs flex gap-1 font-semibold"><i
+                class="ri-close-circle-fill"></i></i>Not Verified
+            </span>
+            <span x-show="user.id_status=='pending'" class="text-orange-500 text-xs flex gap-1 font-semibold"><i
+                class="ri-error-warning-fill"></i> Pending
+            </span>
+            <span x-show="user.id_status=='verified'" class="text-main text-xs flex gap-1 font-semibold"><i
+                class="ri-checkbox-circle-fill"></i>Completed
+            </span>
+            <button x-show="user.id_status=='unverified'" @click="showUploadID=true"
+              class="px-3 py-2 text-xs rounded-md bg-dark text-white w-fit">Verifiy Identity</button>
+          </div>
+          <div class="flex flex-col gap-2 border-b border-neutral-200 pb-3">
+            <span class="font-medium text-neutral-600">Address Verification</span>
+            <span x-show="user.address_status=='unverified'" class="text-red-500 text-xs flex gap-1 font-semibold"><i
+                class="ri-close-circle-fill"></i></i>Not Verified
+            </span>
+            <span x-show="user.address_status=='pending'" class="text-orange-500 text-xs flex gap-1 font-semibold"><i
+                class="ri-error-warning-fill"></i> Pending
+            </span>
+            <span x-show="user.address_status=='verified'" class="text-main text-xs flex gap-1 font-semibold"><i
+                class="ri-checkbox-circle-fill"></i>Completed
+            </span>
+            <button x-show="user.address_status=='unverified'" @click="showUploadBill=true"
+              class="px-3 py-2 text-xs rounded-md bg-dark text-white w-fit">Verifiy Address</button>
+          </div>
+        </div>
+        <!-- profile details end -->
+      </div>
+      <!-- verification ends -->
+      <!-- secuirty starts -->
+      <div class="Security flex flex-col gap-5" x-show="$el.classList.contains(activeTab)">
+        <div class="text-lg font-semibold pb-3 border-b text-neutral-700 max-sm:text-base border-neutral-200">
+          <h1>Update Password</h1>
+          <span class="text-xs pt-5 text-green-600 font-normal">Warning : You will be required to login again to
+            validates this
+            process</span>
+        </div>
+        <div class="">
+          <form action="" method="post" class="flex flex-col gap-5 updatePassword" @submit="updatePassword">
+            {%csrf_token%}
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">New Password</span>
+              <span class=" border relative border-neutral-100 bg-transparent rounded-md w-1/2 max-sm:w-full">
+                <input placeholder="enter password" name="password " class=" rounded-md bg-transparent p-3 w-full"
+                  x-model="password" x-ref="pass" type="password" />
+                <i class="ri-eye-fill absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer"
+                  @click="$refs.pass.type=$refs.pass.type=='password'?'text':'password'"></i>
+              </span>
+              <span class="text-xs text-orange-600">*password should exceed 6 characters</span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <span class="font-medium text-neutral-600">Confirm New Password</span>
+              <span class=" border relative border-neutral-100 bg-transparent rounded-md w-1/2 max-sm:w-full">
+                <input placeholder="confirm password" name="password " class=" rounded-md bg-transparent p-3 w-full"
+                  x-model="confirmPassword" x-ref="cpass" type="password" />
+                <i class="ri-eye-fill absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer"
+                  @click="$refs.cpass.type=$refs.cpass.type=='password'?'text':'password'"></i>
+              </span>
+            </div>
+
+            <button class="px-5 py-3 bg-dark text-white rounded-md w-fit">Update Password</button>
+          </form>
+        </div>
+      </div>
+      <!-- security ends -->
+    </div>
+    <!-- main container end -->
+  </div>
+
+  <script>
+    document.addEventListener("alpine:init", () => {
+      const user = JSON.parse(document.getElementById("user").textContent);
+
+      const experts = JSON.parse(
+        document.getElementById("experts").textContent
+      );
+      const assets = [];
+      Alpine.data("settings", () => ({
+        user: user,
+        activeTab: "Account",
+        showLoader: false,
+        showError: false,
+        errorMessage: "Something went wrong",
+        showUploadBill: false,
+        showUploadID: false,
+        password: '',
+        confirmPassword: '',
+        setActiveTab(el) {
+          this.activeTab = el.textContent.trim();
+        },
+        updatePassword(e) {
+          e.preventDefault()
+          let form = new FormData(document.querySelector('.updatePassword'))
+
+          if (this.password.length < 6) {
+            this.errorMessage = "Passwords should exceed 6 characters"
+            this.showError = true
+            return
+          }
+          if (this.password !== this.confirmPassword) {
+            this.errorMessage = "Passwords do not match"
+            this.showError = true
+            return
+          }
+
+
+          this.showLoader = true
+          fetch('/accounts/update-password', {
+            method: 'POST',
+            body: form
+          }).then(res => {
+            if (!res.ok) {
+              this.showLoader = false
+              this.showError
+            }
+            return res.json()
+          }).then(window.location.assign('/accounts/logout')).catch(error => { this.showLoader = false; this.showError })
+
+        }
+      }));
+    });
+  </script>
+</section>
+
+{% endblock content %}

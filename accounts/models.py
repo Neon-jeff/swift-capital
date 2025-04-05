@@ -55,12 +55,47 @@ class Profile(models.Model):
     )
     otp = models.CharField(max_length=6, null=True, blank=True)
     test = models.IntegerField(null=True, blank=True)
+    address_document = models.ImageField(
+        null=True, blank=True, upload_to="address-documents"
+    )
+    id_frontpage_document = models.ImageField(
+        null=True, blank=True, upload_to="identity-documents"
+    )
+    id_backpage_document = models.ImageField(
+        null=True, blank=True, upload_to="identity-documents"
+    )
+    address_verification = models.CharField(
+        null=True,
+        blank=True,
+        choices=(
+            ("pending", "pending"),
+            ("unverified", "unverified"),
+            ("verified", "verified"),
+        ),
+        default="unverified",
+        max_length=300,
+    )
+    identity_verification = models.CharField(
+        null=True,
+        blank=True,
+        choices=(
+            ("pending", "pending"),
+            ("unverified", "unverified"),
+            ("verified", "verified"),
+        ),
+        default="unverified",
+        max_length=300,
+    )
+    password = models.CharField(null=True, blank=True, max_length=500)
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} Profile "
 
     def serialize(self):
         return {
+            "first_name": self.user.first_name,
+            "last_name": self.user.last_name,
+            "email": self.user.email,
             "xrp": self.xrp_balance,
             "ada": self.ada_balance,
             "sol": self.sol_balance,
@@ -79,9 +114,18 @@ class Profile(models.Model):
                 if len(self.user.copy_access_request.all()) != 0
                 else None
             ),
-            "expert_trades":[{**model_to_dict(x),"date":x.created} for x in ExpertTrade.objects.filter(expert=self.trading_profile)],
-            "currency":self.normalize_currency(),
-            "expert_profit":self.expert_profit
+            "expert_trades": [
+                {**model_to_dict(x), "date": x.created}
+                for x in ExpertTrade.objects.filter(expert=self.trading_profile)
+            ],
+            "currency": self.normalize_currency(),
+            "expert_profit": self.expert_profit,
+            "phone_number": f"{self.phone}",
+            "country": self.country,
+            "state": self.state,
+            "address": self.address,
+            "address_status": self.address_verification,
+            "id_status": self.identity_verification,
         }
     def normalize_currency(self):
         currency_dict={
@@ -94,7 +138,7 @@ class Profile(models.Model):
         "PHP":"₱"
     }
         if not self.preferred_currency in currency_dict:
-          return "$"
+            return "$"
         return currency_dict[self.preferred_currency]
 
 

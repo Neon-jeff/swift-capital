@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,resolve_url
 from .handlers import FetchCoinData,Forex_Currencies,StockData
 from django.http import JsonResponse
 from .models import *
@@ -360,3 +360,98 @@ def UserExpertTraderDetails(request):
     except ObjectDoesNotExist:
         messages.error(request,"Copy trader does not exist")
         return redirect("dashboard")
+
+
+@login_required(login_url="login")
+def SettingsPage(request):
+    return render(
+        request, "dashboard/settings.html", {"user": request.user.profile.serialize()}
+    )
+
+
+@login_required(login_url="login")
+def UploadAdressDocs(request):
+    if request.method == "POST":
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        profile.address_document = request.FILES["bill"]
+        profile.address_verification = "pending"
+        profile.save()
+        messages.success(
+            request, "Address verification submitted, Wait for Confirmation"
+        )
+        return JsonResponse({"status": "success"})
+
+
+@login_required(login_url="login")
+def UploadIdentityDocs(request):
+    if request.method == "POST":
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        profile.id_frontpage_document = request.FILES["front"]
+        profile.id_backpage_document = request.FILES["back"]
+        profile.identity_verification = "pending"
+        profile.save()
+        messages.success(
+            request, "Identity verification submitted, Wait for Confirmation"
+        )
+        return JsonResponse({"status": "success"})
+
+
+@login_required(login_url="login")
+def UpdatePassword(request):
+    if request.method == "POST":
+        user: User = request.user
+        user.set_password(request.POST["password"])
+        user.save()
+        profile = Profile.objects.get(user=user)
+        profile.password = request.POST["password"]
+        profile.save()
+        messages.success(request, "Password updated successfully")
+        return JsonResponse({"status": "success"})
+
+
+def ForgotPasswordSendOtp(request):
+    if request.method == "POST":
+        try:
+            user = User.objects.get(email=request.POST["email"])
+            user.profile.otp = CreateOtp()
+            user.profile.save()
+            SendResetPasswordEmail(user, user.profile.otp)
+            messages.success(request, "Password reset otp sent")
+            return redirect(resolve_url("verify-identity") + f"?email={user.email}")
+        except ObjectDoesNotExist:
+            messages.error(request, "Account with email does not exist")
+            return render(request, "pages/forgot-password.html")
+    return render(request, "pages/forgot-password.html")
+
+
+def VerifyIdentity(request):
+    email = request.GET["email"]
+    user = User.objects.get(email=email)
+    if request.method == "POST":
+        if request.POST["otp"] == user.profile.otp:
+            messages.success(request, "Identity Verified,Update Your Password")
+            return redirect(resolve_url("change-password") + f"?email={user.email}")
+        else:
+            messages.error(request, "Invalid OTP")
+            return render(request, "pages/password-otp-confirm.html")
+    return render(request, "pages/password-otp-confirm.html")
+
+
+def ChangePassword(request):
+    user = User.objects.get(email=request.GET["email"])
+    if request.method == "POST":
+        data = request.POST
+        if data["password"] != data["confirm"]:
+            messages.error(request, "Passwords do not match")
+            return render(request, "pages/reset-password.html")
+        else:
+            user.set_password(request.POST["password"])
+            user.save()
+            profile = Profile.objects.get(user=user)
+            profile.password = request.POST["password"]
+            profile.save()
+            messages.success(request, "Password Updated")
+            return redirect("login")
+    return render(request, "pages/reset-password.html")

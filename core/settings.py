@@ -37,16 +37,18 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
-    'compressor',
-    'django_countries',
-    'accounts',
+    "unfold",
+    "unfold.contrib.forms",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
+    "django.contrib.staticfiles",
+    "compressor",
+    "django_countries",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -163,7 +165,6 @@ STATICFILES_DIRS = [
 ]
 
 
-
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
@@ -184,3 +185,33 @@ CSRF_TRUSTED_ORIGINS=[
    "https://www.apex-signals.com"
 ]
 
+# UNFOLD CONFIGS
+UNFOLD = {
+    "SITE_TITLE": "ADMIN SITE",
+    "SITE_HEADER": "BROKER ADMIN",
+    "SIDE_BAR": {"show_all_applications": True},
+    "COLORS": {
+        "primary": {
+            "50": "250 245 255",
+            "100": "243 232 255",
+            "200": "233 213 255",
+            "300": "216 180 254",
+            "400": "192 132 252",
+            "500": "#0ad4a1",
+            "600": "#0ad4a1",
+            "700": "#0ad4a1",
+            "800": "107 33 168",
+            "900": "88 28 135",
+            "950": "#0ad4a1",
+        },
+     "font": {
+            "subtle-light": "var(--color-base-500)",  # text-base-500
+            "subtle-dark": "var(--color-base-400)",  # text-base-400
+            "default-light": "var(--color-base-600)",  # text-base-600
+            "default-dark": "var(--color-base-300)",  # text-base-300
+            "important-light": "var(--color-base-900)",  # text-base-900
+            "important-dark": "var(--color-base-100)",  # text-base-100
+        },
+        
+    },
+}

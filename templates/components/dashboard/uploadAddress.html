@@ -1,0 +1,96 @@
+<section
+  class="fixed top-0 bottom-0 min-h-screen overflow-auto left-0 right-0 py-16 bg-[rgba(0,0,0,.8)] flex justify-center text-sm z-50"
+  x-data="address"
+  x-show="showUploadBill"
+>
+  <!--  -->
+  <!-- form container -->
+  <div
+    class="bg-white rounded-xl h-fit w-1/2 max-md:w-3/4 max-sm:w-11/12 p-10 max-md:p-5 flex flex-col gap-8 relative"
+  >
+    <button
+      @click="showUploadBill=false"
+      class="w-10 h-10 rounded-lg bg-green-200 flex justify-center items-center self-end"
+    >
+      <i class="ri-close-line text-xl"></i>
+    </button>
+    <h1 class="text-xl font-semibold">Verify your address</h1>
+    <p class="text-neutral-700 text-sm">
+      Upload a recent copy (not older than 3 months) of your utility bill which
+      shows your address details
+    </p>
+
+    <form
+      action=""
+      class="flex flex-col gap-10 uploadAddress"
+      @submit="submitAddressRequest"
+    >
+      {%csrf_token%}
+      <fieldset class="flex flex-col gap-5">
+        <label for="" class="text-base font-semibold"
+          >Select utility bill</label
+        >
+        <input
+          type="file"
+          class="bg-transparent border border-neutral-200 p-5 rounded-xl"
+          name="bill"
+          accept=".png,.jpg,.jpeg,.pdf"
+        />
+      </fieldset>
+      <!-- error popup flashcard -->
+      <div
+        class="border border-red-600 p-3 rounded-xl flex items-center gap-4"
+        x-show="error"
+        x-cloak
+        x-transition
+        x-transition.duration.500ms
+      >
+        <i class="ri-error-warning-line text-2xl text-red-600"></i>
+        <span x-text="errorText" class="text-red-600"></span>
+      </div>
+      <button class="bg-main text-neutral-900 p-5 rounded-full text-base">
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("alpine:init", () => {
+      const user = JSON.parse(document.getElementById("user").textContent);
+
+      Alpine.data("address", () => ({
+        showLoader: false,
+        showError: false,
+        errorMessage: "Something went wrong",
+        error: false,
+        errorText: "",
+        user: user,
+        async submitAddressRequest(e) {
+          e.preventDefault();
+          let form = new FormData(document.querySelector(".uploadAddress"));
+          this.showLoader = true;
+          await fetch("/accounts/upload-address", {
+            method: "POST",
+            body: form,
+          })
+            .then((res) => {
+              if (!res.ok) {
+                this.showError = true;
+                return;
+              }
+              return res.json();
+            })
+            .then((data) => {
+              window.location.reload();
+            });
+        },
+        flashError() {
+          this.error = true;
+          setTimeout(() => {
+            this.error = false;
+          }, 2000);
+        },
+      }));
+    });
+  </script>
+</section>

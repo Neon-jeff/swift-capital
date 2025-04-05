@@ -24,13 +24,13 @@
         >{{request.user.profile.trading_profile.name}}
       </span>
 
-      <a href="/accounts/user-expert-profits" class="bg-green-200 text-black px-5 py-3 rounded-lg text-xs"
+      <a href="/accounts/user-expert-profits" class="bg-green-200 text-black px-5 py-2 rounded-lg text-xs"
         >View Expert Profits</a>
     </span>
     {% else %}
     <span class="text-gray-400 text-sm flex flex-col items-center gap-5">
       No expert selected. Checkout copy trader section
-      <a href="{%url 'copy'%}" class="p-5 rounded-full bg-main text-black"
+      <a href="{%url 'copy'%}" class="px-5 py-3 w-full text-center rounded-full bg-black text-white"
         >View Experts</a
       >
     </span>

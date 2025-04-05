@@ -4,7 +4,6 @@
   class="flex flex-col gap-3"
   x-transition
   x-transition.duration.200ms
-  x-show="step3"
 >
   <!-- progress bar full -->
   <!-- <div class="flex flex-col text-base text-gray-200">
@@ -57,17 +56,9 @@
     </span>
   </fieldset> -->
 
-  <div class="flex gap-4 self-end mt-3">
-    <span
-      @click="moveFirst"
-      class="border border-main main px-3 py-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-main"
-    >
-      <ion-icon name="chevron-back-outline"></ion-icon>
-      Back
-    </span>
-
+  <div class="flex gap-4   mt-3">
     <button
-      class="bg-main p-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-black"
+      class="bg-black text-white p-3 w-full border flex items-center gap-2 cursor-pointer justify-center rounded-md "
     >
       Register <ion-icon name="chevron-forward-outline"></ion-icon>
     </button>

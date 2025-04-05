@@ -1,19 +1,15 @@
-<div class="flex justify-end gap-8 items-center w-full text-sm relative">
+<div class="flex justify-end gap-8 items-center w-full text-xs relative">
   <span
-    class="bg-gray-200 rounded-xl py-3 px-5 text-neutral-900 cursor-pointer"
+    class="bg-gray-200 rounded-full text-xs flex items-center py-2 gap-2 px-5 text-neutral-900 cursor-pointer"
     @click="trading_profile=!trading_profile"
   >
-    Expert Profile
+  <i class="ri-user-shared-fill text-base"></i>
+    Expert Profilea
   </span>
 
   <!-- <div class="gtranslate_wrapper " style="position: relative; top: 0 ;" ></div> -->
 
-  <span class="flex items-center relative"
-    ><ion-icon name="notifications" class="text-3xl text-gray-700"></ion-icon>
-    <span class="text-xs absolute text-blue-3 00 top-0 -right-2 font-semibold"
-      >0</span
-    ></span
-  >
+
   <!-- <span class='   gap-3 flex rounded-full  items-center justify-between' @click="profile=!profile">
 <ion-icon name="person" class="text-xl bg-gray-900 p-3 rounded-full text-gray-200 cursor-pointer"></ion-icon>
 <span class="text-xs max-md:hidden">{{request.user.first_name}} {{request.user.last_name}}</span>

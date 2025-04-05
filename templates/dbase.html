@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="/static/images/logo.svg" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link
@@ -41,15 +41,14 @@ input[type=number] {
 
 {% endblock content %}
 
-{%include 'components/dashboard/bottom-nav.html'%}
+
 {%include 'dashboard/trading-profile.html'%}
 {{request.user.profile.serialize|json_script:"user"}}
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq7623b255a96bcbcf4043dd79cab87230d1b2a869a086e6513149fcef53455e2f" defer></script>
 <script>window.gtranslateSettings={default_language:"en",wrapper_selector:".gtranslate_wrapper"}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
 <script src="{%static 'js/fetch-data.js'%}"></script>
 <script>
 // let translate=document.querySelector('#gt_float_wrapper')
@@ -57,7 +56,7 @@ input[type=number] {
 // translate.style='';
     document.addEventListener('alpine:init', () => {     
       const user = JSON.parse(document.getElementById("user").textContent)
-        
+      console.log(user) 
       Alpine.data('general', () => ({
             profile:false,
             trading_profile:false,

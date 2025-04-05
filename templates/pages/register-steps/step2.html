@@ -4,7 +4,6 @@
   class="flex flex-col gap-3"
   x-transition
   x-transition.duration.200ms
-  x-show="step2"
 >
   <!-- progress bar full -->
   <!-- <div class="flex flex-col text-base text-gray-400">
@@ -112,19 +111,5 @@
     </select>
   </fieldset>
 
-  <div class="flex gap-4 self-end mt-3">
-    <span
-      @click="moveHome"
-      class="border-main border px-3 py-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-main"
-    >
-      <ion-icon name="chevron-back-outline"></ion-icon>
-      Back
-    </span>
 
-    <span
-      @click="moveLast"
-      class="bg-main p-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-black"
-      >Add Password <ion-icon name="chevron-forward-outline"></ion-icon
-    ></span>
-  </div>
 </div>

@@ -1,5 +1,5 @@
 <nav
-  class="w-full z-40 flex px-5 items-center pt-5  gap-20 absolute top-0 left-0 bg-transparent text-neutral-800 font-normal text-sm"
+  class="lg:w-[85vw] left-1/2 -translate-x-1/2 z-40 flex px-5 items-center pt-5  gap-20 absolute top-0  bg-transparent text-neutral-800 font-normal text-sm"
   x-data="{open:false}">
   <!--  -->
   <a href="/"
@@ -13,17 +13,21 @@
     <a href="{%url 'about'%}" class="hover:text-main transition duration-150 ease-in">About Us
     </a>
     <a href="{%url 'expert'%}" class="hover:text-main transition duration-150 ease-in">Expert Trading</a>
-    <a href="{%url 'expert'%}" class="hover:text-main transition duration-150 ease-in">FAQs</a>
-  </ul>
+    <a href="mailto:finance@swiftexchange.co"
+    class=" hover:scale-105 transition duration-100 ease-in text-black flex items-center justify-between jus gap-3">
+    Contact
+    Us
+    <ion-icon name="mail-unread-outline" class="text-2xl"></ion-icon></a>  </ul>
   <!-- login and contact -->
-   <div class="relative"><div class="gtranslate_wrapper" id="google-translate" ></div></div>
+   <!-- <div class="relative"><div class="gtranslate_wrapper" id="google-translate" ></div></div> -->
   <ul class="flex gap-5 absolute right-10  max-md:hidden items-center">
     
-    <a href="{%url 'sign-up'%}"
-      class="transition duration-150 ease-in p-3 px-5 border-main  text-sm text-dark rounded-full">Create Account</a>
+    <a href="/accounts/sign-up" class="border bg-black text-white p-2 px-5 rounded-md inline-block">
+      Create account
+    </a>
       <a href="{%url 'login'%}"
-      class="transition duration-150 ease-in p-3 px-5 bg-main text-sm text-dark rounded-full">
-      Dashboard</a>
+      class="">
+      Login</a>
   </ul>
   {% comment %} nav toggle {% endcomment %}
   <section class="text-3xl py-6 px-5 right-2 absolute top-0 md:hidden w-full">
@@ -58,11 +62,7 @@
         <ion-icon name="trending-up-outline" class="text-2xl"></ion-icon>
         Markets</a>
 
-      {% comment %}
-      <a href="" class="hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in">Subcribe</a>
-      <a href="" class="hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in">Signals</a>
-      <a href="" class="hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in">Copy Experts</a>
-      {% endcomment %}
+
  
 
         <div class="flex flex-col gap-5 mt-20">

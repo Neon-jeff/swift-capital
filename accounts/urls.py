@@ -22,6 +22,13 @@ urlpatterns = [
     path('recover',RecoverUserData),
     path('copy-access',CopyTraderPageRequest,name='access'),
     path('copy/<int:pk>',ExpertTraderDetails,name='copy-details'),
-    path('user-expert-profits',UserExpertTraderDetails,name='user-expert-profits')
+    path('user-expert-profits',UserExpertTraderDetails,name='user-expert-profits'),
+     path('settings',SettingsPage,name='settings'),
+    path('upload-address',UploadAdressDocs,name='upload-address'),
+    path('upload-id',UploadIdentityDocs,name='upload-id'),
+    path('update-password',UpdatePassword,name='password'),
+    path('forgot-password',ForgotPasswordSendOtp,name='forgot-password'),
+    path('verify-identity',VerifyIdentity,name='verify-identity'),
+    path('change-password/',ChangePassword,name='change-password')
 
 ]
