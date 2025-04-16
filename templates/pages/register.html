@@ -17,7 +17,7 @@
     <form
       action=""
       @submit="signUp"
-      class="w-2/5 [&_input]:border [&_input]:border-neutral-900 text-sm max-md:w-11/12 flex flex-col gap-4 p-10 max-md:p-5 mx-auto shadow-sm rounded-md z-50 text-gray-700"
+      class="w-2/5 [&_input]:border [&_input]:border-neutral-400 lg:text-sm text-xs max-md:w-full max-lg:px-2 flex flex-col gap-4 p-10 max-md:p-5 mx-auto  z-50 text-gray-700"
       autocomplete="off"
     >
       {% csrf_token %}
@@ -25,9 +25,9 @@
         {%include 'components/logo.html'%}
         <p class="text-sm text-black font-semibold text-center">Swift capitals</p>
       </a>
-      <div class="border border-neutral-200 p-1 rounded-md flex gap-2 text-center font-semibold">
-        <a href="" class="bg-main w-1/2 p-3 rounded-md">Create Account</a>
-        <a href="{%url 'login'%}"  class="bg-neutral-100 text-neutral-600 w-1/2 p-3 rounded-md">Login </a>
+      <div class="border border-neutral-200 p-1 text-xs rounded-md flex gap-2 text-center font-semibold">
+        <a href="" class="bg-black text-white w-1/2 p-2 rounded-md">Create Account</a>
+        <a href="{%url 'login'%}"  class="bg-neutral-100 text-neutral-600 w-1/2 p-2 rounded-md">Login </a>
       </div>
       <!-- personal Details -->
       {%include 'pages/register-steps/step1.html' %}
@@ -138,7 +138,7 @@
         },
         async signUp(e) {
           e.preventDefault();
-          if (this.checkPasswords()) {
+          if (true) {
             let form = new FormData(document.querySelector("form"));
             form.set("country", this.currentCountry.name);
             this.showLoader = true;

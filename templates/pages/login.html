@@ -10,28 +10,30 @@
     <section class='w-full relative'>
 
             
-        <form action="" method="post" class='w-2/5 text-sm   max-md:w-11/12 flex flex-col gap-4  max-md:mt-0 p-10 max-md:p-5 mx-auto  bg-transparent shadow-sm   rounded-md z-50 text-gray-700' autocomplete="off">
+        <form action="" method="post" class='w-2/5 text-xs lg:text-sm [&_input]:border-neutral-400   max-md:w-11/12 flex flex-col gap-4  max-md:mt-0 p-10 max-md:p-5 mx-auto rounded-md z-50 text-gray-700' autocomplete="off">
                              <a href="/" class="self-center flex flex-col items-center">
         {%include 'components/logo.html'%}
         <p class="text-sm text-black font-semibold text-center">Swift capitals</p>
       </a>
 
             {% csrf_token %}
-            <div class="border border-neutral-200 p-1 text-xs rounded-md flex gap-2 text-center font-semibold">
-                <a href="/accounts/sign-up" class="bg-neutral-100 text-neutral-600 w-1/2 p-3 rounded-md">Create Account</a>
-                <a href="{%url 'login'%}"  class=" bg-main  w-1/2 p-3 rounded-md">Login </a>
+            <div class="border border-neutral-200 text-xs p-1  rounded-md flex gap-2 text-center font-semibold">
+                <a href="/accounts/sign-up" class="bg-neutral-100 text-neutral-600 w-1/2 p-2 rounded-md">Create Account</a>
+                <a href="{%url 'login'%}"  class=" bg-black text-white  w-1/2 p-2 rounded-md">Login </a>
               </div>
+              <fieldset class='flex gap-2 flex-col'>
             <label for="email">Email</label>
-            <input type="email" name="email" class='p-3 rounded-md border border-nuetral-900 active:border-[1px] bg-transparent ' placeholder="Your Email">
+            <input type="email" name="email" class='p-2 rounded-md border border-neutral-900 active:border-[1px] bg-transparent ' placeholder="Your Email">
         </fieldset>
-        <fieldset class='flex gap-5 flex-col'>
+        <fieldset class='flex gap-2 flex-col'>
             <label for="">Password</label>
            <span class="relative bg-transparent border  rounded-md" >
-            <input type="password" name="password" class='p-3 rounded-md w-full bg-transparent password '  placeholder="Your Password" >
+            <input type="password" name="password" class='p-2 rounded-md w-full border-neutral-900 bg-transparent password '  placeholder="Your Password" >
             <span class="password-toggle absolute right-5 top-1/2 -translate-y-1/2 p-1 text-xs text-white rounded-md cursor-pointer bg-black ">Show</span>
-           </span>        </fieldset>
+           </span>        
+        </fieldset>
          <a href="/accounts/forgot-password" class='text-end text-main cursor-pointer'>Forgot Your Password?</a>
-        <button class='bg-black p-3 rounded-md mt-5  w-full border text-white'>Login</button>
+        <button class='bg-main p-3 rounded-full mt-5  w-full border text-white'>Login</button>
        
     </form>
     </section>

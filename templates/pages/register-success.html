@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block content %}
 
 <section
-  class="h-[100vh]  text-sm max-md:px-10 flex text-black justify-center items-center"
+  class="h-[100vh]  text-sm max-md:px-2 flex text-black justify-center items-center"
 >
     {% include "components/alerts.html" %}
   <section
-    class="bg-white  flex flex-col gap-2 items-center w-1/2 max-md:w-full p-10 rounded-md"
+    class="bg-white border border-gray-100/60 bg-gray-100/30  flex flex-col gap-2 items-center w-1/3 max-md:w-full p-10 rounded-md"
   >
     <!-- verify icon success -->
     <!-- <lord-icon
@@ -33,16 +33,16 @@
      Verify Your Email
       </h1>
       <p class="text-xs">enter the 6 digit otp sent to your inbox</p>
-      <input type="text" inputmode="numeric" class="border border-neutral-900 mt-5 rounded-md p-3 bg-transparent" placeholder="enter">
+      <input type="text" inputmode="numeric" class="border border-neutral-500 block w-full mt-5 rounded-md p-3 bg-transparent" placeholder="enter otp code">
       
       <p>Didn't get your otp? <a href="{%url 'resend'%}" class="text-main font-semibold">Resend OTP</a></p>
     </div>
 
-    <div class=" mt-10 flex gap-2 items-center flex-col">
-      <a href="" class="bg-main text-black p-3 px-5 rounded-full otp"
+    <div class=" mt-10 flex gap-2 items-center w-full text-center flex-col">
+      <a href="" class="bg-main text-white block p-3 px-5 w-full rounded-full otp"
         >Verify Email</a
       >
-       <!-- <span>Done Verifying?</span> -->
+       <span class="text-xs text-gray-500">Done Verifying?</span>
     </div>
   </section>
   <script>
