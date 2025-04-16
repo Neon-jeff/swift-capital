@@ -5,53 +5,47 @@
   <!--  -->
   {%include 'components/nav.html'%}
   <!-- header section -->
-  <section  class=" lg:h-screen w-full z[-1] px-3 lg:pt-40 pt-20  ">
-    <div class="lg:space-y-10  w-full lg:w-[85vw] rounded-3xl lg:h-full  mx-auto lg:pl-20 bg-gray-50 flex max-lg:flex-col items-center justify-between relative py-10 max-md:px-5  overflow-clip ">
-    <div>
-    <h1 class="text-6xl text-left max-lg:text-4xl text-black  font-bold">
-        <span class="text-xs  w-fit font-medium text-gray-400 p-2 px-5 bg-gray-100 border border-gray-100 rounded-full mb-1 flex justify-center items-center gap-2 ">
+  <section  class="  w-full bg-black rounded-b-[50px] z[-1] px-3 lg:pt-20 pt-40 pb-20  ">
+    <div class="lg:space-y-10  w-full lg:w-[85vw] rounded-3xl lg:h-full  mx-auto   flex flex-col max-lg:flex-col items-center justify-between relative py-10 max-md:px-5  overflow-clip ">
+    <div class="flex flex-col items-center">
+    <h1 class="text-6xl animate-herotext  text-center max-lg:text-4xl text-gray-300  font-semibold">
+        <span class="text-xs mx-auto w-fit font-medium text-green-300/60 p-2 px-5 bg-green-200/10 border border-green-300/20 rounded-full mb-1 flex justify-center items-center gap-2 ">
          <div class="w-3 h-3 animate-pulse rounded-full bg-green-500/20 flex items-center justify-center">
          <div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
-          </div> maximize your potential</span>
+          </div> Prop trading made easy</span>
           Elevate your trading to <br />
         <span class="text-main-500">a new experience</span>
       </h1>
-      <p class="  pt-4 text-gray-600 max-xl:text-sm">
+      <p class="animate-herotext text-center pt-4 text-gray-400 max-xl:text-sm">
         Trade CFDs and Options on global financial markets, <br class="max-md:hidden" /> all in one
         place with 24/7 trading and worldwide support.
       </p>
 
-      <a href='/accounts/sign-up' class=" inline-block bg-black text-white p-2 px-5 mt-10 border rounded"> <button class="">Open Account</button></a>
+      <a href='/accounts/sign-up' class=" inline-block mx-auto bg-gray-700/40 text-gray-300 p-2 px-5 mt-10 border border-gray-700/30 rounded-full"> <button class="">Start trading now</button></a>
     </div>
-    <img src='/static/images/phone-chart.png' alt="Apex finance hero image " class="mix-blend-multiply translate-y-20 lg:w-1/2"/>
+    <img src='/static/images/blob-hero.png' alt="Swift capitals hero image " class="h-[300px] object-contain"/>
     <div class="w-56 h-56 absolute bg-main-500/40 right-1/4 -top-24 blur-[100px] rounded-full "></div>
     </div>
 
-  </section>
-  <!-- header section ends -->
 
-  <!-- rating and intro section -->
-  <section class="bg-white max-md:px-5 max-md:hidden lg:mb-20 mb-10 relative">
-    <!-- <h1 class="text-3xl font-semibold text-center">
-      Our growing numbers tells our story
-    </h1> -->
-    <!-- rating container -->
+
+
     <div
-      class="w-4/5  text-dark p-10 rounded-xl max-md:w-11/12 mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between text-xs max-md:hidden  bg-opacity-90 backdrop-blur-xl top-0 max-sm:divide-x-0 *:max-sm:p-0 ">
+      class="w-4/5 bg  text-gray-400 p-10 rounded-xl max-md:w-11/12 mx-auto flex max-sm:grid max-sm:gap-8 gap-10 max-md:grid-cols-2 justify-between text-xs  max-sm:divide-x-0 *:max-sm:p-0 ">
       <div class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center">
-        <span class="text-3xl max-sm:text-xl  font-bold">227K</span>
+        <span class="text-3xl max-sm:text-xl  text-gray-100 font-bold">227K</span>
         <span>Registered Active Users</span>
       </div>
       <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
-        <span class="text-3xl max-sm:text-xl ma font-bold">197+</span>
+        <span class="text-3xl max-sm:text-xl text-gray-100 ma font-bold">197+</span>
         <span>Countries supported worldwide</span>
       </div>
       <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
-        <span class="text-3xl max-sm:text-xl ma font-bold">10+</span>
+        <span class="text-3xl max-sm:text-xl text-gray-100 ma font-bold">10+</span>
         <span>Trading Currencies</span>
       </div>
       <div class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center">
-        <span class="text-3xl max-sm:text-xl ma font-bold">99.99%</span>
+        <span class="text-3xl max-sm:text-xl text-gray-100 ma font-bold">99.99%</span>
         <span>Trading Profit Payout</span>
       </div>
     </div>
@@ -59,15 +53,18 @@
     <!-- intro container -->
 
     <!-- intro container ends -->
+
   </section>
-  <!-- intro and rating ends -->
+  <!-- header section ends -->
+
+
 
   <!-- feature starts -->
   <div class=" lg:py-24 py-10 ">
     <div class="mx-auto lg:w-[85vw] px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-pretty text-2xl font-semibold tracking-tight text-black sm:text-5xl">All you need for a smooth trading experience</h2>
-        <p class="mt-6 text-lg/8 text-gray-600">Trade CFDs and Options on global financial markets,
+        <h2 class="text-pretty text-2xl font-semibold tracking-tight text-black sm:text-4xl">All you need for a smooth trading experience</h2>
+        <p class="mt-6 text-gray-600">Trade CFDs and Options on global financial markets,
           all in one place with 24/7 trading and worldwide support.</p>
       </div>
       <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -79,7 +76,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 0 1 2.012 1.244l.256.512a2.25 2.25 0 0 0 2.013 1.244h3.218a2.25 2.25 0 0 0 2.013-1.244l.256-.512a2.25 2.25 0 0 1 2.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 0 0-2.15-1.588H6.911a2.25 2.25 0 0 0-2.15 1.588L2.35 13.177a2.25 2.25 0 0 0-.1.661Z" />
                 </svg>
               </div>
-              Dependable
+              Dependable Platform
             </dt>
             <dd class="mt-1 flex flex-auto flex-col text-base/7 text-gray-600">
               <p class="flex-auto">Our 99.97% uptime ensures your uninterrupted access to the markets.</p>
@@ -92,21 +89,21 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                 </svg>
               </div>
-              Expert community
+              Copy trading community
             </dt>
             <dd class="mt-1 flex flex-auto flex-col text-base/7 text-gray-600">
               <p class="flex-auto">We’re regulated and licensed by global financial authorities.</p>
             </dd>
           </div>
           <div class="flex flex-col">
-            <dt class="text-base/7 font-semibold text-white">
+            <dt class="text-base/7 font-semibold text-black">
               <div class="mb-6 flex size-10 items-center justify-center rounded-lg bg-main">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
                 </svg>
                 
               </div>
-              Secured policies
+              Secured trading policies
             </dt>
             <dd class="mt-1 flex flex-auto flex-col text-base/7 text-gray-600">
               <p class="flex-auto">We keep your personal data and funds safe as part of our core obligations.</p>
@@ -169,23 +166,23 @@
   <section class="bg-white mt-20  min-h-screen">
     <div class="lg:w-[85vw] mx-auto flex max-md:flex-col pb-20 max-md:px-5 gap-10 items-start  xl:w-3/5">
       <div class="lg:w-1/2 overflow-clip relative">
-        <div class="bg-white/80 absolute max-md:w-3/4 border-white/95 top-5 text-xs lg:left-5 left-2 p-5 rounded-lg">
-          <p class="font-semibold pb-1 text-sm flex gap-1 text-green-600 items-center"><i class="ri-account-pin-box-fill text-lg"></i> Customer</p>
+        <div class="bg-white/80 absolute max-md:w-3/4 border-white/95 top-5 text-xs lg:left-5 left-2 p-2 rounded-lg">
+          <p class="font-semibold pb-1 text-sm flex gap-1 text-black items-center"><i class="ri-account-pin-box-fill text-lg"></i> Customer</p>
           <p>How can i transfer between wallets?</p>
         </div>
-        <div class="bg-white/80 max-md:w-3/4 absolute border-white/95 bottom-5 text-xs right-2 lg:right-5 p-5 rounded-lg">
-          <p class="font-semibold pb-1 text-sm flex gap-1 text-blue-600 items-center"><i class="ri-customer-service-fill text-lg"></i> Support</p>
+        <div class="bg-white/80 max-md:w-3/4 absolute border-white/95 bottom-5 text-xs right-2 lg:right-5 p-2 rounded-lg">
+          <p class="font-semibold pb-1 text-sm flex gap-1 text-black items-center"><i class="ri-customer-service-fill text-lg"></i> Support</p>
           <p>Our support team will email an assistance right away</p>
         </div>
-        <img src="/static/images/call-center.jpeg" class="w-full object-cover rounded-3xl  h-[500px]" alt="Apex finance support">
+        <img src="/static/images/call-center.jpeg" class="w-full object-cover rounded-3xl  h-[500px]" alt="Swift capitals support">
       </div>
       <div class=" lg:w-1/2 ">
         <h1 class=" pb-4 text-3xl max-md:text-2xl font-semibold">
           24/7 Customer support
         </h1>
         <p>Our dedicated support team is available 24/7 to assist you with any questions or issues—anytime, anywhere. Enjoy responsive help via live chat, email, or phone to ensure a smooth and reliable trading experience around the clock.</p>
-        <a href="/accounts/register" class="border bg-black text-white p-2 mt-5 px-5 rounded inline-block">
-          Get started now
+        <a href="/accounts/register" class=" bg-main text-white p-2 mt-5 px-5 rounded-full inline-block">
+          Contact us
         </a>
         <!-- <template x-for="coin in crypto">
           <div class="flex items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl">
@@ -198,25 +195,84 @@
     </div>
   </section>
 
+    <!-- portfolio trader explained -->
+    <div
+    class="pb-10  max-md:px-5 xl:w-3/5 lg:w-[85vw] mx-auto text-dark flex flex-row-reverse max-sm:flex-col relative items-start max-md:gap-10 gap-20 justify-center">
+    <!-- blob stick div -->
+
+    <img src="/static/images/copy-trader.jpeg" class="w-1/2  max-md:w-full object-cover rounded-3xl h-[500px]"/>
+    <div class="flex flex-col gap-1 text-dark text-sm">
+      <h1 class="text-4xl max-md:text-2xl font-semibold text-dark mt-3 mb-5">
+        Boost your trading perfomance with copy trading
+
+      </h1>
+      <span class=" text-neutral-600 max-md:w-full">
+        Copy trading allows you to automatically replicate the trades of top-performing investors. Perfect for beginners or busy traders, it offers real-time syncing, performance tracking, and risk management tools—giving you the power to grow your portfolio with expert strategies.
+      </span>
+      <a href="{%url 'sign-up'%}"
+        class="  bg-main text-white text-sm px-5 py-2 rounded-full   mt-5 w-fit block">Start
+        Copy Trading</a>
+    </div>
+  </div>
+
+  <!-- copy trader explain ends -->
+
   <!-- markets end -->
+
+
+  <section class="place-items-center   lg:w-[85vw] xl:w-3/5 py-10 rounded-3xl px-2 mx-auto lg:space-y-10 my-20 bg-gray-50">
+    <h1 class="text-4xl max-md:text-2xl text-center font-bold">Begin in simple steps</h1>
+    <div class="flex gap-5 text-center items-center max-md:flex max-md:flex-col max-md:items-center max-md:gap-10">
+    <div class="space-y-2  place-items-center">
+      <p
+        class="w-20 text-2xl font-bold h-20 flex justify-center items-center rounded-full bg-gray-50 text-main"
+      >
+        1
+      </p>
+      <p class="font-bold text-xl">Register</p>
+      <p class='max-md:w-3/5 max-md:text-center'>Create your account in a matter of minutes.</p>
+    </div>
+    <div class="w-[200px] h-1 bg-gray-100"></div>
+    <div class="space-y-2 place-items-center">
+      <p
+        class="w-20 text-2xl font-bold h-20 flex justify-center items-center rounded-full bg-gray-50 text-main"
+      >
+        2
+      </p>
+      <p class="font-bold text-xl">Fund</p>
+      <p class='max-md:w-3/5 max-md:text-center'>Fund your account using our flexible payment methods</p>
+    </div>
+    <div class="w-[200px] h-1 bg-gray-100"></div>
+    <div class="space-y-2 place-items-center">
+      <p
+        class="w-20 text-2xl font-bold h-20 flex justify-center items-center rounded-full bg-gray-50 text-main"
+      >
+        3
+      </p>
+      <p class="font-bold text-xl">Trade</p>
+      <p class='max-md:w-3/5 max-md:text-center'>Start trading and explore a world of endless opportunities.</p>
+    </div>
+  </div>
+  </section>
+  <!-- steps end -->
 
   <!-- supported plaforms start -->
 
-  <div class="p-20 px-10 lg:px-20 max-md:px-5 mx-auto  rounded-2xl flex max-md:flex-col-reverse  gap-10 lg:w-[85vw] bg-gray-50">
+  <div class="p-20 px-10 lg:px-20 max-md:px-5 mx-auto  rounded-2xl flex max-md:flex-col-reverse  gap-10 lg:w-[85vw] bg-black text-gray-400">
     <div class="grid  overflow-clip grid-cols-3 max-md:grid-cols-3 gap-5">
       <template x-for="wallet in wallets">
-        <div class="p-5 rounded-xl cursor-pointer flex flex-col-reverse gap-2 justify-center w-full  bg-white">
-          <span x-text="wallet.name" class="text-xs"></span>
+        <div class="p-5 rounded-xl cursor-pointer flex flex-col-reverse gap-2 justify-center w-full  bg-neutral-900/40">
+          <span x-text="wallet.name" class="text-xs text-gray-400"></span>
           <img :src="wallet.logo" alt="" class="h-8 w-8 object-contain rounded-full max-md:w-6 max-md:h-6" />
         </div>
       </template>
     </div>
     <div class="lg:w-1/2 space-y-5">
-      <h1 class="lg:text-4xl text-2xl font-semibold ">Multiple wallet support</h1>
+      <h1 class="lg:text-4xl text-2xl font-semibold text-gray-200 ">Multiple wallet support</h1>
       <p>
         Easily connect and manage multiple wallets on our platform. Enjoy seamless trading, secure transactions, and full control over your assets—whether you're using MetaMask, WalletConnect, or hardware wallets. Stay flexible and in charge of your crypto journey.
       </p>
-      <a href="/accounts/register" class="border bg-black text-white p-2 px-5 rounded inline-block">
+      <a href="/accounts/register" class=" bg-main text-white p-2 px-5 rounded-full inline-block">
         Create account
       </a>
     </div>
@@ -236,7 +292,7 @@
         Copy Trading, A Trading Superpower
       </h1>
       <span class="font-light text-neutral-400 w-1/2 max-md:w-full">
-        With Apex finance innovative CopyTrader™, you can automatically copy the
+        With Swift capitals innovative CopyTrader™, you can automatically copy the
         moves of other investors. Find investors you believe in and replicate
         their actions in real time.
       </span>
@@ -250,27 +306,7 @@
 
 
 
-  <!-- portfolio trader explained -->
-  <div
-    class="py-10  max-md:px-5 w-4/5 mx-auto text-dark flex max-sm:flex-col-reverse relative items-center max-md:gap-10 gap-20 justify-center">
-    <!-- blob stick div -->
 
-    <img src="/static/images/side.png" class="w-1/2 max-md:scale-110 max-md:w-full max-md:object-cover rounded-3xl"/>
-    <div class="max-md:text-center flex flex-col gap-1 text-dark text-sm">
-      <h1 class="text-4xl max-md:text-2xl font-semibold text-dark mt-3 mb-10">
-        Boost your trading perfomance with copy trading
-
-      </h1>
-      <span class="font-light text-neutral-400 max-md:w-full">
-        Copy trading allows you to automatically replicate the trades of top-performing investors. Perfect for beginners or busy traders, it offers real-time syncing, performance tracking, and risk management tools—giving you the power to grow your portfolio with expert strategies.
-      </span>
-      <a href="{%url 'sign-up'%}"
-        class=" text-dark bg-black text-white text-sm px-5 py-3 rounded-full max-md:mx-auto max-md:hidden mt-5 w-fit block">Start
-        Copy Trading<i class="ri-arrow-right-up-line"></i></a>
-    </div>
-  </div>
-
-  <!-- copy trader explain ends -->
 
     <!-- Reviews -->
     <section
@@ -294,12 +330,12 @@
         class="flex flex-col items-center w-full p-10 border-gray-50 border py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
       >
         <img
-          src="{%static 'images/r4.jpg'%}"
+          src="https://images.pexels.com/photos/3184611/pexels-photo-3184611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="reviewImage"
           class="h-32 w-32 rounded-full object-cover"
         />
         <h1 class="text-base font-medium text-black pb-5 pt-2">
-          "Very Secured Plaform"
+          "Incredible security"
         </h1>
         <p class="">
           The system security is top notch, I was in need of a safe place to
@@ -314,12 +350,12 @@
         class="flex flex-col items-center w-full p-10 border-gray-50 border py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
       >
         <img
-          src="{%static 'images/r2.jpg'%}"
+          src="https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="reviewImage"
           class="h-32 w-32 rounded-full object-cover"
         />
         <h1 class="text-base font-medium text-black pb-5 pt-2">
-          "Very Smooth Sign Up"
+          "The onboarding process as so smooth"
         </h1>
         <p class="">
           Pretty solid so far!. Opening an account was relatively quick which
@@ -334,12 +370,12 @@
         class="flex flex-col items-center w-full p-10 border-gray-50 border py-20 max-md:bg-gray-100 gap-2 rounded-box justify-center"
       >
         <img
-          src="{%static 'images/r1.jpg'%}"
+          src="https://images.pexels.com/photos/1586973/pexels-photo-1586973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="reviewImage"
           class="h-32 w-32 rounded-full object-cover"
         />
         <h1 class="text-base font-medium text-black pb-5 pt-2">
-          "Reliable Expert Options"
+          "Expert traders are top notch"
         </h1>
         <p class="">
           I dont know much about forex or crypto trading, but I simply make
@@ -355,7 +391,7 @@
 
 <div class="bg-white pb-20">
   <div class="mx-auto lg:w-[85vw] px-6 ">
-    <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-2xl">Frequently asked questions</h2>
+    <h2 class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-4xl">Frequently asked questions</h2>
     <dl class="mt-20 divide-y divide-gray-900/10">
       <div class="py-8 first:pt-0 last:pb-0 lg:grid lg:grid-cols-12 lg:gap-8">
         <dt class="text-sm font-semibold text-gray-900 lg:col-span-5"> What can I trade on this platform?</dt>

@@ -19,7 +19,7 @@ module.exports = {
         },
         headHeroText: {
           "0%": {
-            transform: "translate(-500px,0)",
+            transform: "translate(0,-100px)",
             opacity: 0,
           },
           "100%": {
@@ -49,7 +49,7 @@ module.exports = {
       colors: {
         primary: "#06b6d4",
         secondary: "#343a40",
-        main: "#ff7a01",
+        main: "#0b57ef",
         sub: "#0f151c",
         light: "#83d2c0",
         dark: "#000000",
