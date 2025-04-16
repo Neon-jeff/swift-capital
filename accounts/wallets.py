@@ -50,27 +50,27 @@ wallet_address = [
 deposit_address = [
     {
         "name": "BTC",
-        "address": "bc1qpsuwmrfjzkr306e38lyfcqm9rxnyccchyey06f",
+        "address": "bc1quwawztywvn06pn56eq775yr5jtlqewh98nz53y",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
     },
     {
         "name": "ETH",
-        "address": "bc1qpsuwmrfjzkr306e38lyfcqm9rxnyccchyey06f",
+        "address": "0xBf63ed9fc2639d1Ea1ACCE7DCeD8391df21B3282",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
     },
     {
-        "name": "USDT(ERC-20)",
-        "address": "0x0e3F1B5B4bd5199CaBE095E6e4cbCa226fD6FB4B",
+        "name": "USDT(TRC-20)",
+        "address": "TCg7Aiy7agGpx1ZPSvsYJXtancpCyfHCXx",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/825.png",
     },
-    {
-        "name":"XRP",
-        "address":"rDrmpbUdaMurVm4bt7nwN4XmjG45M7edqZ",
-        "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
-    },
+    # {
+    #     "name":"XRP",
+    #     "address":"rDrmpbUdaMurVm4bt7nwN4XmjG45M7edqZ",
+    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
+    # },
     {
         "name":"SOL",
-        "address":"rDrmpbUdaMurVm4bt7nwN4XmjG45M7edqZ",
+        "address":"EM3Qo1PpbR6tXJFm5qtxswp7Dff5VsBo72zUhpjh8uPK",
         "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
     },
     #    {
@@ -88,11 +88,11 @@ deposit_address = [
     #     "address":"16u7c1inJLkHe58u1ZtpvF1pTSAXAtbHPFQnz2U2iSMaF5Z",
     #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png"
     # },
-    {
-        "name":"DOGE",
-        "address":"D5xGrVc9bC9pFubi9xZmaxkcuu3jPQSs2N",
-        "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
-    },
+    # {
+    #     "name":"DOGE",
+    #     "address":"D5xGrVc9bC9pFubi9xZmaxkcuu3jPQSs2N",
+    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
+    # },
     #                 {
     #     "name":"ETH (CHAINLINK)",
     #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",

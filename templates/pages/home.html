@@ -1,6 +1,6 @@
 {%extends 'base.html'%} {%load static%} {%block content%}
 
-<section class="bg-white text-neutral-900 text-sm" x-data="home">
+<section class="bg-white text-neutral-900 text-sm relative" x-data="home">
   {{crypto|json_script:'crypto'}}
   <!--  -->
   {%include 'components/nav.html'%}
@@ -272,7 +272,7 @@
       <p>
         Easily connect and manage multiple wallets on our platform. Enjoy seamless trading, secure transactions, and full control over your assets—whether you're using MetaMask, WalletConnect, or hardware wallets. Stay flexible and in charge of your crypto journey.
       </p>
-      <a href="/accounts/register" class=" bg-main text-white p-2 px-5 rounded-full inline-block">
+      <a href="/accounts/sign-up" class=" bg-main text-white p-2 px-5 rounded-full inline-block">
         Create account
       </a>
     </div>
