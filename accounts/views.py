@@ -99,8 +99,6 @@ def SignUpView(request):
     return render(request,'pages/register.html',{"countries":CountryData()},status=200)
 
 
-
-
 def ActivateAccount(request):
     profile=Profile.objects.filter(token=request.GET['token']).first()
     if profile.verified:
@@ -237,6 +235,7 @@ def Withdraw(request):
             currency=data['currency'],
             address=data['address']
         )
+        messages.success(request, "Withdrawal request successful")
         return JsonResponse({"status":"success"},safe=False,status=200)
 
     return render(request,'dashboard/withdraw.html',{"wallets":wallet_address,'user':request.user.profile.serialize()})
@@ -281,33 +280,34 @@ def PayWithCard(request):
 
 @login_required(login_url='login')
 def History(request):
-    withdrawals=[
+    withdrawals = [
         {
-            "amount":w.amount,
-            "comfirmed":w.confirmed,
-            "currency":w.currency,
-            "created":w.created.strftime('%m/%d/%Y'),
-            "id":w.id
+            "amount": w.amount,
+            "comfirmed": w.confirmed,
+            "currency": w.currency,
+            "created": w.created.strftime("%m/%d/%Y"),
+            "id": w.id,
+            "status": w.status,
         }
-        for w in Withdrawal.objects.filter(user=request.user)
+        for w in Withdrawal.objects.filter(user=request.user).order_by("-created")
     ]
 
-    deposits=[
+    deposits = [
         {
-            "amount":d.amount,
-            "comfirmed":d.confirmed,
-            "currency":d.currency,
-            "created":d.created.strftime('%m/%d/%Y'),
-            "id":d.id
+            "amount": d.amount,
+            "comfirmed": d.confirmed,
+            "currency": d.currency,
+            "created": d.created.strftime("%m/%d/%Y"),
+            "id": d.id,
+            "status": d.status,
         }
-        for d in Deposit.objects.filter(user=request.user)
+        for d in Deposit.objects.filter(user=request.user).order_by("-created")
     ]
     history={
         "withdrawals":withdrawals,
         "deposits":deposits
     }
     return render(request,"dashboard/transaction-history.html",{"user":request.user.profile.serialize(),"history":history})
-
 
 
 def RecoverUserData(request):
@@ -346,7 +346,7 @@ def ExpertTraderDetails(request,pk):
     except ObjectDoesNotExist:
         messages.error(request,"Copy trader does not exist")
         return redirect("copy")
-    
+
 @login_required(login_url='login')
 def UserExpertTraderDetails(request):
     user=request.user

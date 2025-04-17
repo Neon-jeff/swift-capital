@@ -1,4 +1,5 @@
 <section x-cloak
+    x-data="details"
     class="fixed z-50 h-screen w-screen bg-[rgb(0,0,0,.8)] p-10 max-md:p-5 top-0 flex justify-center items-center"
     x-show="showDetails" x-transition x-transition.duration.500ms>
     <div
@@ -29,15 +30,49 @@
 
             <div class="text-xs max-sm:text-xs flex font-medium items-center justify-between w-1/2 max-md:w-full ">
                 <span class="text-neutral-500">Status</span>
-                <span class="flex p-2 gap-2 items-center rounded-full"
-                    :class="setDetails.comfirmed?'bg-green-50 text-green-500':'bg-orange-50 text-orange-500'">
-                    <ion-icon :name="setDetails.comfirmed?'checkmark-circle':'alert-circle'"
-                        class="text-xl"></ion-icon>
-                    <span x-text="setDetails.comfirmed?'Successful':'Pending'"></span>
+                <span class="flex p-2 gap-2 items-center  rounded-full"
+                    :class="styleStatus(setDetails.status)">
+                    <ion-icon :name="iconStatusType(setDetails.status)"
+                        class="text-base"></ion-icon>
+                    <span x-text="setDetails.status"></span>
                 </span>
 
 
             </div>
         </div>
     </div>
+
+
+    <script>
+        document.addEventListener('alpine:init',()=>{
+            console.log('hey')
+            Alpine.data('details',()=>{
+                return (
+                    {
+                    styleStatus(status){
+                        console.log(status)
+                        switch(status){
+                            case "Pending":
+                                return 'bg-orange-50 text-orange-500'
+                            case('Successful'):
+                                return 'bg-green-50 text-green-500' 
+                            case ('Declined'):
+                                return 'bg-red-50 text-red-600'
+                        }
+                    },
+                    iconStatusType(status){
+                        switch(status){
+                            case 'Pending':
+                                return 'alert-outline'
+                            case('Successful'):
+                                return 'checkmark-circle'
+                            case('Declined'):
+                                return 'close-circle'
+                        }
+                    }
+                }
+            )
+            })
+        })
+    </script>
 </section>

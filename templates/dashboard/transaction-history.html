@@ -17,14 +17,14 @@
     <div class="max-md:hidden">{% include "components/path.html" %}</div>
 
     <!-- Transaction toggle button list -->
-    <div class="p-5 bg-gray-50 border border-gray-100 w-2/3 overflow-y-auto max-md:w-full h-full rounded-md text-xs">
+    <div class="p-5 bg-gray-50 relative border border-gray-100 w-2/3 overflow-y-auto max-md:w-full h-full rounded-md text-xs">
       <h1 class="text-base">Transaction History</h1>
       <div class="flex gap-5 text-sm py-5 *:w-fit button-group">
-        <button class="flex items-center gap-2 p-3 rounded-full" @click="currButton='deposits'"
+        <button class="flex items-center gap-2 p-3 py-1.5 rounded-full" @click="currButton='deposits'"
           :class="$el.textContent.trim().toLowerCase()==currButton?'bg-neutral-900 text-neutral-300':'bg-neutral-300 text-neutral-900'">
           <i class="ri-arrow-down-line"></i> Deposits
         </button>
-        <button class="flex items-center gap-2  p-3 rounded-full"
+        <button class="flex items-center gap-2  p-3 py-1.5 rounded-full"
           :class="$el.textContent.trim().toLowerCase()==currButton?'bg-neutral-900 text-neutral-300':'bg-neutral-300 text-neutral-900'"
           @click="currButton='withdrawals'">
           <i class="ri-arrow-up-line"></i>Withdrawals
@@ -33,32 +33,40 @@
 
       <!-- Deposits -->
 
-      <div class="history deposits" x-transition x-transition.duration.500ms x-show="currButton=='deposits'">
-        <span x-show="deposits.length == 0">No Transaction History</span>
+      <div class="history deposits " x-show="currButton=='deposits'">
+        <div x-show="deposits.length == 0" class=" absolute flex flex-col gap-3 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+          <span  class="text-xl">No Deposit History</span>
+          <a href="/accounts/deposit" class="text-white bg-main px-3 text-center py-2 rounded-full"> Make a deposit</a>
+        </div>
         <template x-for="d in deposits" :key="d.id">
           <div class="flex justify-between bg-gray-100 border border-gray-200 p-5 rounded-md my-5" @click="setDetails=d;showDetails=true">
             <span x-text="d.currency"></span>
             <span x-text="d.created"></span>
             <span x-text="'$'+d.amount"></span>
             <!-- check for confirmation here -->
-            <ion-icon name="alert-circle" x-show="!d.comfirmed" class="text-orange-400 text-xl"></ion-icon>
-            <ion-icon name="checkmark-circle" x-show="d.comfirmed" class="text-green-400 text-xl"></ion-icon>
+            <ion-icon name="alert-circle" x-show="d.status === 'Pending'" class="text-orange-400 text-xl"></ion-icon>
+            <ion-icon name="checkmark-circle" x-show="d.status === 'Successful" class="text-green-400 text-xl"></ion-icon>
+            <ion-icon name="close-circle" x-show="d.status === 'Successful" class="text-red-400 text-xl"></ion-icon>
           </div>
         </template>
       </div>
 
       <!-- withdrawals -->
 
-      <div class="history withdrawals" x-transition x-transition.duration.500ms x-show="currButton=='withdrawals'">
-        <span x-show="withdrawals.length == 0">No Withdrawal History</span>
+      <div class="history withdrawals" x-show="currButton=='withdrawals'">
+        <div x-show="withdrawals.length == 0" class=" absolute flex flex-col gap-3 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+          <span  class="text-xl">No Withdrawal History</span>
+          <a href="/accounts/withdraw" class="text-white bg-main px-3 text-center py-2 rounded-full"> Make a withdrawal </a>
+        </div>
         <template x-for="w in withdrawals" :key="w.id">
           <div class="flex justify-between bg-gray-100 border border-gray-200  p-5 rounded-md my-5" @click="setDetails=w;showDetails=true">
             <span x-text="w.currency"></span>
             <span x-text="w.created"></span>
             <span x-text="'$'+w.amount"></span>
             <!-- check for confirmation here -->
-            <ion-icon name="alert-circle" x-show="!w.comfirmed" class="text-orange-400 text-xl"></ion-icon>
-            <ion-icon name="checkmark-circle" x-show="w.comfirmed" class="text-green-400 text-xl"></ion-icon>
+            <ion-icon name="alert-circle" x-show="w.status === 'Pending'" class="text-orange-400 text-xl"></ion-icon>
+            <ion-icon name="checkmark-circle" x-show="w.status === 'Successful'" class="text-green-400 text-xl"></ion-icon>
+            <ion-icon name="close-circle" x-show="w.status === 'Declined'" class="text-red-400 text-xl"></ion-icon>
           </div>
         </template>
       </div>
@@ -80,7 +88,7 @@
         item.type = 'withdrawal'
         return item
       })
-      console.log(deposits);
+      console.log(withdrawals);
       
       Alpine.data("assets", () => ({
         currButton: 'deposits',
