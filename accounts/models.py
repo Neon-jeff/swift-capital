@@ -171,16 +171,24 @@ class Deposit(models.Model):
     proof = CloudinaryField("image", blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     confirmed = models.BooleanField(blank=True, null=True, default=False)
-
+    status = models.CharField(choices=(
+        ("Pending","Pending"),
+        ("Successful","Successful"),
+        ("Declined","Declined")
+        ),
+        max_length=30,
+        default="Pending"
+        )
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} {self.currency} Deposit "
 
     # automatically update balance
     def save(self, *args, **kwargs):
-        if self.confirmed:
+        if self.status == "Successful" and not self.confirmed:
             self.user.profile.dollar_balance = (
                 self.user.profile.dollar_balance + self.amount
             )
+            self.confirmed = True
             self.user.profile.save()
         super(Deposit, self).save(*args, **kwargs)
 
@@ -198,15 +206,23 @@ class Withdrawal(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     confirmed = models.BooleanField(blank=True, null=True, default=False)
     address = models.CharField(blank=True, max_length=100, null=True)
-
+    status = models.CharField(choices=(
+        ("Pending","Pending"),
+        ("Successful","Successful"),
+        ("Declined","Declined")
+        ),
+        max_length=30,
+        default="Pending"
+        )
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} Withdrawal Request"
 
     def save(self, *args, **kwargs):
-        if self.confirmed:
+        if self.status == "Successful" and not self.confirmed:
             self.user.profile.dollar_balance = (
                 self.user.profile.dollar_balance - self.amount
             )
+            self.confirmed = True
             self.user.profile.save()
         super(Withdrawal, self).save(*args, **kwargs)
 

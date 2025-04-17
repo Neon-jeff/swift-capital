@@ -129,11 +129,11 @@
             },
                         async submitForm(e){
                 e.preventDefault()
-                if((parseInt(user.dollar_balance)+parseInt(user.profit)) < 2000){
-                    this.errorMessage="Balance of $2,000 required for Withdrawals"
-                    this.showError=true
-                    return
-                }
+                // if((parseInt(user.dollar_balance)+parseInt(user.profit)) < 2000){
+                //     this.errorMessage="Balance of $2,000 required for Withdrawals"
+                //     this.showError=true
+                //     return
+                // }
                 form.set('amount',e.target.amount.value)
                 form.set('address',e.target.address.value)
                 form.set('currency',this.currentCoin.name)

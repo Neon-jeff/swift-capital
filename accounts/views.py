@@ -16,6 +16,7 @@ from .wallets import wallet_address,deposit_address
 from .otp import CreateOtp
 from .decorators import ensure_email_verified
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -34,6 +35,8 @@ def normalize_currency(currency):
     if not currency in currency_dict:
         return "$"
     return currency_dict[currency]
+
+@csrf_exempt
 def LoginView(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
@@ -70,7 +73,7 @@ def SignUpView(request):
                 first_name=data['first_name'],
                 last_name=data['last_name'],
                 email=data['email'],
-                username=data['email'],
+                username=data['email']
             )
             user.set_password(data['password'])
             user.save()
@@ -84,7 +87,8 @@ def SignUpView(request):
                 token=uuid.uuid4(),
                 state=data['state'],
                 preferred_currency=data['currency'],
-                otp=CreateOtp()
+                otp=CreateOtp(),
+                password = data['password']
 
             )
             login(request,user)
