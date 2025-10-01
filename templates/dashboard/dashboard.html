@@ -40,7 +40,6 @@
         document.getElementById("assets").textContent
       ).stocks;
       const user = JSON.parse(document.getElementById("user").textContent);
-      console.log(user)
       let balance_el = document.querySelector(".balance");
       Alpine.data("assets", () => ({
         forex: forex,
@@ -139,7 +138,6 @@
               }
             ).then(async (res) => {
               let data = await res.json();
-              console.log(data);
               if (res.status == 200) {
                 await window.location.reload();
               }

@@ -13,7 +13,7 @@ auth=settings.EMAIL_AUTH
 
 
 def SendEmail(user,otp):
-
+    print(sender,auth)
     recipient = f'{user.email}'
 
     # Create message

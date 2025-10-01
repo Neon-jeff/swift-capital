@@ -17,6 +17,7 @@ from .otp import CreateOtp
 from .decorators import ensure_email_verified
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 # Create your views here.
 
 
@@ -38,6 +39,7 @@ def normalize_currency(currency):
 
 @csrf_exempt
 def LoginView(request):
+    print(settings.EMAIL_AUTH)
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.method=="POST":
@@ -249,7 +251,7 @@ def CopyTrades(request):
             "wins":expert.wins,
             "losses":expert.losses,
             "profit_share":expert.profit_share,
-            "image":expert.image.url,
+            "image":expert.image.url if expert.image else "",
             "copy_amount":expert.copy_amount,
             "id":expert.id,
             "followers":expert.followers
@@ -260,6 +262,7 @@ def CopyTrades(request):
         expert_id=request.GET["copy"]
         if request.user.profile.trading_profile == CopyTrader.objects.filter(id=expert_id).first():
             request.user.profile.trading_profile=None
+            request.user.profile.save()
             return JsonResponse({"status":"success"},safe=False)
         request.user.profile.trading_profile=CopyTrader.objects.filter(id=expert_id).first()
         request.user.profile.save()
@@ -338,7 +341,7 @@ def ExpertTraderDetails(request,pk):
         expert_trader=CopyTrader.objects.get(id=pk)
         expert_trades=ExpertTrade.objects.filter(expert=expert_trader)
         context={
-            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url},
+            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url if expert_trader.image else ""},
             "user":request.user.profile.serialize(),
             "trades":[{**model_to_dict(trade),"expert":expert_trader.name,"date":trade.created }for trade in expert_trades]
         }
@@ -357,7 +360,7 @@ def UserExpertTraderDetails(request):
     try:
         expert_trader=CopyTrader.objects.get(id=expert_trader_id.id)
         context={
-            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url},
+            "expert":{**model_to_dict(expert_trader),"image":expert_trader.image.url if expert_trader.image else ""},
             "user":request.user.profile.serialize(),
         }
         return render(request,'dashboard/user-copy-trader-profit.html',context)

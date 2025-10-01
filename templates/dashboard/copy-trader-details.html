@@ -45,7 +45,7 @@
             >
               <span class="flex items-center gap-4">
                 <img
-                  :src="expert.image"
+                  :src="expert.image?expert.image:'https://ui-avatars.com/api/?name='+expert.name+'&background=random&size=80'"
                   alt=""
                   class="object-cover h-[80px] w-[80px] rounded-full"
                 />
@@ -296,7 +296,6 @@ chart.render();
     // Alpine State Listener
     document.addEventListener("alpine:init", () => {
       const user = JSON.parse(document.getElementById("user").textContent);
-      console.log(user);
       
       const expert = JSON.parse(
         document.getElementById("expert").textContent

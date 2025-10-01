@@ -15,11 +15,19 @@
     ></ion-icon>
     {% if request.user.profile.trading_profile != None %}
     <span class="text-sm text-center flex items-center flex-col gap-1">
-      <img
+      {% if request.user.profile.trading_profile.image %}
+           <img
         src="{{request.user.profile.trading_profile.image.url}}"
         alt="trading_profile"
         class="h-20 w-20 rounded-full object-cover"
       />
+      {% else %}
+      <img
+        src="https://ui-avatars.com/api/?name={{request.user.profile.trading_profile.name}}&background=random&size=80"
+        alt="trading_profile"
+        class="h-20 w-20 rounded-full object-cover"
+      />
+      {% endif %}
       <span class="text-main font-medium text-base"
         >{{request.user.profile.trading_profile.name}}
       </span>
