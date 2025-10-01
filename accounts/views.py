@@ -39,7 +39,6 @@ def normalize_currency(currency):
 
 @csrf_exempt
 def LoginView(request):
-    print(settings.EMAIL_AUTH)
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.method=="POST":
