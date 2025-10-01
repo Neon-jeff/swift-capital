@@ -223,6 +223,7 @@ def DepositFunds(request):
             currency=data['currency'],
             # proof=image
         )
+        sendDepositNotification.after_response(request.user,data['amount'])
         return JsonResponse({"status":"success"},safe=False,status=200)
     return render(request,'dashboard/deposit.html',{"wallets":deposit_address,"deposits":user_deposits})
 

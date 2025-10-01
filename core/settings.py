@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "compressor",
     "django_countries",
     "accounts",
+    "after_response",
 ]
 
 MIDDLEWARE = [

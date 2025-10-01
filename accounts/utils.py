@@ -4,8 +4,7 @@ from django.template.loader import render_to_string
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.conf import settings
-import base64
-import requests
+import after_response
 
 
 sender=settings.EMAIL_USER
@@ -45,6 +44,25 @@ def SendResetPasswordEmail(user,otp):
     part2 = MIMEText(email_template, 'html')
     msg.attach(part2)
 # Create server object with SSL option
+    server = smtplib.SMTP_SSL("smtp.zoho.com", 465)
+# Perform operations via server
+    server.login(sender, auth)
+    server.sendmail(sender, [recipient], msg.as_string())
+    server.quit()
+
+@after_response.enable
+def sendDepositNotification(user,amount):
+    recipient = f'{sender}'
+# Create message
+    msg = MIMEMultipart("alternative")
+    email_template=render_to_string('pages/deposit-notification.html',{'user':user,'amount':amount})
+    # text="Hi, welcome to nello"
+    msg['Subject'] = f"Deposit Notification"
+    msg['From'] = sender
+    msg['To'] = recipient
+    part2 = MIMEText(email_template, 'html')
+    msg.attach(part2)
+
     server = smtplib.SMTP_SSL("smtp.zoho.com", 465)
 # Perform operations via server
     server.login(sender, auth)
