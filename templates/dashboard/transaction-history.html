@@ -45,8 +45,8 @@
             <span x-text="'$'+d.amount"></span>
             <!-- check for confirmation here -->
             <ion-icon name="alert-circle" x-show="d.status === 'Pending'" class="text-orange-400 text-xl"></ion-icon>
-            <ion-icon name="checkmark-circle" x-show="d.status === 'Successful" class="text-green-400 text-xl"></ion-icon>
-            <ion-icon name="close-circle" x-show="d.status === 'Successful" class="text-red-400 text-xl"></ion-icon>
+            <ion-icon name="checkmark-circle" x-show="d.status === 'Successful'" class="text-green-400 text-xl"></ion-icon>
+            <!-- <ion-icon name="close-circle" x-show="d.status === 'Successful" class="text-red-400 text-xl"></ion-icon> -->
           </div>
         </template>
       </div>
@@ -87,9 +87,7 @@
       let withdrawals = history.withdrawals.map(item => {
         item.type = 'withdrawal'
         return item
-      })
-      console.log(withdrawals);
-      
+      })      
       Alpine.data("assets", () => ({
         currButton: 'deposits',
         deposits: deposits,
