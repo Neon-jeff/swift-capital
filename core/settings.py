@@ -182,7 +182,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # COMPRESSOR CONFIGS
 
-CSRF_TRUSTED_ORIGINS = ["https://swiftcapitals.co", "https://www.swiftcapitals.co"]
+CSRF_TRUSTED_ORIGINS = ["https://swiftcapitals.co", "https://www.swiftcapitals.co","https://www.capitalswift.co"]
 
 # UNFOLD CONFIGS
 UNFOLD = {
