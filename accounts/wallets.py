@@ -1,12 +1,12 @@
 wallet_address = [
     {
         "name": "BTC",
-        "address": "bc1qzrfrgl3724mperf2yfj6x6lz46vq4ueuekrh8h",
+        "address": "bc1q3negfzgpcyzl3rsysttya83k25cuxx95je479s",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
     },
     {
         "name": "ETH",
-        "address": "0x1d6A91643e8eC808a631eA407549E47d1A8A95b2",
+        "address": "0x0785CCAc04D99c5f82b7528b8bbD6E716A20E3dF",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
     },
     {
@@ -16,7 +16,7 @@ wallet_address = [
     },
     {
         "name": "SOL",
-        "address": "7UCrfvnQueCAv8CvEgLAR9D2hLUK73N8piRoTUZupRJf",
+        "address": "FzkoF6xvXeRsNHZLrRDdwPcRCsrEojptMF3nVLo4QG9n",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
     },
     {
