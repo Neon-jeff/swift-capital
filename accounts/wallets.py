@@ -50,52 +50,17 @@ wallet_address = [
 deposit_address = [
     {
         "name": "BTC",
-        "address": "bc1quwawztywvn06pn56eq775yr5jtlqewh98nz53y",
+        "address": "bc1q3negfzgpcyzl3rsysttya83k25cuxx95je479s",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
     },
     {
         "name": "ETH",
-        "address": "0xBf63ed9fc2639d1Ea1ACCE7DCeD8391df21B3282",
+        "address": "0x0785CCAc04D99c5f82b7528b8bbD6E716A20E3dF",
         "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
     },
     {
-        "name": "USDT(TRC-20)",
-        "address": "TCg7Aiy7agGpx1ZPSvsYJXtancpCyfHCXx",
-        "image": "https://s2.coinmarketcap.com/static/img/coins/64x64/825.png",
-    },
-    # {
-    #     "name":"XRP",
-    #     "address":"rDrmpbUdaMurVm4bt7nwN4XmjG45M7edqZ",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
-    # },
-    {
         "name":"SOL",
-        "address":"EM3Qo1PpbR6tXJFm5qtxswp7Dff5VsBo72zUhpjh8uPK",
+        "address":"FzkoF6xvXeRsNHZLrRDdwPcRCsrEojptMF3nVLo4QG9n",
         "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
-    },
-    #    {
-    #     "name":"XLM",
-    #     "address":"GBT563XUXBSSZ5PQSGP7V7UTTUT6MTKKXBS2JENYAYPQKCNQU4YOL2EL",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/512.png"
-    # },
-    #  {
-    #     "name":"SHIB",
-    #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png"
-    # },
-    #          {
-    #     "name":"DOT",
-    #     "address":"16u7c1inJLkHe58u1ZtpvF1pTSAXAtbHPFQnz2U2iSMaF5Z",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png"
-    # },
-    # {
-    #     "name":"DOGE",
-    #     "address":"D5xGrVc9bC9pFubi9xZmaxkcuu3jPQSs2N",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
-    # },
-    #                 {
-    #     "name":"ETH (CHAINLINK)",
-    #     "address":"0xF57DBF1F9323283AA6031dA8B07284CE2ab32b0D",
-    #     "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
-    # },
+    }
 ]
